@@ -9,6 +9,7 @@
           {{ value }}円寄付
         </b-button>
       </div>
+      ※手数料を差し引くとTwin:teには{{ Math.floor(value*0.964) }}円寄付されます。
     </div>
   </section>
 </template>
@@ -23,7 +24,7 @@ export default {
   },
   data () {
     return {
-      value: 100
+      value: 500
     }
   },
   methods: {
