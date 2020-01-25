@@ -35,21 +35,19 @@ export default {
   },
   methods: {
     register (plan) {
-      const stripe = Stripe('pk_test_BiJShQLk2tTyKXCJof20dplQ00blaeB3yf') // public key なので晒しても問題ないです
-      // メソッド内の `this` は、 Vue インスタンスを参照します
-      alert('Hello ' + plan + '!')
-
-      const { sessionId } = (
-        this.$axios.$post('https://dev.api.twinte.net/v1/payment/checkout-session/subscription', {
-          plan_id: plan
-        }, {
-          headers: { 'Content-Type': 'application/json' },
-          withCredentials: true
-        }))
-      stripe.redirectToCheckout({
-        sessionId
-      }).then(function (result) {
+      const stripe = window.Stripe('pk_test_BiJShQLk2tTyKXCJof20dplQ00blaeB3yf') // public key
+      this.$axios.$post('https://dev.api.twinte.net/v1/payment/checkout-session/subscription', {
+        plan_id: plan
+      }, {
+        headers: { 'Content-Type': 'application/json' },
+        withCredentials: true
+      }).then((response) => {
+        const sessionId = response.sessionId
+        stripe.redirectToCheckout({
+          sessionId
+        }).then(function (result) {
         // 失敗時のみ呼び出される
+        })
       })
     }
   }
