@@ -1,7 +1,7 @@
 <template>
   <section class="section">
     <div class="is-mobile">
-      <div v-for="item in history">
+      <div v-for="item in history" :key="item.subscription_id">
         <b-message title="item.plan" aria-close-label="Close message" style="margin-bottom:10px;">
           <ul>
             <li>ID:{{ item.subscription_id }}</li>
