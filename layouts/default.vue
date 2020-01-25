@@ -73,10 +73,16 @@ export default {
           to: { name: 'register' }
         },
         {
+          title: '一回きりの寄付',
+          icon: 'lightbulb',
+          to: { name: 'onetime' }
+        },
+        {
           title: 'サブスク登録状況と消去',
           icon: 'lightbulb',
           to: { name: 'mypage-subscription' }
         }
+
       ]
     }
   }
