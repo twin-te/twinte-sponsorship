@@ -2,10 +2,10 @@
   <div>
     <h1>mypage.</h1>
     <div v-for="item in payments" :key="item.id" class="hoge">
-      <b-message title="item.type">
+      <b-message>
         <ul>
           <li>
-            id: {{ item.id }}
+            支払いの種類: {{ item.type }}
           </li>
           <li>
             支払額: {{ item.amount }}
