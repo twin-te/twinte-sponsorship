@@ -1,7 +1,7 @@
 <template>
   <section class="section">
     <div class="is-mobile">
-      <div v-for="item in history" :key="item.subscription_id">
+      <div v-for="item in history" :key="item.subscription_id" v-on:click="deletePlan(item.subscription_id)">
         <b-message title="item.plan" aria-close-label="Close message" style="margin-bottom:10px;">
           <ul>
             <li>ID:{{ item.subscription_id }}</li>
@@ -23,7 +23,6 @@ export default {
   components: {
 
   },
-
   data () {
     return {
       history: null
@@ -34,6 +33,14 @@ export default {
       withCredentials: true
     })
       .then(response => (this.history = response))
-  }
+  },
+  methods: {
+    deletePlan (planId) {
+      if (window.confirm('このサブスクリプションを消去しますか？')) {
+        this.$axios.$delete('https://dev.api.twinte.net/v1/payment/subscriptions/' + planId, {
+          withCredentials: true
+        }).then(location.reload())
+      }
+    } }
 }
 </script>

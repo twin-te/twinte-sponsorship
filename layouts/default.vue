@@ -66,6 +66,16 @@ export default {
           title: 'Inspire',
           icon: 'lightbulb',
           to: { name: 'inspire' }
+        },
+        {
+          title: 'サブスク登録',
+          icon: 'lightbulb',
+          to: { name: 'register' }
+        },
+        {
+          title: 'サブスク登録状況と消去',
+          icon: 'lightbulb',
+          to: { name: 'mypage-subscription' }
         }
       ]
     }
