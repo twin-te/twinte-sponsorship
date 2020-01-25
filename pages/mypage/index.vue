@@ -2,7 +2,7 @@
   <div>
     <h1>mypage.</h1>
     <div v-for="item in payments" :key="item.id" class="hoge">
-      <b-message>
+      <b-message v-if="item.paid_at!==null">
         <ul>
           <li>
             支払いの種類: {{ item.type }}
