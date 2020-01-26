@@ -32,7 +32,7 @@ export default {
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: [
+  plugins: [ '~/plugins/dayjs'
   ],
   /*
   ** Nuxt.js dev-modules
@@ -55,6 +55,7 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    baseURL: 'https://dev.api.twinte.net/v1/'
   },
   /*
   ** Build configuration
