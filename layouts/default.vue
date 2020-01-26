@@ -78,6 +78,11 @@ export default {
           to: { name: 'onetime' }
         },
         {
+          title: '寄付の履歴',
+          icon: 'lightbulb',
+          to: { name: 'mypage' }
+        },
+        {
           title: 'サブスク登録状況と消去',
           icon: 'lightbulb',
           to: { name: 'mypage-subscription' }

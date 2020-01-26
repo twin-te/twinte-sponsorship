@@ -5,7 +5,7 @@ import Vue from 'vue'
 dayjs.locale('ja')
 
 Vue.filter('formatDate', function (value) {
-  return dayjs.unix(value).format('YYYY/MM/DD')
+  return dayjs.unix(value).format('YYYY/MM/DD HH:mm')
 })
 
 Vue.prototype.$dayjs = dayjs
