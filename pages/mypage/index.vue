@@ -5,7 +5,7 @@
       <b-message v-if="item.status==='succeeded'">
         <ul>
           <li>
-            支払いの種類: {{ item.type }}
+            支払いの種類: {{ item.type | type }}
           </li>
           <li>
             支払額: {{ item.amount }}円
@@ -19,6 +19,11 @@
 
 <script>
 export default {
+  filters: {
+    type (value) {
+      return (value === 'Subscription' ? 'サブスクリプション' : '一回きり')
+    }
+  },
   data () {
     return {
       payments: []
