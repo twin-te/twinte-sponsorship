@@ -8,9 +8,9 @@
             支払いの種類: {{ item.type }}
           </li>
           <li>
-            支払額: {{ item.amount }}
+            支払額: {{ item.amount }}円
           </li>
-          <li>支払日: {{ item.paid_at }}</li>
+          <li>支払日: {{ item.paid_at | formatDate }}</li>
         </ul>
       </b-message>
     </div>
