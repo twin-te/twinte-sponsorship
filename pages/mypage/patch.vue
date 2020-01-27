@@ -36,8 +36,19 @@ export default {
       }, {
         withCredentials: true
       }
-      ).then(alert('正常に更新できました。'))
-        .then(this.$router.push('/'))
+      )
+        .then(() => this.$buefy.toast.open({
+          message: '正常に更新できました.',
+          type: 'is-success'
+        }))
+        .then(() => this.$router.push('/'))
+        .catch((response) => {
+          console.log(response)
+          this.$buefy.toast.open({
+            message: '更新に失敗しました.',
+            type: 'is-danger'
+          })
+        })
     }
   }
 }
