@@ -91,6 +91,11 @@ export default {
           title: 'ユーザー情報更新',
           icon: 'lightbulb',
           to: { name: 'mypage-patch' }
+        },
+        {
+          title: 'ログイン',
+          icon: 'lightbulb',
+          to: { name: 'login' }
         }
 
       ]
