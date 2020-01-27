@@ -86,6 +86,11 @@ export default {
           title: 'サブスク登録状況と消去',
           icon: 'lightbulb',
           to: { name: 'mypage-subscription' }
+        },
+        {
+          title: 'ユーザー情報更新',
+          icon: 'lightbulb',
+          to: { name: 'mypage-patch' }
         }
 
       ]
