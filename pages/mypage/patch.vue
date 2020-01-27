@@ -1,12 +1,12 @@
 <template>
   <div>
     <b-field label="Name">
-      <b-input v-model="nickname" placeholder="NAME" />
+      <b-input v-model="nickname" placeholder="NAME" required />
     </b-field>
     <b-field label="link">
-      <b-input v-model="link" placeholder="URL" type="url" />
+      <b-input v-model="link" placeholder="URL" type="url" required />
     </b-field>
-    <b-button @click="updateUserInfo()">
+    <b-button @click="updateUserInfo" :disabled="isdisabled">
       更新
     </b-button>
   </div>
@@ -18,6 +18,14 @@ export default {
     return {
       nickname: '',
       link: ''
+    }
+  },
+  computed: {
+    isdisabled () {
+      return (this.nickname.length === 0 || !this.isURL)
+    },
+    isURL () {
+      return /^https?:\/\/.+/.test(this.link)
     }
   },
   methods: {
