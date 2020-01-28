@@ -90,6 +90,9 @@ export default {
 
       ]
     }
+  },
+  mounted () {
+    this.$store.dispatch('getLoginState')
   }
 }
 </script>

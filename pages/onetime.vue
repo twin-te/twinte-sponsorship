@@ -10,6 +10,9 @@
         </b-button>
       </div>
       ※手数料を差し引くとTwin:teには{{ Math.floor(value*0.964) }}円寄付されます。
+      <p v-if="$store.state.login">
+        {{ $store.state.statement }}
+      </p>
     </div>
   </section>
 </template>
