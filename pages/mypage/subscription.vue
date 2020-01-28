@@ -25,14 +25,14 @@ export default {
   },
   data () {
     return {
-      history: null
+      history: null,
+      login: true
     }
   },
   mounted () {
     this.$axios.$get('/payment/subscriptions', {
       withCredentials: true
-    })
-      .then(response => (this.history = response))
+    }).then(response => (this.history = response))
   },
   methods: {
     deletePlan (planId) {
