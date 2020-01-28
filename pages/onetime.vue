@@ -33,8 +33,7 @@ export default {
       this.$axios.$post('/payment/checkout-session/onetime', {
         amount
       }, {
-        headers: { 'Content-Type': 'application/json' },
-        withCredentials: true
+        headers: { 'Content-Type': 'application/json' }
       }).then((response) => {
         const sessionId = response.sessionId
         stripe.redirectToCheckout({
