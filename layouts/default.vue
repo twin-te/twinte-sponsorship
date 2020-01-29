@@ -1,5 +1,8 @@
 <template>
   <div>
+    {{ state }}
+    <button @click="login">login</button>
+    <button @click="logout">logout</button>
     <nav
       class="navbar header has-shadow is-primary"
       role="navigation"
@@ -96,8 +99,24 @@ export default {
       ]
     }
   },
+  computed: {
+    state () {
+      return this.$store.state.authorized
+    },
+    nickname () {
+      return this.$store.state.nickname
+    }
+  },
   mounted () {
-    this.$store.dispatch('getLoginState')
+    // this.$store.dispatch('login')
+  },
+  methods: {
+    login () {
+      this.$store.dispatch('login')
+    },
+    logout () {
+      this.$store.dispatch('logout')
+    }
   }
 }
 </script>

@@ -19,6 +19,7 @@
 
 <script>
 export default {
+  middleware: 'authenticated',
   filters: {
     type (value) {
       return (value === 'Subscription' ? 'サブスクリプション' : '一回きり')

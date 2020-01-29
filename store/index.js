@@ -1,27 +1,37 @@
 export const state = () => ({
-  login: false,
+  authorized: false,
   statement: 'This is Test.'
+  // nickname: ''
 })
 
 export const mutations = {
-  increment (state) {
-    state.count += 2
+  login (state) {
+    state.authorized = true
+  },
+  logout (state) {
+    state.authorized = false
   }
 }
 
 export const actions = {
-  getLoginState () {
+  login ({ commit }) {
     this.$axios.$get('/users/me', {
       withCredentials: true
-    }).then(function () {
-      alert('OK')
-      state.login = true
-    }
+    }).then(
+      () => {
+        alert('ok')
+        commit('login')
+      }
     ).catch(
-      function () {
-        alert('NG')
-        state.login = false
+      (res) => {
+        console.log(res)
+        alert('ログインに失敗しました')
       }
     )
+  },
+  logout ({ commit }) {
+    alert('ログアウトしました')
+    commit('logout')
+    this.$router.push('/inspire')
   }
 }
