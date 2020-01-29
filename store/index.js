@@ -1,21 +1,20 @@
 export const state = () => ({
-  authorized: false,
-  statement: 'This is Test.'
+  isAuthorized: false
   // nickname: ''
 })
 
 export const mutations = {
   login (state) {
-    state.authorized = true
+    state.isAuthorized = true
   },
   logout (state) {
-    state.authorized = false
+    state.isAuthorized = false
   }
 }
 
 export const getters = {
   authorized (state) {
-    return state.authorized
+    return state.isAuthorized
   }
 }
 

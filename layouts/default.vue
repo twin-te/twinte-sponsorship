@@ -117,9 +117,6 @@ export default {
   computed: {
     state () {
       return this.$store.getters.authorized
-    },
-    nickname () {
-      return this.$store.state.nickname
     }
   },
   mounted () {
