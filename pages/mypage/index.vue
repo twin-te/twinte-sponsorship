@@ -31,9 +31,7 @@ export default {
     }
   },
   mounted () {
-    this.$axios.get('/payment/', {
-      withCredentials: true
-    }).then(response => (this.payments = response.data))
+    this.$axios.get('/payment/').then(response => (this.payments = response.data))
   }
 }
 </script>
