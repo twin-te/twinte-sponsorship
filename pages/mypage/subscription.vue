@@ -19,7 +19,7 @@
 
 export default {
   name: 'HomePage',
-
+  middleware: 'authenticated',
   components: {
 
   },
