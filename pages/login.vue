@@ -1,7 +1,15 @@
 <template>
-  <a href="https://dev.api.twinte.net/v1/auth/twitter?redirect-to=localhost:3000">login</a>
+  <section class="section">
+    <LoginAlert />
+  </section>
 </template>
+
 <script>
+import LoginAlert from '~/components/LoginAlert'
+
 export default {
+  components: {
+    LoginAlert
+  }
 }
 </script>
