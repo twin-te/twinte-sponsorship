@@ -1,8 +1,5 @@
 <template>
   <div>
-    {{ state }}
-    <button @click="login">login</button>
-    <button @click="logout">logout</button>
     <nav
       class="navbar header has-shadow is-primary"
       role="navigation"
@@ -26,6 +23,17 @@
           <span />
         </div>
       </div>
+      <b-navbar-item tag="div">
+        <div class="buttons">
+          <nuxt-link class="button is-primary" to="login">
+            <strong>login</strong>
+          </nuxt-link>
+          <button class="button" @click="logout">
+            logout
+          </button>
+          <h1 class="is-praimary">{{ state }}</h1>
+        </div>
+      </b-navbar-item>
     </nav>
 
     <section class="main-content columns">
@@ -113,12 +121,9 @@ export default {
     }
   },
   mounted () {
-    // this.$store.dispatch('login')
+    this.$store.dispatch('login')
   },
   methods: {
-    login () {
-      this.$store.dispatch('login')
-    },
     logout () {
       this.$store.dispatch('logout')
     }

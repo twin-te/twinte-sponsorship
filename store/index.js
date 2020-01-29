@@ -15,11 +15,9 @@ export const mutations = {
 
 export const actions = {
   login ({ commit }) {
-    this.$axios.$get('/users/me', {
-      withCredentials: true
-    }).then(
+    this.$axios.$get('/users/me').then(
       () => {
-        alert('ok')
+        // alert('ok')
         commit('login')
       }
     ).catch(
@@ -32,6 +30,6 @@ export const actions = {
   logout ({ commit }) {
     alert('ログアウトしました')
     commit('logout')
-    this.$router.push('/inspire')
+    this.$router.push('/inspire') // /飛ばす先はまた考えます
   }
 }
