@@ -25,13 +25,15 @@
       </div>
       <b-navbar-item tag="div">
         <div class="buttons">
-          <nuxt-link class="button is-primary" to="login">
+          <nuxt-link v-if="!$store.state.authorized" class="button" to="login">
             <strong>login</strong>
           </nuxt-link>
-          <button class="button" @click="logout">
+          <button @click="logout" v-else class="button">
             logout
           </button>
-          <h1 class="is-praimary">{{ state }}</h1>
+          <h1 class="is-praimary">
+            {{ state }}
+          </h1>
         </div>
       </b-navbar-item>
     </nav>
