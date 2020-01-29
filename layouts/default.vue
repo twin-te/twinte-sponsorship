@@ -25,7 +25,7 @@
       </div>
       <b-navbar-item tag="div">
         <div class="buttons">
-          <nuxt-link v-if="!$store.state.authorized" class="button" to="login">
+          <nuxt-link v-if="!state" class="button" to="login">
             <strong>login</strong>
           </nuxt-link>
           <button @click="logout" v-else class="button">
@@ -116,7 +116,7 @@ export default {
   },
   computed: {
     state () {
-      return this.$store.state.authorized
+      return this.$store.getters.authorized
     },
     nickname () {
       return this.$store.state.nickname

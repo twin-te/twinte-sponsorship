@@ -13,6 +13,12 @@ export const mutations = {
   }
 }
 
+export const getters = {
+  authorized (state) {
+    return state.authorized
+  }
+}
+
 export const actions = {
   login ({ commit }) {
     this.$axios.$get('/users/me').then(
@@ -23,7 +29,7 @@ export const actions = {
     ).catch(
       (res) => {
         console.log(res)
-        alert('ログインに失敗しました')
+        // alert('ログインに失敗しました')
       }
     )
   },
