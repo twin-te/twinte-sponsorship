@@ -39,8 +39,7 @@ export default {
       this.$axios.$post('https://dev.api.twinte.net/v1/payment/checkout-session/subscription', {
         plan_id: plan
       }, {
-        headers: { 'Content-Type': 'application/json' },
-        withCredentials: true
+        headers: { 'Content-Type': 'application/json' }
       }).then((response) => {
         const sessionId = response.sessionId
         stripe.redirectToCheckout({

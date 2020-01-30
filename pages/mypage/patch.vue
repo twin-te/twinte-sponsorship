@@ -14,6 +14,7 @@
 
 <script>
 export default {
+  middleware: 'authenticated',
   data () {
     return {
       nickname: '',
@@ -33,8 +34,6 @@ export default {
       this.$axios.patch('/payment/users/me', {
         nickname: this.nickname,
         link: this.link
-      }, {
-        withCredentials: true
       }
       )
         .then(() => this.$buefy.toast.open({

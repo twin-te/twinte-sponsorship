@@ -10,6 +10,9 @@
         </b-button>
       </div>
       ※手数料を差し引くとTwin:teには{{ Math.floor(value*0.964) }}円寄付されます。
+      <p v-if="$store.state.login">
+        {{ $store.state.statement }}
+      </p>
     </div>
   </section>
 </template>
@@ -33,8 +36,7 @@ export default {
       this.$axios.$post('/payment/checkout-session/onetime', {
         amount
       }, {
-        headers: { 'Content-Type': 'application/json' },
-        withCredentials: true
+        headers: { 'Content-Type': 'application/json' }
       }).then((response) => {
         const sessionId = response.sessionId
         stripe.redirectToCheckout({

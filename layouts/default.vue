@@ -23,6 +23,19 @@
           <span />
         </div>
       </div>
+      <b-navbar-item tag="div">
+        <div class="buttons">
+          <nuxt-link v-if="!state" class="button" to="login">
+            <strong>login</strong>
+          </nuxt-link>
+          <button @click="logout" v-else class="button">
+            logout
+          </button>
+          <h1 class="is-praimary">
+            {{ state }}
+          </h1>
+        </div>
+      </b-navbar-item>
     </nav>
 
     <section class="main-content columns">
@@ -91,9 +104,27 @@ export default {
           title: 'ユーザー情報更新',
           icon: 'lightbulb',
           to: { name: 'mypage-patch' }
+        },
+        {
+          title: 'ログイン',
+          icon: 'lightbulb',
+          to: { name: 'login' }
         }
 
       ]
+    }
+  },
+  computed: {
+    state () {
+      return this.$store.getters.authorized
+    }
+  },
+  mounted () {
+    this.$store.dispatch('login')
+  },
+  methods: {
+    logout () {
+      this.$store.dispatch('logout')
     }
   }
 }

@@ -19,6 +19,7 @@
 
 <script>
 export default {
+  middleware: 'authenticated',
   filters: {
     type (value) {
       return (value === 'Subscription' ? 'サブスクリプション' : '一回きり')
@@ -30,9 +31,7 @@ export default {
     }
   },
   mounted () {
-    this.$axios.get('/payment/', {
-      withCredentials: true
-    }).then(response => (this.payments = response.data))
+    this.$axios.get('/payment/').then(response => (this.payments = response.data))
   }
 }
 </script>

@@ -19,27 +19,24 @@
 
 export default {
   name: 'HomePage',
-
+  middleware: 'authenticated',
   components: {
 
   },
   data () {
     return {
-      history: null
+      history: null,
+      login: true
     }
   },
   mounted () {
-    this.$axios.$get('/payment/subscriptions', {
-      withCredentials: true
-    })
+    this.$axios.$get('/payment/subscriptions')
       .then(response => (this.history = response))
   },
   methods: {
     deletePlan (planId) {
       if (window.confirm('このサブスクリプションを消去しますか？')) {
-        this.$axios.$delete('/payment/subscriptions/' + planId, {
-          withCredentials: true
-        }).then(location.reload())
+        this.$axios.$delete('/payment/subscriptions/' + planId).then(location.reload())
       }
     } }
 }
