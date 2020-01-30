@@ -1,6 +1,9 @@
 
 export default {
-  mode: 'universal',
+  mode: 'spa',
+  server: {
+    port: 8000, // デフォルト: 3000
+  },
   /*
   ** Headers of the page
   */
