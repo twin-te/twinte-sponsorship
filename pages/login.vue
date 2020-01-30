@@ -8,6 +8,7 @@
 import LoginAlert from '~/components/LoginAlert'
 
 export default {
+  middleware: 'guest',
   components: {
     LoginAlert
   }
