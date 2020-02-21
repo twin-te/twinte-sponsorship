@@ -2,6 +2,7 @@
   <div>
     <h1>mypage.</h1>
     <div class="patch">
+      <h1>登録情報の変更</h1>
       <b-field label="Name">
         <b-input v-model="nickname" placeholder="NAME" required />
       </b-field>
@@ -12,7 +13,21 @@
         更新
       </b-button>
     </div>
+    <div class="subsc">
+      <h1>サブスク</h1>
+      <div v-for="item in history" :key="item.subscription_id" v-on:click="deletePlan(item.subscription_id)">
+        <b-message :title="item.plan[0].name" aria-close-label="Close message" style="margin-bottom:10px;">
+          <ul>
+            <li>ID:{{ item.subscription_id }}</li>
+            <li>プラン:{{ item.plan[0].name }}</li>
+            <li>状態：{{ item.status }} </li>
+            <li>登録日：{{ item.start_at | formatDate }}</li>
+          </ul>
+        </b-message>
+      </div>
+    </div>
     <div class="rireki">
+      <h1>寄付の履歴</h1>
       <div v-for="item in payments" :key="item.id" class="hoge">
         <b-message v-if="item.status==='succeeded'">
           <ul>
@@ -38,7 +53,8 @@ export default {
     return {
       payments: [],
       nickname: '',
-      link: ''
+      link: '',
+      history: null
     }
   },
   computed: {
@@ -50,9 +66,10 @@ export default {
     }
   },
   mounted () {
-    this.$axios
-      .get('/payment/')
+    this.$axios.get('/payment/')
       .then(response => (this.payments = response.data))
+    this.$axios.$get('/payment/subscriptions')
+      .then(response => (this.history = response))
   },
   methods: {
     updateUserInfo () {
@@ -73,6 +90,11 @@ export default {
             type: 'is-danger'
           })
         })
+    },
+    deletePlan (planId) {
+      if (window.confirm('このサブスクリプションを消去しますか？')) {
+        this.$axios.$delete('/payment/subscriptions/' + planId).then(location.reload())
+      }
     }
   }
 }
