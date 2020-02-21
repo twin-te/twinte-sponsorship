@@ -48,7 +48,7 @@ export default {
   methods: {
     registerSubscription (plan) {
       const stripe = window.Stripe('pk_test_BiJShQLk2tTyKXCJof20dplQ00blaeB3yf') // public key
-      this.$axios.$post('https://dev.api.twinte.net/v1/payment/checkout-session/subscription', {
+      this.$axios.$post('/payment/checkout-session/subscription', {
         plan_id: plan
       }, {
         headers: { 'Content-Type': 'application/json' }
