@@ -43,7 +43,9 @@
         月ごとにお支払いいただく金額を下記から選択し、「登録する」ボタンを押すと、決済ページへ移動します。
       </p>
       <p style="font-weight:bold">
-        このサブスクリプションは<nuxt-link to="/mypage">マイページ</nuxt-link>よりいつでもご解約いただけます。
+        このサブスクリプションは<nuxt-link to="/mypage">
+          マイページ
+        </nuxt-link>よりいつでもご解約いただけます。
       </p>
       <div style="margin:2rem 0 2rem 0;">
         <div class="field">

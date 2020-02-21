@@ -1,8 +1,12 @@
 <template>
   <div>
-    <h1 class="title">マイページ</h1>
+    <h1 class="title">
+      マイページ
+    </h1>
     <div class="card">
-      <h1 class="title">登録情報の変更</h1>
+      <h1 class="title">
+        登録情報の変更
+      </h1>
       <b-field label="お名前">
         <b-input v-model="nickname" placeholder="お名前・ユーザーネーム" required />
       </b-field>
@@ -14,19 +18,27 @@
       </b-button>
     </div>
     <div class="card">
-      <h1 class="title">サブスクリプションの登録状況</h1>
-      <h2 class="subtitle">現在ご利用中のプラン</h2>
+      <h1 class="title">
+        サブスクリプションの登録状況
+      </h1>
+      <h2 class="subtitle">
+        現在ご利用中のプラン
+      </h2>
       <div v-for="item in history" :key="item.subscription_id" v-on:click="deletePlan(item.subscription_id)" class="history">
         <b-message>
           <ul>
-            <li style="font-weight:bold; font-size:large">{{ item.plan[0].name }}</li>
+            <li style="font-weight:bold; font-size:large">
+              {{ item.plan[0].name }}
+            </li>
             <li>登録日：{{ item.start_at | formatDate }}</li>
           </ul>
         </b-message>
       </div>
     </div>
     <div class="card">
-      <h1 class="title">寄付の履歴</h1>
+      <h1 class="title">
+        寄付の履歴
+      </h1>
       <div v-for="item in payments" :key="item.id" class="history">
         <b-message v-if="item.status==='succeeded'">
           <ul>
