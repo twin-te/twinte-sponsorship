@@ -1,44 +1,6 @@
 <template>
   <div>
-    <nav
-      class="navbar header has-shadow is-primary"
-      role="navigation"
-      aria-label="main navigation"
-    >
-      <div class="navbar-brand">
-        <a
-          class="navbar-item"
-          href="/"
-        >
-          <img
-            src="~assets/buefy.png"
-            alt="Buefy"
-            height="28"
-          >
-        </a>
-
-        <div class="navbar-burger">
-          <span />
-          <span />
-          <span />
-        </div>
-      </div>
-      <b-navbar-item tag="div">
-        <div class="buttons">
-          <nuxt-link v-if="!state" class="button" to="login">
-            <strong>login</strong>
-          </nuxt-link>
-          <button @click="logout" v-else class="button">
-            logout
-          </button>
-          <h1 class="is-primary">
-            {{ state }}
-          </h1>
-        </div>
-      </b-navbar-item>
-    </nav>
-
-    <section class="main-content columns">
+    <section class="main-content columns is-gapless">
       <aside class="column is-2 section">
         <p class="menu-label is-hidden-touch">
           General
@@ -129,3 +91,16 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+$menu-color: #1A1D32;
+aside{
+  background-color: $menu-color;
+}
+
+.menu-list{
+    a{
+      color: #ffffff;
+    }
+}
+</style>
