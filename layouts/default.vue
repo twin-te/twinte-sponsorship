@@ -22,7 +22,9 @@
       </aside>
 
       <div class="container column is-10 nuxt-contents">
-        <nuxt />
+        <section class="section">
+          <nuxt />
+        </section>
       </div>
     </section>
   </div>
@@ -77,7 +79,6 @@ aside{
   }
   a{
     margin-right:10%;
-    font-family: Roboto;
     border-radius: 0px 5px 5px 0px;
   }
 }

@@ -14,6 +14,9 @@ $menu-item-color: #ffffff;
 $menu-item-radius: 0;
 $menu-label-spacing: 100px;
 
+// デフォルトのテキストの色
+$text: #555555;
+
 // Setup $colors to use as bulma classes (e.g. 'is-twitter')
 $colors: (
     "white": ($white, $black),
@@ -36,3 +39,21 @@ $link-focus-border: $primary;
 // Import Bulma and Buefy styles
 @import "~bulma";
 @import "~buefy/src/scss/buefy";
+
+.title{
+    color: #555555;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 23px;
+    line-height: 28px;
+    margin-bottom: 1rem;
+}
+
+// カードを使いやすいように再定義
+.card{
+    background: #FFFFFF;
+    box-shadow: 7px 7px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom:2rem;
+}

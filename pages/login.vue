@@ -1,6 +1,8 @@
 <template>
   <section class="section">
-    <LoginAlert />
+    <div class="card">
+      <LoginAlert />
+    </div>
   </section>
 </template>
 

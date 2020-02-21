@@ -1,6 +1,8 @@
 <template>
   <section>
-    ログイン方法の洗濯
+    <h1 class="title">
+      以下の方法でTwin:teにログインしてください。
+    </h1>
     <div>
       <a href="https://dev.api.twinte.net/v1/auth/google?redirect-to=https://www.twinte.net">
         <img
