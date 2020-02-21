@@ -2,7 +2,7 @@
 export default {
   mode: 'spa',
   server: {
-    port: 8000, // デフォルト: 3000
+    port: 8000 // デフォルト: 3000
   },
   /*
   ** Headers of the page
@@ -58,7 +58,7 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-    baseURL: 'https://dev.api.twinte.net/v1/',
+    baseURL: 'https://api.twinte.net/v1/',
     credentials: 'true'
   },
   /*
