@@ -2,8 +2,9 @@
   <div>
     <section class="main-content columns is-gapless">
       <aside class="column is-2 section">
-        <p class="menu-label is-hidden-touch">
-          General
+        <p class="title">
+          <img src="~/assets/Twintelogo-white.png" alt="Twin:te_Logo">
+          SPONSOR
         </p>
         <ul class="menu-list">
           <li
@@ -14,13 +15,13 @@
               :to="item.to"
               exact-active-class="is-active"
             >
-              <b-icon :icon="item.icon" /> {{ item.title }}
+              {{ item.title }}
             </nuxt-link>
           </li>
         </ul>
       </aside>
 
-      <div class="container column is-10">
+      <div class="container column is-10 nuxt-contents">
         <nuxt />
       </div>
     </section>
@@ -33,46 +34,21 @@ export default {
     return {
       items: [
         {
-          title: 'Home',
-          icon: 'home',
+          title: '寄付のお願い',
           to: { name: 'index' }
         },
         {
           title: 'Inspire',
-          icon: 'lightbulb',
           to: { name: 'inspire' }
         },
         {
-          title: 'サブスク登録',
-          icon: 'lightbulb',
+          title: '寄付・サブスク登録',
           to: { name: 'register' }
         },
         {
-          title: '一回きりの寄付',
-          icon: 'lightbulb',
-          to: { name: 'onetime' }
-        },
-        {
-          title: '寄付の履歴',
-          icon: 'lightbulb',
+          title: 'マイページ',
           to: { name: 'mypage' }
-        },
-        {
-          title: 'サブスク登録状況と消去',
-          icon: 'lightbulb',
-          to: { name: 'mypage-subscription' }
-        },
-        {
-          title: 'ユーザー情報更新',
-          icon: 'lightbulb',
-          to: { name: 'mypage-patch' }
-        },
-        {
-          title: 'ログイン',
-          icon: 'lightbulb',
-          to: { name: 'login' }
         }
-
       ]
     }
   },
@@ -96,11 +72,29 @@ export default {
 $menu-color: #1A1D32;
 aside{
   background-color: $menu-color;
+  p{
+    color:#ffffff;
+  }
+  a{
+    margin-right:10%;
+    font-family: Roboto;
+    border-radius: 0px 5px 5px 0px;
+  }
 }
 
-.menu-list{
-    a{
-      color: #ffffff;
-    }
+.title{
+  margin:auto;
+  padding-top:1rem;
+  padding-bottom:1rem;
+  text-align: center;
+  width:80%;
+  img{
+    width:60%;
+  }
 }
+
+.nuxt-contents{
+  min-height: 100vh;
+}
+
 </style>
