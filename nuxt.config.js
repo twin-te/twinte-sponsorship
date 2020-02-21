@@ -2,7 +2,7 @@
 export default {
   mode: 'spa',
   server: {
-    port: 8000, // デフォルト: 3000
+    port: 8000 // デフォルト: 3000
   },
   /*
   ** Headers of the page
@@ -31,6 +31,7 @@ export default {
   ** Global CSS
   */
   css: [
+    '@/assets/scss/style.scss' // buefyのベース定義のファイルを読み込む
   ],
   /*
   ** Plugins to load before mounting the App

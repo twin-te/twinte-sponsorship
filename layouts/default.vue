@@ -31,7 +31,7 @@
           <button @click="logout" v-else class="button">
             logout
           </button>
-          <h1 class="is-praimary">
+          <h1 class="is-primary">
             {{ state }}
           </h1>
         </div>
