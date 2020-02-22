@@ -48,7 +48,9 @@
           </ul>
         </b-message>
       </div>
-      <button v-if="(paymentItems.length - displayItems) >=0" @click="readMore">もっとみる</button>
+      <button v-if="(paymentItems.length - displayItems) >=0" @click="readMore">
+        もっとみる
+      </button>
     </div>
   </div>
 </template>
@@ -78,7 +80,7 @@ export default {
       return /^https?:\/\/.+/.test(this.link)
     },
     paymentItems () {
-      return this.payments.slice(0, this.displayItems)
+      return this.payments.filter(e => e.status === 'succeeded').slice(0, this.displayItems) // paymentから成功のものを取り出し表示する分をpaymemtItemsへ
     }
   },
   mounted () {
