@@ -48,7 +48,7 @@
           </ul>
         </b-message>
       </div>
-      <b-button v-if="(paymentItems.length - displayItems) >=0" @click="readMore" type="is-primary">
+      <b-button v-if="isShow" @click="readMore" type="is-primary">
         もっとみる
       </b-button>
     </div>
@@ -69,7 +69,8 @@ export default {
       nickname: '',
       link: '',
       history: null,
-      displayItems: 3
+      displayItems: 3,
+      isShow: true
     }
   },
   computed: {
@@ -115,7 +116,8 @@ export default {
       }
     },
     readMore () {
-      this.displayItems += 3
+      this.isShow = false
+      this.displayItems = this.payments.filter(e => e.status === 'succeeded').length
     }
   }
 }
