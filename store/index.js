@@ -36,6 +36,6 @@ export const actions = {
     this.$axios.$get('/auth/logout')
     alert('ログアウトしました')
     commit('logout')
-    this.$router.push('/inspire') // /飛ばす先はまた考えます
+    this.$router.push('/') // /に飛ばす
   }
 }
