@@ -3,8 +3,7 @@
     <section class="main-content columns is-gapless">
       <aside class="column is-2 section">
         <p class="title">
-          <img src="~/assets/Twintelogo-white.png" alt="Twin:te_Logo">
-          SPONSOR
+          <img src="~/assets/Twintelogo-sponsor.png" alt="Twin:te_Logo">
         </p>
         <ul class="menu-list">
           <li
@@ -90,6 +89,7 @@ aside{
   text-align: center;
   width:80%;
   img{
+    min-width:10vw;
     width:60%;
   }
 }
