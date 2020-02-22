@@ -39,10 +39,6 @@ export default {
           to: { name: 'index' }
         },
         {
-          title: 'Inspire',
-          to: { name: 'inspire' }
-        },
-        {
           title: '寄付・サブスク登録',
           to: { name: 'register' }
         },
@@ -73,10 +69,8 @@ export default {
 $menu-color: #1A1D32;
 aside{
   background-color: $menu-color;
-  p{
-    color:#ffffff;
-  }
   a{
+    box-sizing:border-box;
     margin-right:10%;
     border-radius: 0px 5px 5px 0px;
   }
