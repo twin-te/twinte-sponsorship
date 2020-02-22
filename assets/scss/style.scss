@@ -10,9 +10,10 @@ $twitter-invert: findColorInvert($twitter);
 // メニューバーの色設定
 $menu-item-active-background-color: #C3EAF7;
 $menu-item-active-color: #1A1D32;
+$menu-item-hover-color:#1A1D32;
 $menu-item-color: #ffffff;
 $menu-item-radius: 0;
-$menu-label-spacing: 100px;
+$menu-list-link-padding: 0.8rem;
 
 // デフォルトのテキストの色
 $text: #555555;

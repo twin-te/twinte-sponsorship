@@ -3,8 +3,7 @@
     <section class="main-content columns is-gapless">
       <aside class="column is-2 section">
         <p class="title">
-          <img src="~/assets/Twintelogo-white.png" alt="Twin:te_Logo">
-          SPONSOR
+          <img src="~/assets/Twintelogo-sponsor.png" alt="Twin:te_Logo">
         </p>
         <ul class="menu-list">
           <li
@@ -68,10 +67,6 @@ export default {
           to: { name: 'index' }
         },
         {
-          title: 'Inspire',
-          to: { name: 'inspire' }
-        },
-        {
           title: '寄付・サブスク登録',
           to: { name: 'register' }
         },
@@ -105,10 +100,8 @@ $menu-color: #1A1D32;
 
 aside{
   background-color: $menu-color;
-  p{
-    color:#ffffff;
-  }
   a{
+    box-sizing:border-box;
     margin-right:10%;
     border-radius: 0px 5px 5px 0px;
   }
@@ -121,6 +114,7 @@ aside{
   text-align: center;
   width:80%;
   img{
+    min-width:10vw;
     width:60%;
   }
 }
