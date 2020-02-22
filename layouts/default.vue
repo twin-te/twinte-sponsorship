@@ -23,7 +23,28 @@
 
       <div class="container column is-10 nuxt-contents">
         <section class="header section">
-          <v-header />
+          <div class="right">
+            <button
+              @click="isComponentModalActive = true"
+              exact-active-class="is-active"
+              class="button"
+            >
+              ログイン
+            </button>
+            <button @click="logout" class="button">
+              ログアウト
+            </button>
+            <p>{{ state }}</p>
+          </div>
+          <b-modal
+            :active.sync="isComponentModalActive"
+            has-modal-card
+            trap-focus
+            aria-role="dialog"
+            aria-modal
+          >
+            <login-alert />
+          </b-modal>
         </section>
         <section class="section">
           <nuxt />
@@ -34,10 +55,10 @@
 </template>
 
 <script>
-import VHeader from '@/components/VHeader.vue'
+import LoginAlert from '~/components/LoginAlert.vue'
 export default {
   components: {
-    VHeader
+    LoginAlert
   },
   data () {
     return {
@@ -58,7 +79,8 @@ export default {
           title: 'マイページ',
           to: { name: 'mypage' }
         }
-      ]
+      ],
+      isComponentModalActive: false
     }
   },
   computed: {
@@ -79,6 +101,8 @@ export default {
 
 <style lang="scss" scoped>
 $menu-color: #1A1D32;
+@import "~assets/scss/style.scss"; // これ書かないと読み込まれないのなんで、、、
+
 aside{
   background-color: $menu-color;
   p{
@@ -107,6 +131,13 @@ aside{
 
 .header {
   padding-bottom: 0;
-  padding-top: 1rem
+  padding-top: 1rem;
+  .button {
+  border-color: $primary;
+  color: $primary
+}
+.right {
+  text-align: right
+}
 }
 </style>
