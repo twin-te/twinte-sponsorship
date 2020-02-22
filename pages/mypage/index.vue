@@ -39,7 +39,7 @@
       <h1 class="title">
         寄付の履歴
       </h1>
-      <div v-for="item in payments" :key="item.id" class="history">
+      <div v-for="item in paymentItems" :key="item.id" class="history">
         <b-message v-if="item.status==='succeeded'">
           <ul>
             <li>支払いの種類: {{ item.type | type }}</li>
@@ -48,6 +48,9 @@
           </ul>
         </b-message>
       </div>
+      <b-button v-if="isShow" @click="readMore" type="is-primary">
+        もっとみる
+      </b-button>
     </div>
   </div>
 </template>
@@ -65,7 +68,9 @@ export default {
       payments: [],
       nickname: '',
       link: '',
-      history: null
+      history: null,
+      displayItems: 3,
+      isShow: true
     }
   },
   computed: {
@@ -74,6 +79,9 @@ export default {
     },
     isURL () {
       return /^https?:\/\/.+/.test(this.link)
+    },
+    paymentItems () {
+      return this.payments.filter(e => e.status === 'succeeded').slice(0, this.displayItems) // paymentから成功のものを取り出し表示する分をpaymemtItemsへ
     }
   },
   mounted () {
@@ -106,6 +114,10 @@ export default {
       if (window.confirm('このサブスクリプションを消去しますか？')) {
         this.$axios.$delete('/payment/subscriptions/' + planId).then(location.reload())
       }
+    },
+    readMore () {
+      this.isShow = false
+      this.displayItems = this.payments.filter(e => e.status === 'succeeded').length
     }
   }
 }
