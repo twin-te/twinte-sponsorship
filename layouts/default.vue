@@ -22,6 +22,9 @@
       </aside>
 
       <div class="container column is-10 nuxt-contents">
+        <section class="header section">
+          <v-header />
+        </section>
         <section class="section">
           <nuxt />
         </section>
@@ -31,7 +34,11 @@
 </template>
 
 <script>
+import VHeader from '@/components/VHeader.vue'
 export default {
+  components: {
+    VHeader
+  },
   data () {
     return {
       items: [
@@ -98,4 +105,8 @@ aside{
   min-height: 100vh;
 }
 
+.header {
+  padding-bottom: 0;
+  padding-top: 1rem
+}
 </style>
