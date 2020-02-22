@@ -40,10 +40,6 @@ export default {
           to: { name: 'index' }
         },
         {
-          title: 'Inspire',
-          to: { name: 'inspire' }
-        },
-        {
           title: '寄付・サブスク登録',
           to: { name: 'register' }
         },
