@@ -25,15 +25,16 @@
           <div class="right">
             <button
               @click="isComponentModalActive = true"
+              v-if="!state"
               exact-active-class="is-active"
               class="button"
             >
               ログイン
             </button>
-            <button @click="logout" class="button">
+            <button @click="logout" v-else class="button">
               ログアウト
             </button>
-            <p>{{ state }}</p>
+            <!-- <p>{{ state }}</p> -->
           </div>
           <b-modal
             :active.sync="isComponentModalActive"
