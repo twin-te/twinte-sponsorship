@@ -48,9 +48,9 @@
           </ul>
         </b-message>
       </div>
-      <button v-if="(paymentItems.length - displayItems) >=0" @click="readMore">
+      <b-button v-if="(paymentItems.length - displayItems) >=0" @click="readMore" type="is-primary">
         もっとみる
-      </button>
+      </b-button>
     </div>
   </div>
 </template>
