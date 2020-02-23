@@ -97,7 +97,6 @@ export default {
 
 <style lang="scss" scoped>
 $menu-color: #1A1D32;
-@import "~assets/scss/style.scss"; // これ書かないと読み込まれないのなんで、、、
 
 aside{
   background-color: $menu-color;
