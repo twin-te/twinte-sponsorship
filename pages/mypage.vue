@@ -25,9 +25,9 @@
         寄付者一覧に表示するお名前とリンクです。
       </p>
       <h2 class="has-text-primary has-text-weight-semibold">現在の表示名</h2>
-      <p>{{ userName }}</p>
+      <p>{{ userName | unregisterd }}</p>
       <h2 class="has-text-primary has-text-weight-semibold">リンク</h2>
-      <p>{{ userUrl }}</p>
+      <p>{{ userUrl | unregisterd }}</p>
     </div>
     <div class="card">
       <h1 class="title">
@@ -73,6 +73,9 @@ export default {
   filters: {
     type (value) {
       return value === 'Subscription' ? 'サブスクリプション' : '一回きり'
+    },
+    unregisterd (value) {
+      return value === null ? '未登録' : value
     }
   },
   data () {
