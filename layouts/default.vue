@@ -24,7 +24,7 @@
         <section class="header section">
           <div class="right">
             <button
-              @click="isComponentModalActive = true"
+              @click="login()"
               v-if="!state"
               exact-active-class="is-active"
               class="button"
@@ -36,15 +36,6 @@
             </button>
             <!-- <p>{{ state }}</p> -->
           </div>
-          <b-modal
-            :active.sync="isComponentModalActive"
-            has-modal-card
-            trap-focus
-            aria-role="dialog"
-            aria-modal
-          >
-            <login-alert />
-          </b-modal>
         </section>
         <section class="section">
           <nuxt />
@@ -55,11 +46,7 @@
 </template>
 
 <script>
-import LoginAlert from '~/components/LoginAlert.vue'
 export default {
-  components: {
-    LoginAlert
-  },
   data () {
     return {
       items: [
@@ -88,6 +75,43 @@ export default {
     this.$store.dispatch('login')
   },
   methods: {
+    login () {
+      this.$swal({
+        title: 'どのアカウントでログインしますか?',
+        html: `
+      <div>
+          <a href="https://api.twinte.net/v1/auth/google?redirect-to=https://sponsorship.twinte.net">
+            <img
+              width="250"
+              src="authing/sign-in-with-google.png"
+              alt="sign in with google"
+            >
+          </a>
+        </div>
+        <div>
+          <a href="https://api.twinte.net/v1/auth/apple?redirect-to=https://sponsorship.twinte.net">
+            <img
+              width="250"
+              src="/authing/sign-in-with-apple.png"
+              alt="sign in with apple"
+            >
+          </a>
+        </div>
+        <div>
+          <a href="https://api.twinte.net/v1/auth/twitter?redirect-to=https://sponsorship.twinte.net">
+            <img
+              width="250"
+              src="/authing/sign-in-with-twitter.png"
+              alt="sign in with twitter"
+            >
+          </a>
+        </div>
+      `,
+        showConfirmButton: false,
+        showCancelButton: true,
+        cancelButtonText: '閉じる'
+      })
+    },
     logout () {
       this.$store.dispatch('logout')
     }
