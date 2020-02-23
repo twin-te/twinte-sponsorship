@@ -1,18 +1,19 @@
 <template>
   <section class="section">
     <div class="card">
-      <LoginAlert />
+      <!-- <LoginAlert /> -->
+      右上のログインボタンからログインしてください。
     </div>
   </section>
 </template>
 
 <script>
-import LoginAlert from '~/components/LoginAlert'
+// import LoginAlert from '~/components/LoginAlert'
 
 export default {
   middleware: 'guest',
   components: {
-    LoginAlert
+    // LoginAlert
   }
 }
 </script>

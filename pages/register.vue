@@ -94,19 +94,24 @@ export default {
   },
   methods: {
     registerSubscription (plan) {
-      const stripe = window.Stripe('pk_test_BiJShQLk2tTyKXCJof20dplQ00blaeB3yf') // public key
-      this.$axios.$post('/payment/checkout-session/subscription', {
-        plan_id: plan
-      }, {
-        headers: { 'Content-Type': 'application/json' }
-      }).then((response) => {
-        const sessionId = response.sessionId
-        stripe.redirectToCheckout({
-          sessionId
-        }).then(function (result) {
-        // 失敗時のみ呼び出される
+      if (!this.$store.getters.authorized) {
+        alert('サブスクの登録にはログインが必要です')
+        this.$router.push('login')
+      } else {
+        const stripe = window.Stripe('pk_test_BiJShQLk2tTyKXCJof20dplQ00blaeB3yf') // public key
+        this.$axios.$post('/payment/checkout-session/subscription', {
+          plan_id: plan
+        }, {
+          headers: { 'Content-Type': 'application/json' }
+        }).then((response) => {
+          const sessionId = response.sessionId
+          stripe.redirectToCheckout({
+            sessionId
+          }).then(function (result) {
+            // 失敗時のみ呼び出される
+          })
         })
-      })
+      }
     },
     registerOneTime (amount) {
       const stripe = window.Stripe('pk_test_BiJShQLk2tTyKXCJof20dplQ00blaeB3yf') // public key
