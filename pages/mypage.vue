@@ -3,7 +3,7 @@
     <h1 class="title pagetitle">
       マイページ
     </h1>
-    <div class="card">
+    <!-- <div class="card">
       <h1 class="title">
         登録情報の変更
       </h1>
@@ -16,6 +16,18 @@
       <b-button @click="updateUserInfo" :disabled="isdisabled" type="is-primary" expanded>
         更新
       </b-button>
+    </div> -->
+    <div class="card">
+      <h1 class="title">
+        ユーザ情報
+      </h1>
+      <p>
+        寄付者一覧に表示するお名前とリンクです。
+      </p>
+      <h2 class="has-text-primary has-text-weight-semibold">現在の表示名</h2>
+      <p>{{ userName }}</p>
+      <h2 class="has-text-primary has-text-weight-semibold">リンク</h2>
+      <p>{{ userUrl }}</p>
     </div>
     <div class="card">
       <h1 class="title">
@@ -68,6 +80,8 @@ export default {
       payments: [],
       nickname: '',
       link: '',
+      userName: '',
+      userUrl: '',
       history: null,
       displayItems: 3,
       isShow: true
@@ -89,6 +103,10 @@ export default {
       .then(response => (this.payments = response.data))
     this.$axios.$get('/payment/subscriptions')
       .then(response => (this.history = response))
+    this.$axios.get('/payment/users/me')
+      .then(response => (this.userName = response.data.nickname))
+    this.$axios.get('/payment/users/me')
+      .then(response => (this.userUrl = response.data.link))
   },
   methods: {
     updateUserInfo () {
