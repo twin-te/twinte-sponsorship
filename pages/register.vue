@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="title">
+    <h1 class="title pagetitle">
       寄付・サブスク登録
     </h1>
 
@@ -53,7 +53,7 @@
             v-model="radio"
             native-value="plan_GZwD2T1hVZVNZd"
           >
-            月200円寄付
+            200円/月
           </b-radio>
         </div>
         <div class="field">
@@ -61,7 +61,7 @@
             v-model="radio"
             native-value="plan_GZwDaJIQA5yPex"
           >
-            月500円寄付
+            500円/月
           </b-radio>
         </div>
         <div class="field">
@@ -69,7 +69,7 @@
             v-model="radio"
             native-value="plan_GZwD0M4vQGFRPH"
           >
-            月1000円寄付
+            1000円/月
           </b-radio>
         </div>
       </div>

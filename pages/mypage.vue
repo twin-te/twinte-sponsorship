@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="title">
+    <h1 class="title pagetitle">
       マイページ
     </h1>
     <div class="card">

@@ -2,7 +2,7 @@
   <div>
     <section class="main-content columns is-gapless">
       <aside class="column is-2 section">
-        <p class="title">
+        <p class="logotitle">
           <img src="~/assets/Twintelogo-sponsor.png" alt="Twin:te_Logo">
         </p>
         <ul class="menu-list">
@@ -21,32 +21,32 @@
       </aside>
 
       <div class="container column is-10 nuxt-contents">
-        <section class="header section">
-          <div class="right">
-            <button
-              @click="isComponentModalActive = true"
-              v-if="!state"
-              exact-active-class="is-active"
-              class="button"
-            >
-              ログイン
-            </button>
-            <button @click="logout" v-else class="button">
-              ログアウト
-            </button>
-            <!-- <p>{{ state }}</p> -->
-          </div>
-          <b-modal
-            :active.sync="isComponentModalActive"
-            has-modal-card
-            trap-focus
-            aria-role="dialog"
-            aria-modal
-          >
-            <login-alert />
-          </b-modal>
-        </section>
         <section class="section">
+          <header class="header">
+            <div class="has-text-right">
+              <button
+                @click="isComponentModalActive = true"
+                v-if="!state"
+                exact-active-class="is-active"
+                class="button is-primary is-outlined has-text-weight-bold"
+              >
+                ログイン
+              </button>
+              <button @click="logout" v-else class="button is-primary is-outlined has-text-weight-bold">
+                ログアウト
+              </button>
+            <!-- <p>{{ state }}</p> -->
+            </div>
+            <b-modal
+              :active.sync="isComponentModalActive"
+              has-modal-card
+              trap-focus
+              aria-role="dialog"
+              aria-modal
+            >
+              <login-alert />
+            </b-modal>
+          </header>
           <nuxt />
         </section>
       </div>
@@ -108,7 +108,7 @@ aside{
   }
 }
 
-.title{
+.logotitle{
   margin:auto;
   padding-top:1rem;
   padding-bottom:1rem;
@@ -122,17 +122,5 @@ aside{
 
 .nuxt-contents{
   min-height: 100vh;
-}
-
-.header {
-  padding-bottom: 0;
-  padding-top: 1rem;
-  .button {
-  border-color: $primary;
-  color: $primary
-}
-.right {
-  text-align: right
-}
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="title">
+    <h1 class="title pagetitle">
       寄付のお願い
     </h1>
 
