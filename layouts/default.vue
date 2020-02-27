@@ -2,22 +2,24 @@
   <div>
     <section class="main-content columns is-gapless">
       <aside class="column is-2 section">
-        <p class="logotitle">
-          <img src="~/assets/Twintelogo-sponsor.png" alt="Twin:te_Logo">
-        </p>
-        <ul class="menu-list">
-          <li
-            v-for="(item, key) of items"
-            :key="key"
-          >
-            <nuxt-link
-              :to="item.to"
-              exact-active-class="is-active"
+        <div id="menu-contents">
+          <p class="logotitle">
+            <img src="~/assets/twinte-sponser-title.png" alt="Twin:te_Logo">
+          </p>
+          <ul class="menu-list">
+            <li
+              v-for="(item, key) of items"
+              :key="key"
             >
-              {{ item.title }}
-            </nuxt-link>
-          </li>
-        </ul>
+              <nuxt-link
+                :to="item.to"
+                exact-active-class="is-active"
+              >
+                {{ item.title }}
+              </nuxt-link>
+            </li>
+          </ul>
+        </div>
       </aside>
 
       <div class="container column is-10 nuxt-contents">
@@ -133,6 +135,10 @@ $menu-color: #1A1D32;
 
 aside{
   background-color: $menu-color;
+  #menu-contents{
+    position: sticky;
+    top: 0;
+  }
   a{
     box-sizing:border-box;
     margin-right:10%;
