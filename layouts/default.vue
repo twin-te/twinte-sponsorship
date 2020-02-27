@@ -1,10 +1,10 @@
 <template>
   <div>
-    <section class="main-content columns is-gapless">
-      <aside class="column is-2 section">
+    <section class="main-content is-gapless">
+      <aside>
         <div id="menu-contents">
           <p class="logotitle">
-            <img src="~/assets/twinte-sponser-title.png" alt="Twin:te_Logo">
+            <img src="~/assets/twinte-sponsor-title.png" alt="Twin:te_Logo">
           </p>
           <ul class="menu-list">
             <li
@@ -22,9 +22,10 @@
         </div>
       </aside>
 
-      <div class="container column is-10 nuxt-contents">
+      <div class="container nuxt-contents">
         <section class="section">
           <header class="header">
+            <img src="~/assets/twinte-sponsor-title.png" alt="Twin:te_Logo">
             <div class="has-text-right">
               <button
                 @click="login()"
@@ -49,7 +50,9 @@
               <login-alert />
             </b-modal>
           </header>
-          <nuxt />
+          <main>
+            <nuxt />
+          </main>
         </section>
       </div>
     </section>
@@ -131,9 +134,40 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$menu-color: #1A1D32;
+$tab: 960px; // タブレット
+$sp: 560px;  // スマホ
+@mixin tab {
+  @media (max-width: ($tab)) {
+    @content;
+  }
+}
+@mixin sp {
+  @media (max-width: ($sp)) {
+    @content;
+  }
+}
 
+.main-content{
+   display: flex;
+}
+
+.nuxt-contents{
+  min-height: 100vh;
+  width:auto;
+}
+
+// サイドメニュー設定
+$menu-color: #1A1D32;
 aside{
+  width:15vw;
+  // サイズ設定
+  @include tab {
+    width:25vw;
+  };
+  @include sp {
+    display: none;// テストコード
+  };
+
   background-color: $menu-color;
   #menu-contents{
     position: sticky;
@@ -144,21 +178,46 @@ aside{
     margin-right:10%;
     border-radius: 0px 5px 5px 0px;
   }
-}
-
-.logotitle{
+  .logotitle{
   margin:auto;
   padding-top:1rem;
   padding-bottom:1rem;
   text-align: center;
   width:80%;
-  img{
-    min-width:10vw;
-    width:60%;
+    img{
+      min-width:10vw;
+      width:60%;
+    }
   }
 }
 
-.nuxt-contents{
-  min-height: 100vh;
+$sp-header-height: 10vh;
+header{
+  @include sp {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top:0;
+    left:0;
+    width:100vw;
+    height:$sp-header-height;
+    background-color: $menu-color;
+  };
+
+  img{
+    display: none;
+    @include sp {
+      display: block;
+      height:70%;
+      margin:0;
+    }
+  }
 }
+
+main{
+    @include sp {
+      margin-top:$sp-header-height;
+  };
+}
+
 </style>
