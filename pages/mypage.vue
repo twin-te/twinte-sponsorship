@@ -3,20 +3,6 @@
     <h1 class="title pagetitle">
       マイページ
     </h1>
-    <!-- <div class="card">
-      <h1 class="title">
-        登録情報の変更
-      </h1>
-      <b-field label="お名前">
-        <b-input v-model="nickname" placeholder="お名前・ユーザーネーム" required />
-      </b-field>
-      <b-field label="リンク">
-        <b-input v-model="link" placeholder="サイトのURL" type="url" required />
-      </b-field>
-      <b-button @click="updateUserInfo" :disabled="isdisabled" type="is-primary" expanded>
-        更新
-      </b-button>
-    </div> -->
     <div class="card">
       <h1 class="title">
         ユーザ情報
@@ -24,10 +10,31 @@
       <p>
         寄付者一覧に表示するお名前とリンクです。
       </p>
-      <h2 class="has-text-primary has-text-weight-semibold">現在の表示名</h2>
+      <h2 class="has-text-primary has-text-weight-semibold">
+        現在の表示名
+      </h2>
       <p>{{ userName | unregisterd }}</p>
-      <h2 class="has-text-primary has-text-weight-semibold">リンク</h2>
+      <h2 class="has-text-primary has-text-weight-semibold">
+        リンク
+      </h2>
       <p>{{ userUrl | unregisterd }}</p>
+
+      <button
+        @click="isComponentModalActive = true"
+        class="button is-primary is-medium"
+      >
+        編集する
+      </button>
+
+      <b-modal
+        :active.sync="isComponentModalActive"
+        has-modal-card
+        trap-focus
+        aria-role="dialog"
+        aria-modal
+      >
+        <edit-modal v-on:edited="updateUserInfo" />
+      </b-modal>
     </div>
     <div class="card">
       <h1 class="title">
@@ -68,7 +75,11 @@
 </template>
 
 <script>
+import EditModal from '@/components/EditModal'
 export default {
+  components: {
+    EditModal
+  },
   middleware: 'authenticated',
   filters: {
     type (value) {
@@ -81,22 +92,15 @@ export default {
   data () {
     return {
       payments: [],
-      nickname: '',
-      link: '',
       userName: '',
       userUrl: '',
       history: null,
       displayItems: 3,
-      isShow: true
+      isShow: true,
+      isComponentModalActive: false
     }
   },
   computed: {
-    isdisabled () {
-      return (this.nickname.length === 0 || !this.isURL)
-    },
-    isURL () {
-      return /^https?:\/\/.+/.test(this.link)
-    },
     paymentItems () {
       return this.payments.filter(e => e.status === 'succeeded').slice(0, this.displayItems) // paymentから成功のものを取り出し表示する分をpaymemtItemsへ
     }
@@ -112,10 +116,10 @@ export default {
       .then(response => (this.userUrl = response.data.link))
   },
   methods: {
-    updateUserInfo () {
+    updateUserInfo (editnickname, editlink) {
       this.$axios.patch('/payment/users/me', {
-        nickname: this.nickname,
-        link: this.link
+        nickname: editnickname,
+        link: editlink
       }
       )
         .then(() => this.$buefy.toast.open({
