@@ -4,27 +4,37 @@
       マイページ
     </h1>
     <div class="card">
-      <h1 class="title">
-        ユーザ情報
-      </h1>
+      <div>
+        <h1 class="title">
+          ユーザ情報
+        </h1>
+
+        <b-button
+          @click="isComponentModalActive = true"
+          class="editButton is-text"
+        >
+          ユーザー情報を編集
+        </b-button>
+      </div>
+
       <p>
         寄付者一覧に表示するお名前とリンクです。
       </p>
-      <h2 class="has-text-primary has-text-weight-semibold">
-        現在の表示名
-      </h2>
-      <p>{{ userName | unregisterd }}</p>
-      <h2 class="has-text-primary has-text-weight-semibold">
-        リンク
-      </h2>
-      <p>{{ userUrl | unregisterd }}</p>
 
-      <button
-        @click="isComponentModalActive = true"
-        class="button is-primary is-medium"
-      >
-        編集する
-      </button>
+      <div>
+        <section class="userinfo">
+          <h2 class="has-text-primary has-text-weight-semibold">
+            現在の表示名
+          </h2>
+          <p>{{ userName | unregisterd }}</p>
+        </section>
+        <section class="userinfo">
+          <h2 class="has-text-primary has-text-weight-semibold">
+            リンク
+          </h2>
+          <p>{{ userUrl | unregisterd }}</p>
+        </section>
+      </div>
 
       <b-modal
         :active.sync="isComponentModalActive"
@@ -151,5 +161,14 @@ export default {
 <style scoped>
 .history {
   margin: 1em;
+}
+.userinfo {
+  margin-top: 1rem
+}
+.editButton {
+  position:absolute;
+  top: 2rem;
+  right: 2rem;
+  text-decoration: none
 }
 </style>

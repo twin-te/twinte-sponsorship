@@ -3,16 +3,16 @@
     <div class="card" style="width: auto">
       <section class="modal-card-body">
         <h1 class="title">
-          登録情報の変更
+          ユーザー情報の変更
         </h1>
-        <b-field label="お名前">
-          <b-input v-model="nickname" placeholder="お名前・ユーザーネーム" required />
+        <b-field label="表示名" custom-class="has-text-primary">
+          <b-input v-model="nickname" placeholder="お名前・ユーザーネーム" required rounded />
         </b-field>
-        <b-field label="リンク">
-          <b-input v-model="link" placeholder="サイトのURL" type="url" required />
+        <b-field label="リンク" custom-class="has-text-primary">
+          <b-input v-model="link" placeholder="サイトのURL" type="url" required rounded />
         </b-field>
         <b-button @click="updateUserInfo" :disabled="isdisabled" type="is-primary" expanded>
-          更新
+          更新する
         </b-button>
       </section>
     </div>
@@ -43,3 +43,13 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.title {
+  border: none;
+  padding-left: 0
+}
+.input {
+  border-radius: 1rem
+}
+</style>
