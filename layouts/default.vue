@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="main-content is-gapless">
+    <section class="main-content">
       <aside>
         <div id="menu-contents">
           <p class="logotitle">
@@ -153,7 +153,7 @@ $sp: 560px;  // スマホ
 
 .nuxt-contents{
   min-height: 100vh;
-  width:auto;
+  width:75vw;
 }
 
 // サイドメニュー設定
