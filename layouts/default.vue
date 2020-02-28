@@ -25,17 +25,24 @@
       <div class="container nuxt-contents">
         <section class="section">
           <header class="header">
-            <img src="~/assets/twinte-sponsor-title.png" alt="Twin:te_Logo">
-            <div class="has-text-right">
+            <div id="header-left">
+              <div id="humberger">
+                <div />
+                <div />
+                <div />
+              </div>
+                <img src="~/assets/twinte-sponsor-title.png" alt="Twin:te_Logo">
+            </div>
+            <div class="has-text-right header-button-container">
               <button
                 @click="login()"
                 v-if="!state"
                 exact-active-class="is-active"
-                class="button is-primary is-outlined has-text-weight-bold"
+                class="button is-primary is-outlined has-text-weight-bold header-button"
               >
                 ログイン
               </button>
-              <button @click="logout" v-else class="button is-primary is-outlined has-text-weight-bold">
+              <button @click="logout" v-else class="button is-primary is-outlined has-text-weight-bold header-button">
                 ログアウト
               </button>
             <!-- <p>{{ state }}</p> -->
@@ -193,24 +200,79 @@ aside{
 
 $sp-header-height: 10vh;
 header{
-  @include sp {
-    display: flex;
-    justify-content: center;
+
+  img{
+    display: none;
+  }
+
+@include sp {
     position: absolute;
     top:0;
     left:0;
     width:100vw;
     height:$sp-header-height;
     background-color: $menu-color;
-  };
 
-  img{
-    display: none;
-    @include sp {
+    #header-left{
+      overflow: hidden;
+      width:50vw;
+      height: 100%;
+      display: flex;
+      align-items: center;
+
+      #humberger {
+        position: relative;
+        height: 24px;
+        width: 18%;
+        display: block;
+        box-sizing: border-box;
+        margin:0 1rem 0 1rem;
+      }
+      #humberger div {
+        position: absolute;
+        left: 0;
+        height: 3px;
+        width: 100%;
+        background-color: #fff;
+        display: inline-block;
+        box-sizing: border-box;
+      }
+      #humberger div:nth-of-type(1) {
+        top: 0;
+      }
+      #humberger div:nth-of-type(2) {
+        top: 10px;
+      }
+      #humberger div:nth-of-type(3) {
+        bottom: 0;
+      }
+
+      img{
+      width:60%;
       display: block;
-      height:70%;
-      margin:0;
+      }
     }
+
+    .header-button-container{
+      position: absolute;
+      right:0;
+      top:0;
+      height: $sp-header-height;
+      padding:calc( #{$sp-header-height} / 3) 1rem calc( #{$sp-header-height} / 3) 0;
+      .header-button{
+        width: 30vw;
+        height:100%;
+        border: 2px solid #E5E5E5 !important;
+        color: #E5E5E5 !important;
+        font-size:10px;
+      }
+    }
+
+    .header-button:hover{
+      background:#C3EAF7 !important;
+      color: #1A1D32 !important;
+    }
+
   }
 }
 
