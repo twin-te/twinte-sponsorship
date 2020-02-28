@@ -48,7 +48,7 @@
           </ul>
         </b-message>
       </div>
-      <b-button v-if="isShow" @click="readMore" type="is-primary">
+      <b-button v-if="isShow && paymentItems.length !==0" @click="readMore" type="is-primary">
         もっとみる
       </b-button>
     </div>
