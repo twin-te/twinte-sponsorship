@@ -10,7 +10,7 @@
             <li
               v-for="(item, key) of items"
               :key="key"
-              @click="openDrawerMenu"
+              @click="MenuFlg = false"
             >
               <nuxt-link
                 :to="item.to"
