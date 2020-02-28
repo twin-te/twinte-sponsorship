@@ -14,7 +14,7 @@
     </p>
     <p>当初と比較してユーザー数が増え、それに伴って運営に必要な資金も増えています。</p>
     <div class="has-text-centered">
-    <img src="~/assets/twinte-cost.png" alt="Twin:te_Cost" style="width:50%; min-width:300px;">
+      <img src="~/assets/twinte-cost.png" alt="Twin:te_Cost" style="width:50%; min-width:300px;">
     </div>
     <p>
       また、Twin:te バージョン2の開発は現在も続いておりますが、例えばリリースまでに6ヶ月の時間がかかっており、
@@ -45,7 +45,7 @@
       また、今後のTwin:teの運営に必要な資金に当てさせていただきます。
     </p>
     <b-button to="/register" type="is-primary" tag="nuxt-link">
-          寄付ページへ
+      寄付ページへ
     </b-button>
   </div>
 </template>

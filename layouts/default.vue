@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="main-content">
-      <aside>
+      <aside :class="{'active-menu': MenuFlg}">
         <div id="menu-contents">
           <p class="logotitle">
             <img src="~/assets/twinte-sponsor-title.png" alt="Twin:te_Logo">
@@ -10,6 +10,7 @@
             <li
               v-for="(item, key) of items"
               :key="key"
+              @click="openDrawerMenu"
             >
               <nuxt-link
                 :to="item.to"
@@ -21,12 +22,12 @@
           </ul>
         </div>
       </aside>
-
+      <div v-if="this.MenuFlg" @click="openDrawerMenu" class="menu-background" />
       <div class="container nuxt-contents">
         <section class="section">
           <header class="header">
             <div id="header-left">
-              <div id="humberger">
+              <div id="humberger" @click="openDrawerMenu">
                 <div />
                 <div />
                 <div />
@@ -70,6 +71,7 @@
 export default {
   data () {
     return {
+      MenuFlg: false,
       items: [
         {
           title: '寄付のお願い',
@@ -96,6 +98,9 @@ export default {
     this.$store.dispatch('login')
   },
   methods: {
+    openDrawerMenu () {
+      this.MenuFlg = !this.MenuFlg
+    },
     login () {
       this.$swal({
         title: 'どのアカウントでログインしますか?',
@@ -156,23 +161,42 @@ $sp: 560px;  // スマホ
 
 .main-content{
    display: flex;
+  @include sp {
+    display: block;
+  };
 }
 
 .nuxt-contents{
   min-height: 100vh;
-  width:75vw;
+  @include tab {
+    width:75vw;
+  };
+  @include sp {
+    width:100vw;
+  };
 }
 
 // サイドメニュー設定
 $menu-color: #1A1D32;
+.active-menu{
+  transform:translateX(70vw);
+  transition: all .5s; /* 移動する速さ */
+}
 aside{
+  display: block;
+  z-index: 10;
   width:15vw;
   // サイズ設定
   @include tab {
     width:25vw;
   };
   @include sp {
-    display: none;// テストコード
+    width:70vw;
+    position:fixed;
+    top:0;
+    height:100vh;
+    left:-70vw;
+    transform:translateX(-70vw);
   };
 
   background-color: $menu-color;
@@ -196,6 +220,23 @@ aside{
       width:60%;
     }
   }
+}
+// メニューバー背景
+@include sp {
+  .menu-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  content: "";
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  opacity: 1;
+  transition: opacity 0.5s; /* 透明度の0→1になる速度 */
+  }
+
 }
 
 $sp-header-height: 10vh;
