@@ -21,6 +21,11 @@
             </li>
           </ul>
         </div>
+         <div id="menu-footer" class="has-text-white">
+           <p><span class="has-text-weight-bold">WEB SITE</span><br><a href="https://www.twinte.net">www.twinte.net</a></p>
+           <p><span class="has-text-weight-bold">Twitter</span><br><a href="https://twitter.com/te_twin">@te_twin</a></p>
+           <p><span class="has-text-weight-bold">E-mail</span><br><a href="mailto:info@twinte.net?subject=お問い合わせ">info@twinte.net</a></p>
+        </div>
       </aside>
       <div v-if="this.MenuFlg" @click="openDrawerMenu" class="menu-background" />
       <div class="container nuxt-contents">
@@ -179,7 +184,7 @@ $sp: 560px;  // スマホ
 // サイドメニュー設定
 $menu-color: #1A1D32;
 .active-menu{
-  transform:translateX(70vw);
+  transform:translateX(69vw);
   transition: all .5s; /* 移動する速さ */
 }
 aside{
@@ -196,7 +201,6 @@ aside{
     top:0;
     height:100vh;
     left:-70vw;
-    transform:translateX(-70vw);
   };
 
   background-color: $menu-color;
@@ -220,6 +224,16 @@ aside{
       width:60%;
     }
   }
+  #menu-footer{
+    position:fixed;
+    @include sp {
+      position:absolute;
+    }
+    bottom:1rem;
+    left:1rem;
+    word-break : break-all;
+    width:80%;
+  }
 }
 // メニューバー背景
 @include sp {
@@ -234,7 +248,7 @@ aside{
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 2;
   opacity: 1;
-  transition: opacity 0.5s; /* 透明度の0→1になる速度 */
+  transition: opacity 0.5s;
   }
 
 }
