@@ -139,12 +139,21 @@ export default {
       })
     },
     logout () {
-      this.$store.dispatch('logout').then(
-        () => this.$buefy.toast.open({
-          message: 'ログアウトしました',
-          type: 'is-success'
-        })
-      )
+      this.$swal({
+        title: 'ログアウトしますか?',
+        text: 'すべてのTwin:teサービスからログアウトします',
+        showCancelButton: true,
+        confirmButtonText: 'はい',
+        cancelButtonText: 'いいえ'
+      }).then((result) => {
+        if (result.value) {
+          this.$store.dispatch('logout')
+            .then(this.$buefy.toast.open({
+              message: 'ログアウトしました',
+              type: 'is-success'
+            }))
+        }
+      })
     }
   }
 }
