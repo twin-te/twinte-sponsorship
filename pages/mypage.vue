@@ -11,11 +11,9 @@
 
         <b-button
           @click="isComponentModalActive = true"
-          class="editButton is-text"
+          class="edit-button is-text"
+          icon-left="pencil"
         >
-          <b-icon
-            icon="pencil"
-          />
           <span>編集する</span>
         </b-button>
       </div>
@@ -53,18 +51,22 @@
       <h1 class="title">
         サブスクリプションの登録状況
       </h1>
-      <h2 class="subtitle">
-        現在ご利用中のプラン
+      <h2 class="has-text-primary has-text-weight-semibold">
+        ご利用中のプラン
       </h2>
-      <div v-for="item in history" :key="item.subscription_id" v-on:click="deletePlan(item.subscription_id)" class="history">
-        <b-message>
-          <ul>
-            <li style="font-weight:bold; font-size:large">
-              {{ item.plan[0].name }}
-            </li>
-            <li>登録日：{{ item.start_at | formatDate }}</li>
-          </ul>
-        </b-message>
+      <div v-for="item in history" :key="item.subscription_id" class="history">
+        <span style="line-height:36px" class="has-text-weight-semibold">
+          {{ item.plan[0].name }}寄付
+        </span>
+        <!-- <li>登録日：{{ item.start_at | formatDate }}</li> -->
+
+        <b-button
+          v-on:click="deletePlan(item.subscription_id)"
+          class="delete-button  is-danger"
+          outlined
+        >
+          解約
+        </b-button>
       </div>
     </div>
     <div class="card">
@@ -168,10 +170,13 @@ export default {
 .userinfo {
   margin-top: 1rem
 }
-.editButton {
+.edit-button {
   position:absolute;
   top: 2rem;
   right: 2rem;
+  text-decoration: none
+}
+.delete-button {
   text-decoration: none
 }
 </style>
