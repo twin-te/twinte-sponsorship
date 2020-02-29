@@ -107,8 +107,11 @@ export default {
   methods: {
     registerSubscription (plan) {
       if (!this.$store.getters.authorized) {
-        alert('サブスクの登録にはログインが必要です')
-        this.$router.push('login')
+        this.$swal({
+          icon: 'error',
+          text: 'サブスクの登録にはログインが必要です',
+          confirmButtonText: 'OK'
+        }).then(() => this.$router.push('login'))
       } else {
         const stripe = window.Stripe('pk_test_BiJShQLk2tTyKXCJof20dplQ00blaeB3yf') // public key
         this.$axios.$post('/payment/checkout-session/subscription', {

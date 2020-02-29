@@ -22,19 +22,16 @@ export const actions = {
   login ({ commit }) {
     this.$axios.$get('/users/me').then(
       () => {
-        // alert('ok')
         commit('login')
       }
     ).catch(
       (res) => {
         console.log(res)
-        // alert('ログインに失敗しました')
       }
     )
   },
   logout ({ commit }) {
     this.$axios.$get('/auth/logout')
-    alert('ログアウトしました')
     commit('logout')
     this.$router.push('/') // /に飛ばす
   }
