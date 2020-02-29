@@ -13,7 +13,10 @@
           @click="isComponentModalActive = true"
           class="editButton is-text"
         >
-          ユーザー情報を編集
+          <b-icon
+            icon="pencil"
+          />
+          <span>編集する</span>
         </b-button>
       </div>
 
