@@ -139,7 +139,12 @@ export default {
       })
     },
     logout () {
-      this.$store.dispatch('logout')
+      this.$store.dispatch('logout').then(
+        () => this.$buefy.toast.open({
+          message: 'ログアウトしました',
+          type: 'is-success'
+        })
+      )
     }
   }
 }
