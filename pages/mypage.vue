@@ -74,13 +74,24 @@
         寄付の履歴
       </h1>
       <div v-for="item in paymentItems" :key="item.id" class="history">
-        <b-message v-if="item.status==='succeeded'">
-          <ul>
-            <li>支払いの種類: {{ item.type | type }}</li>
-            <li>支払額: {{ item.amount }}円</li>
-            <li>支払日: {{ item.paid_at | formatDate }}</li>
-          </ul>
-        </b-message>
+        <div v-if="item.status==='succeeded'" class="columns is-mobile">
+          <div class="column is-5-mobile is-3-tablet is-2-desktop">
+            {{ item.paid_at | formatDate }}
+          </div>
+          <div class="column">
+            <div class="columns is-gapless">
+              <div class="column is-5-mobile is-3-tablet is-1-desktop">
+                <p>{{ item.amount }}円</p>
+              </div>
+              <div class="column">
+                <p class="has-text-grey">
+                  {{ item.type | type }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr class="is-marginless">
       </div>
       <b-button v-if="isShow && paymentItems.length !==0" @click="readMore" type="is-primary">
         もっとみる
@@ -98,7 +109,7 @@ export default {
   middleware: 'authenticated',
   filters: {
     type (value) {
-      return value === 'Subscription' ? 'サブスクリプション' : '一回きり'
+      return value === 'Subscription' ? 'サブスクリプションによる寄付' : '一回きりの決済による寄付'
     },
     unregisterd (value) {
       return value === null ? '未登録' : value
@@ -163,7 +174,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .history {
   margin: 1em;
 }
