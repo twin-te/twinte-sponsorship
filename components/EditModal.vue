@@ -3,7 +3,7 @@
     <div class="card" style="width: auto">
       <section class="modal-card-body">
         <h1 class="title">
-          ユーザー情報の変更
+          ユーザー情報の更新
         </h1>
         <b-field label="表示名" custom-class="has-text-primary">
           <b-input v-model="nickname" placeholder="お名前・ユーザーネーム" required rounded />

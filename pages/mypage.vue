@@ -11,9 +11,10 @@
 
         <b-button
           @click="isComponentModalActive = true"
-          class="editButton is-text"
+          class="edit-button is-text"
+          icon-left="pencil"
         >
-          ユーザー情報を編集
+          <span>編集する</span>
         </b-button>
       </div>
 
@@ -50,18 +51,22 @@
       <h1 class="title">
         サブスクリプションの登録状況
       </h1>
-      <h2 class="subtitle">
-        現在ご利用中のプラン
+      <h2 class="has-text-primary has-text-weight-semibold">
+        ご利用中のプラン
       </h2>
-      <div v-for="item in history" :key="item.subscription_id" v-on:click="deletePlan(item.subscription_id)" class="history">
-        <b-message>
-          <ul>
-            <li style="font-weight:bold; font-size:large">
-              {{ item.plan[0].name }}
-            </li>
-            <li>登録日：{{ item.start_at | formatDate }}</li>
-          </ul>
-        </b-message>
+      <div v-for="item in history" :key="item.subscription_id" class="history">
+        <span style="line-height:36px" class="has-text-weight-semibold">
+          {{ item.plan[0].name }}寄付
+        </span>
+        <!-- <li>登録日：{{ item.start_at | formatDate }}</li> -->
+
+        <b-button
+          v-on:click="deletePlan(item.subscription_id)"
+          class="delete-button  is-danger"
+          outlined
+        >
+          解約
+        </b-button>
       </div>
     </div>
     <div class="card">
@@ -69,13 +74,24 @@
         寄付の履歴
       </h1>
       <div v-for="item in paymentItems" :key="item.id" class="history">
-        <b-message v-if="item.status==='succeeded'">
-          <ul>
-            <li>支払いの種類: {{ item.type | type }}</li>
-            <li>支払額: {{ item.amount }}円</li>
-            <li>支払日: {{ item.paid_at | formatDate }}</li>
-          </ul>
-        </b-message>
+        <div v-if="item.status==='succeeded'" class="columns is-mobile">
+          <div class="column is-5-mobile is-3-tablet is-2-desktop">
+            {{ item.paid_at | formatDate }}
+          </div>
+          <div class="column">
+            <div class="columns is-gapless">
+              <div class="column is-5-mobile is-3-tablet is-1-desktop">
+                <p>{{ item.amount }}円</p>
+              </div>
+              <div class="column">
+                <p class="has-text-grey">
+                  {{ item.type | type }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr class="is-marginless">
       </div>
       <b-button v-if="isShow && paymentItems.length !==0" @click="readMore" type="is-primary">
         もっとみる
@@ -93,7 +109,7 @@ export default {
   middleware: 'authenticated',
   filters: {
     type (value) {
-      return value === 'Subscription' ? 'サブスクリプション' : '一回きり'
+      return value === 'Subscription' ? 'サブスクリプションによる寄付' : '一回きりの決済による寄付'
     },
     unregisterd (value) {
       return value === null ? '未登録' : value
@@ -158,17 +174,20 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .history {
   margin: 1em;
 }
 .userinfo {
   margin-top: 1rem
 }
-.editButton {
+.edit-button {
   position:absolute;
   top: 2rem;
   right: 2rem;
+  text-decoration: none
+}
+.delete-button {
   text-decoration: none
 }
 </style>
