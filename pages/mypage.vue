@@ -162,9 +162,23 @@ export default {
         })
     },
     deletePlan (planId) {
-      if (window.confirm('このサブスクリプションを消去しますか？')) {
-        this.$axios.$delete('/payment/subscriptions/' + planId).then(location.reload())
-      }
+      this.$swal({
+        text: 'このサブスクリプリプションを解約しますか?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'はい',
+        cancelButtonText: 'いいえ'
+      }).then((result) => {
+        if (result.value) {
+          this.$axios.$delete('/payment/subscriptions/' + planId)
+            .then(
+              this.$buefy.toast.open({
+                message: '解約しました',
+                type: 'is-success'
+              })
+            ).then(this.$router.push('/'))
+        }
+      })
     },
     readMore () {
       this.isShow = false
