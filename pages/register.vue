@@ -16,10 +16,22 @@
         ¥{{ value }}
       </p>
       <b-field>
-        <b-slider v-model="value" :min="100" :max="10000" />
+        <b-slider
+          v-model="value"
+          :min="100"
+          :max="10000"
+          :step="100"
+          :tooltip="false"
+          :rounded="true"
+          size="is-medium"
+        >
+          <template v-for="val in [1000,2000,3000,5000,8000,10000]">
+            <b-slider-tick :value="val" :key="val" />
+          </template>
+        </b-slider>
       </b-field>
       <p class="has-text-primary">
-        ご協力いただく金額で、Twin:teを<span style="font-weight:bold">{{ Math.round((Math.floor(value*0.964) / 4000)*100)/100 }}ヶ月</span>運営することができます。
+        ご協力いただく金額で、Twin:teを<span style="font-weight:bold">{{ Math.round((Math.floor(value*0.964) / 2200)*100)/100 }}ヶ月</span>運営することができます。
       </p>
       <p style="color:#9A9A9A">
         ※手数料を差し引くとTwin:teには{{ Math.floor(value*0.964) }}円寄付されます。
