@@ -4,7 +4,9 @@
       <aside :class="{'active-menu': MenuFlg}">
         <div id="menu-contents">
           <p class="logotitle">
-            <img src="~/assets/twinte-sponsor-title.png" alt="Twin:te_Logo">
+            <a href="https://sponsorship.twinte.net">
+              <img src="~/assets/twinte-sponsor-title.png" alt="Twin:te_Logo">
+            </a>
           </p>
           <ul class="menu-list">
             <li
@@ -21,10 +23,10 @@
             </li>
           </ul>
         </div>
-         <div id="menu-footer" class="has-text-white">
-           <p><span class="has-text-weight-bold">WEB SITE</span><br><a href="https://www.twinte.net">www.twinte.net</a></p>
-           <p><span class="has-text-weight-bold">Twitter</span><br><a href="https://twitter.com/te_twin">@te_twin</a></p>
-           <p><span class="has-text-weight-bold">E-mail</span><br><a href="mailto:info@twinte.net?subject=お問い合わせ">info@twinte.net</a></p>
+        <div id="menu-footer" class="has-text-white">
+          <p><span class="has-text-weight-bold">WEB SITE</span><br><a href="https://www.twinte.net">www.twinte.net</a></p>
+          <p><span class="has-text-weight-bold">Twitter</span><br><a href="https://twitter.com/te_twin">@te_twin</a></p>
+          <p><span class="has-text-weight-bold">E-mail</span><br><a href="mailto:info@twinte.net?subject=お問い合わせ">info@twinte.net</a></p>
         </div>
       </aside>
       <div v-if="this.MenuFlg" @click="openDrawerMenu" class="menu-background" />
@@ -37,7 +39,7 @@
                 <div />
                 <div />
               </div>
-              <img src="~/assets/twinte-sponsor-title.png" alt="Twin:te_Logo">
+                <img src="~/assets/twinte-sponsor-title.png" alt="Twin:te_Logo">
             </div>
             <div class="has-text-right header-button-container">
               <button
@@ -151,7 +153,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$tab: 960px; // タブレット
+$tab: 1024px; // タブレット
 $sp: 560px;  // スマホ
 @mixin tab {
   @media (max-width: ($tab)) {
@@ -214,14 +216,12 @@ aside{
     border-radius: 0px 5px 5px 0px;
   }
   .logotitle{
-  margin:auto;
-  padding-top:1rem;
-  padding-bottom:1rem;
-  text-align: center;
+  margin: 1rem 0 1rem 0;
+  padding:1rem 0 1rem 1rem;
   width:80%;
     img{
-      min-width:10vw;
-      width:60%;
+      width:80%;
+      min-width: 100px;
     }
   }
   #menu-footer{
