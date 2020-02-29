@@ -4,9 +4,9 @@
       ありがとうございました。
     </h1>
     <p>
-      <nuxt-link to="mypage">
+      <nuxt-link to="/mypage">
         マイページ
-      </nuxt-link>から寄付の履歴が確認できます。
+      </nuxt-link>からユーザー情報の編集や寄付の履歴が確認できます。
     </p>
   </section>
 </template>
