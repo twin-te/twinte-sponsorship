@@ -232,7 +232,7 @@ aside{
     bottom:1rem;
     left:1rem;
     word-break : break-all;
-    width:80%;
+    width:10rem;
   }
 }
 // メニューバー背景
