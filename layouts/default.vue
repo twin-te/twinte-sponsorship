@@ -29,7 +29,7 @@
           <p><span class="has-text-weight-bold">E-mail</span><br><a href="mailto:info@twinte.net?subject=お問い合わせ">info@twinte.net</a></p>
         </div>
       </aside>
-      <div v-if="this.MenuFlg" @click="openDrawerMenu" class="menu-background" />
+      <div v-if="MenuFlg" @click="openDrawerMenu" class="menu-background" />
       <div class="container nuxt-contents">
         <section class="section">
           <header class="header">
