@@ -44,9 +44,11 @@
       みなさんから寄付された金額によりますが、ユーザーにとってTwin:teをよりよく使える形で還元します。（例 動作速度の向上 システム障害の軽減 等）
       また、今後のTwin:teの運営に必要な資金に当てさせていただきます。
     </p>
-    <b-button to="/register" type="is-primary" tag="nuxt-link">
+    <div class="has-text-centered" style="margin-top:3rem;">
+    <b-button to="/register" type="is-primary" tag="nuxt-link" style="width:50%;">
       寄付ページへ
     </b-button>
+  </div>
   </div>
 </template>
 
