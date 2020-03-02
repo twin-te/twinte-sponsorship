@@ -34,7 +34,7 @@
         ※手数料を差し引くとTwin:teには{{ Math.floor(prices[value]*0.964) }}円寄付されます。
       </p>
       <div class="buttons">
-        <b-button v-on:click="registerOneTime(value)" type="is-primary" expanded>
+        <b-button v-on:click="registerOneTime_isOK()" type="is-primary" expanded>
           寄付する
         </b-button>
       </div>
@@ -103,9 +103,6 @@ export default {
     }
   },
   methods: {
-    valueToPrice () {
-      alert(this.prices[this.value])
-    },
     registerSubscription (plan) {
       if (!this.$store.getters.authorized) {
         this.$swal({
@@ -143,6 +140,23 @@ export default {
         // 失敗時のみ呼び出される
         })
       })
+    },
+    registerOneTime_isOK () {
+      if (!this.$store.getters.authorized) {
+        this.$swal({
+          title: '未ログインのまま寄付しますか？',
+          text: 'ログインしない場合寄付一覧ページにお名前を記載したり、返礼品を受け取ったりすることができません。',
+          showCancelButton: true,
+          confirmButtonText: 'はい',
+          cancelButtonText: 'いいえ'
+        }).then((result) => {
+          if (result.value) {
+            this.registerOneTime(this.prices[this.value])
+          }
+        })
+      } else {
+        this.registerOneTime(this.prices[this.value])
+      }
     }
   }
 }
