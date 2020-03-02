@@ -39,7 +39,7 @@
                 <div />
                 <div />
               </div>
-                <img src="~/assets/twinte-sponsor-title.png" alt="Twin:te_Logo">
+              <img src="~/assets/twinte-sponsor-title.png" alt="Twin:te_Logo">
             </div>
             <div class="has-text-right header-button-container">
               <button

@@ -45,10 +45,10 @@
       また、今後のTwin:teの運営に必要な資金に当てさせていただきます。
     </p>
     <div class="has-text-centered" style="margin-top:3rem;">
-    <b-button to="/register" type="is-primary" tag="nuxt-link" style="width:50%;">
-      寄付ページへ
-    </b-button>
-  </div>
+      <b-button to="/register" type="is-primary" tag="nuxt-link" style="width:50%;">
+        寄付ページへ
+      </b-button>
+    </div>
   </div>
 </template>
 
