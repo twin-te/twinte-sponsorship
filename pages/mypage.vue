@@ -204,4 +204,13 @@ export default {
 .delete-button {
   text-decoration: none
 }
+
+.title{
+    border-left: 5px solid #00c0c0;
+    padding-left: 1rem;
+}
+.title.pagetitle{
+    border: initial;
+    padding-left: initial;
+}
 </style>
