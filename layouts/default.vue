@@ -327,13 +327,13 @@ header{
       right:0;
       top:0;
       height: $sp-header-height;
-      padding:calc( #{$sp-header-height} / 3) 1rem calc( #{$sp-header-height} / 3) 0;
+      padding:calc( #{$sp-header-height} / 3.3) 1rem calc( #{$sp-header-height} / 3.3) 0;
       .header-button{
         width: 30vw;
         height:100%;
         border: 2px solid #E5E5E5 !important;
         color: #E5E5E5 !important;
-        font-size:10px;
+        font-size: 70%;
       }
     }
 

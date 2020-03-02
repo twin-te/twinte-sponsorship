@@ -33,9 +33,9 @@ $colors: (
 );
 
 // Links
-$link: $primary;
-$link-invert: $primary-invert;
-$link-focus-border: $primary;
+$link: #4c94bd;
+$link-invert: findColorInvert(#4c94bd);;
+$link-focus-border: #4c94bd;
 
 // Import Bulma and Buefy styles
 @import "~bulma";
