@@ -188,6 +188,7 @@ $sp: 560px;  // スマホ
 }
 
 .nuxt-contents{
+  max-width: 980px;
   min-height: 100vh;
   @include tab {
     width:75vw;
