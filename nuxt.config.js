@@ -32,7 +32,7 @@ export default {
       {
         hid: 'og:image',
         property: 'og:image',
-        content: 'https://www.twinte.net/ogp.jpg'
+        content: 'https://sponsorship.twinte.net/sponsor-ogp.png'
       },
       {
         hid: 'og:description',
@@ -42,7 +42,7 @@ export default {
       {
         hid: 'og:image',
         property: 'og:image',
-        content: `https://www.twinte.net/ogp.jpg`
+        content: `https://sponsorship.twinte.net/sponsor-ogp.png`
       },
       {
         hid: 'twitter:card',
