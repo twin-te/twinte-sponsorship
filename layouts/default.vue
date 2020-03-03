@@ -44,7 +44,7 @@
             <div class="has-text-right header-button-container">
               <button
                 @click="login()"
-                v-if="!state"
+                v-if="!loginState"
                 exact-active-class="is-active"
                 class="button is-primary is-outlined has-text-weight-bold header-button"
               >
@@ -97,7 +97,7 @@ export default {
     }
   },
   computed: {
-    state () {
+    loginState () {
       return this.$store.getters.authorized
     }
   },
