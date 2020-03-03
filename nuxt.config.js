@@ -57,7 +57,7 @@ export default {
       }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/icon.png' }
     ]
   },
   /*
@@ -80,7 +80,10 @@ export default {
   */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module'
+    '@nuxtjs/eslint-module',
+    ['@nuxtjs/google-analytics', {
+      id: 'UA-153429703-3'
+    }]
   ],
   /*
   ** Nuxt.js modules

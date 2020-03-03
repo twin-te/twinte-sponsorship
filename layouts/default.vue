@@ -229,6 +229,7 @@ aside{
     box-sizing:border-box;
     margin-right:10%;
     border-radius: 0px 5px 5px 0px;
+    color: #ffffff;
   }
   .logotitle{
   margin: 1rem 0 1rem 0;
