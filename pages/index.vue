@@ -14,7 +14,7 @@
     </p>
     <p>当初と比較してユーザー数が増え、それに伴って運営に必要な資金も増えています。</p>
     <div class="has-text-centered">
-      <img src="~/assets/twinte-cost.png" alt="Twin:te_Cost" style="width:100%;">
+      <img src="~/assets/twinte-cost.png" alt="Twin:te_Cost">
     </div>
     <p>
       また、Twin:te バージョン2の開発は現在も続いておりますが、例えばリリースまでに6ヶ月の時間がかかっており、
@@ -64,15 +64,21 @@
 </template>
 
 <script>
-export default {
-}
+export default {};
 </script>
-<style scoped>
-  li{
-    list-style-position: inside;
-    margin: 1rem;
+
+<style  lang="scss" scoped>
+li {
+  list-style-position: inside;
+  margin: 1rem;
+}
+p {
+  margin-bottom: 1rem;
+}
+img {
+  width: 75%;
+  @media (max-width: 560px) {
+    width: 100%;
   }
-  p{
-    margin-bottom: 1rem;
-  }
+}
 </style>
