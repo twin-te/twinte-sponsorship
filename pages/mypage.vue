@@ -1,8 +1,6 @@
 <template>
   <section>
-    <div v-if="isLoading">
-      loading now
-    </div>
+    <div v-if="isLoading" />
     <div v-else>
       <h1 class="title pagetitle">
         マイページ
