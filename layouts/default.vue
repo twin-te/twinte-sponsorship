@@ -188,13 +188,16 @@ $sp: 560px;  // スマホ
 }
 
 .nuxt-contents{
-  max-width: 980px;
+  max-width: 100vh;
   min-height: 100vh;
+  margin:0 40px;
   @include tab {
     width:75vw;
+    margin:0 20px;
   };
   @include sp {
     width:100vw;
+    margin:0;
   };
 }
 
