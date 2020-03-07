@@ -57,6 +57,9 @@
         <h2 class="has-text-primary has-text-weight-bold">
           ご利用中のプラン
         </h2>
+        <div v-show="loading1" class="loading-container">
+          <div class="contents-loader" />
+        </div>
         <div v-for="item in history" :key="item.subscription_id" class="history">
           <span style="line-height:36px" class="has-text-weight-bold">
             {{ item.plan[0].name }}寄付
@@ -76,6 +79,9 @@
         <h1 class="title">
           寄付の履歴
         </h1>
+        <div v-show="loading2" class="loading-container">
+          <div class="contents-loader" />
+        </div>
         <div v-for="item in paymentItems" :key="item.id" class="history">
           <div v-if="item.status==='succeeded'" class="columns is-mobile">
             <div class="column is-5-mobile is-3-tablet is-2-desktop">
@@ -128,7 +134,9 @@ export default {
       displayItems: 3,
       isShow: true,
       isLoading: true,
-      isComponentModalActive: false
+      isComponentModalActive: false,
+      loading1: true,
+      loading2: true
     }
   },
   computed: {
@@ -142,9 +150,9 @@ export default {
   },
   mounted () {
     this.$axios.get('/payment/')
-      .then(response => (this.payments = response.data))
+      .then((response) => { this.payments = response.data; this.loading2 = false })
     this.$axios.$get('/payment/subscriptions')
-      .then(response => (this.history = response))
+      .then((response) => { this.history = response; this.loading1 = false })
     this.$axios.get('/payment/users/me')
       .then(response => (this.userName = response.data.nickname))
     this.$axios.get('/payment/users/me')
@@ -221,5 +229,69 @@ export default {
 .title.pagetitle{
     border: initial;
     padding-left: initial;
+}
+
+.loading-container{
+  height:5em;
+}
+
+.contents-loader,
+.contents-loader:before,
+.contents-loader:after {
+  background: #00c0c0;
+  -webkit-animation: load1 1s infinite ease-in-out;
+  animation: load1 1s infinite ease-in-out;
+  width: 1em;
+  height: 4em;
+}
+.contents-loader {
+  color: #00c0c0;
+  text-indent: -9999em;
+  margin: 88px auto;
+  position: relative;
+  font-size: 11px;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+.contents-loader:before,
+.contents-loader:after {
+  position: absolute;
+  top: 0;
+  content: '';
+}
+.contents-loader:before {
+  left: -1.5em;
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+.contents-loader:after {
+  left: 1.5em;
+}
+@-webkit-keyframes load1 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 0;
+    height: 4em;
+  }
+  40% {
+    box-shadow: 0 -2em;
+    height: 5em;
+  }
+}
+@keyframes load1 {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 0;
+    height: 4em;
+  }
+  40% {
+    box-shadow: 0 -2em;
+    height: 5em;
+  }
 }
 </style>
