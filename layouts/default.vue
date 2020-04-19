@@ -112,6 +112,7 @@ export default {
       this.$swal({
         title: 'どのアカウントでログインしますか?',
         html: `
+      <p>Twin:teアプリと同じアカウントでログインすることができます。</p>
       <div>
           <a href="https://api.twinte.net/v1/auth/google?redirect-to=https://sponsorship.twinte.net">
             <img
