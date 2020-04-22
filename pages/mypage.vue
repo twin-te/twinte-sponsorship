@@ -122,11 +122,7 @@ export default {
       return value === 'Subscription' ? 'サブスクリプションによる寄付' : '一回きりの決済による寄付'
     },
     unregisterd (value) {
-      if (value === null || value === '') {
-        return '未登録'
-      } else {
-        return value
-      }
+      return value === null ? '未登録' : value
     }
   },
   data () {

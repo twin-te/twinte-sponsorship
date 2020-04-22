@@ -40,11 +40,13 @@ export default {
   },
   methods: {
     updateUserInfo () {
-      this.$emit('edited', this.nickname, this.link)
+      // this.linkは空文字のままこの関数が呼び出されることがある
+      const inputUrl = this.link === '' ? null : this.link
+      this.$emit('edited', this.nickname, inputUrl)
       this.$parent.close()
     },
     deleteUserInfo () {
-      this.$emit('edited', '', '')
+      this.$emit('edited', null, null)
       this.$parent.close()
     }
   }
