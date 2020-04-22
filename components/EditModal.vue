@@ -48,8 +48,16 @@ export default {
       this.$parent.close()
     },
     deleteUserInfo () {
-      this.$emit('edited', null, null)
-      this.$parent.close()
+      this.$swal({
+        text: 'ユーザー情報を削除しますか？',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'はい',
+        cancelButtonText: 'いいえ'
+      }).then(() => {
+        this.$emit('edited', null, null)
+        this.$parent.close()
+      })
     }
   }
 }
