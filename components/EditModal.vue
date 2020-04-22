@@ -54,9 +54,11 @@ export default {
         showCancelButton: true,
         confirmButtonText: 'はい',
         cancelButtonText: 'いいえ'
-      }).then(() => {
-        this.$emit('edited', null, null)
-        this.$parent.close()
+      }).then((result) => {
+        if (result.value) {
+          this.$emit('edited', null, null)
+          this.$parent.close()
+        }
       })
     }
   }
