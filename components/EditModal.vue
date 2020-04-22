@@ -3,7 +3,7 @@
     <div class="card" style="width: auto">
       <section class="modal-card-body">
         <h1 class="title">
-          ユーザー情報の更新
+          ユーザー情報の編集
         </h1>
         <b-button @click="deleteUserInfo" type="is-primary">
           ユーザ情報の削除
