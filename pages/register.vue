@@ -60,7 +60,7 @@
         <div class="field has-text-weight-bold">
           <b-radio
             v-model="radio"
-            native-value="plan_GZwD2T1hVZVNZd"
+            native-value="plan_H9D4eZ0Vohpqpy"
           >
             200円/月
           </b-radio>
@@ -68,7 +68,7 @@
         <div class="field has-text-weight-bold">
           <b-radio
             v-model="radio"
-            native-value="plan_GZwDaJIQA5yPex"
+            native-value="plan_H9D4AJchCmsejL"
           >
             500円/月
           </b-radio>
@@ -76,7 +76,7 @@
         <div class="field has-text-weight-bold">
           <b-radio
             v-model="radio"
-            native-value="plan_GZwD0M4vQGFRPH"
+            native-value="plan_H9D48FqtiALjlL"
           >
             1000円/月
           </b-radio>
@@ -99,7 +99,7 @@ export default {
     return {
       value: 0,
       prices: [500, 1000, 1500, 2000, 3000, 5000, 7000, 10000],
-      radio: 'plan_GZwD2T1hVZVNZd'
+      radio: 'plan_H9D4eZ0Vohpqpy'
     }
   },
   methods: {
