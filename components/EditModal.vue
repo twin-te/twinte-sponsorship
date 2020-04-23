@@ -3,17 +3,22 @@
     <div class="card" style="width: auto">
       <section class="modal-card-body">
         <h1 class="title">
-          ユーザー情報の更新
+          ユーザー情報の編集
         </h1>
         <b-field label="表示名" custom-class="has-text-primary">
           <b-input v-model="nickname" placeholder="お名前・ユーザーネーム" required rounded />
         </b-field>
         <b-field label="リンク" custom-class="has-text-primary">
-          <b-input v-model="link" placeholder="サイトのURL" type="url" required rounded />
+          <b-input v-model="link" placeholder="サイトのURL" type="url" rounded />
         </b-field>
-        <b-button @click="updateUserInfo" :disabled="isdisabled" type="is-primary" expanded>
-          更新する
-        </b-button>
+        <div class="buttons">
+          <b-button @click="deleteUserInfo" type="is-danger">
+            ユーザ情報の削除
+          </b-button>
+          <b-button @click="updateUserInfo" :disabled="isdisabled" type="is-primary">
+            更新する
+          </b-button>
+        </div>
       </section>
     </div>
   </form>
@@ -32,12 +37,18 @@ export default {
       return (this.nickname.length === 0 || !this.isURL)
     },
     isURL () {
-      return /^https?:\/\/.+/.test(this.link)
+      return /^https?:\/\/.+/.test(this.link) || this.link === ''
     }
   },
   methods: {
     updateUserInfo () {
-      this.$emit('edited', this.nickname, this.link)
+      // this.linkは空文字のままこの関数が呼び出されることがある
+      const inputUrl = this.link === '' ? null : this.link
+      this.$emit('edited', this.nickname, inputUrl)
+      this.$parent.close()
+    },
+    deleteUserInfo () {
+      this.$emit('edited', null, null)
       this.$parent.close()
     }
   }
