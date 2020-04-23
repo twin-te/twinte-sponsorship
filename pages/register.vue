@@ -111,7 +111,7 @@ export default {
           confirmButtonText: 'OK'
         }).then(() => this.$router.push('login'))
       } else {
-        const stripe = window.Stripe('pk_test_BiJShQLk2tTyKXCJof20dplQ00blaeB3yf') // public key
+        const stripe = window.Stripe('pk_live_wnnqlGjrN71cV9uwBXDvNQJP009Chm8Nt0') // public key
         this.$axios.$post('/payment/checkout-session/subscription', {
           plan_id: plan
         }, {
@@ -127,7 +127,7 @@ export default {
       }
     },
     registerOneTime (amount) {
-      const stripe = window.Stripe('pk_test_BiJShQLk2tTyKXCJof20dplQ00blaeB3yf') // public key
+      const stripe = window.Stripe('pk_live_wnnqlGjrN71cV9uwBXDvNQJP009Chm8Nt0') // public key
       this.$axios.$post('/payment/checkout-session/onetime', {
         amount
       }, {
