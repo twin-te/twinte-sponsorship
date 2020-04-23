@@ -4,15 +4,15 @@
       ありがとうございました!
     </h1>
     <h2 class="kind">
-      <nav v-if="$route.query.type === 'onetime'">
+      <nav v-if="getParameter.type === 'onetime'">
         1回きりの寄付
       </nav>
-      <nav v-else-if="$route.query.type === 'subscription'">
+      <nav v-else-if="getParameter.type === 'subscription'">
         サブスクリプション寄付（継続寄付）
       </nav>
     </h2>
     <p class="has-text-centered has-text-primary price">
-      ¥{{ $route.query.amount }}
+      ¥{{ getParameter.amount }}
     </p>
     <p>
       以上の金額が寄付されました。
@@ -23,7 +23,7 @@
     </p>
     <p id="share">
       <a
-        :data-text="sharetext"
+        :data-text="makeText()"
         href="https://twitter.com/share?ref_src=twsrc%5Etfw"
         class="twitter-share-button"
         data-size="large"
@@ -39,9 +39,21 @@
 
 <script>
 export default {
-  data () {
-    return {
-      sharetext: 'Twin:teに' + this.$route.query.amount + '円を寄付しました！'
+  computed: {
+    getParameter () {
+      return {
+        type: this.$route.query.type,
+        amount: this.$route.query.amount
+      }
+    }
+  },
+  methods: {
+    makeText () {
+      if (this.getParameter.type === 'subscription') {
+        return 'Twin:teに月課金として' + this.getParameter.amount + '円/月の寄付登録をしました！'
+      } else {
+        return 'Twin:teに' + this.getParameter.amount + '円を寄付しました！'
+      }
     }
   }
 }
