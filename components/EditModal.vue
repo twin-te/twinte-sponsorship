@@ -12,10 +12,10 @@
           <b-input v-model="link" placeholder="サイトのURL" type="url" rounded />
         </b-field>
         <div class="buttons">
-          <b-button @click="deleteUserInfo" type="is-danger">
+          <b-button @click="deleteUserInfo" type="is-danger" outlined>
             ユーザ情報の削除
           </b-button>
-          <b-button @click="updateUserInfo" :disabled="isdisabled" type="is-primary">
+          <b-button @click="updateUserInfo" :disabled="isdisabled" type="is-primary" outlined>
             更新する
           </b-button>
         </div>
@@ -49,7 +49,7 @@ export default {
     },
     deleteUserInfo () {
       this.$swal({
-        text: 'ユーザー情報を削除しますか？',
+        text: 'ユーザー情報を削除しますか？消去すると寄付者一覧のページから消えます。（アプリ等のデータは消えません）',
         icon: 'question',
         showCancelButton: true,
         confirmButtonText: 'はい',
