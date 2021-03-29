@@ -28,7 +28,7 @@
         />
       </b-field>
       <p class="has-text-primary">
-        ご協力いただく金額で、Twin:teを<span style="font-weight:bold">{{ Math.round((Math.floor(prices[value]*0.964) / 2200)*100)/100 }}ヶ月</span>運営することができます。
+        ご協力いただく金額で、Twin:teを<span style="font-weight:bold">{{ Math.round((Math.floor(prices[value]*0.964) / 5000)*100)/100 }}ヶ月</span>運営することができます。
       </p>
       <p style="color:#9A9A9A">
         ※手数料を差し引くとTwin:teには{{ Math.floor(prices[value]*0.964) }}円寄付されます。
