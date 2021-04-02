@@ -28,7 +28,7 @@
         />
       </b-field>
       <p class="has-text-primary">
-        ご協力いただく金額で、Twin:teを<span style="font-weight:bold">{{ Math.round((Math.floor(prices[value]*0.964) / 2200)*100)/100 }}ヶ月</span>運営することができます。
+        ご協力いただく金額で、Twin:teを<span style="font-weight:bold">{{ Math.round((Math.floor(prices[value]*0.964) / 5000)*100)/100 }}ヶ月</span>運営することができます。
       </p>
       <p style="color:#9A9A9A">
         ※手数料を差し引くとTwin:teには{{ Math.floor(prices[value]*0.964) }}円寄付されます。
@@ -112,7 +112,7 @@ export default {
         }).then(() => this.$router.push('login'))
       } else {
         const stripe = window.Stripe('pk_live_wnnqlGjrN71cV9uwBXDvNQJP009Chm8Nt0') // public key
-        this.$axios.$post('/payment/checkout-session/subscription', {
+        this.$axios.$post('api/v3/donation/session/subscription', {
           plan_id: plan
         }, {
           headers: { 'Content-Type': 'application/json' }
@@ -126,10 +126,10 @@ export default {
         })
       }
     },
-    registerOneTime (amount) {
+    registerOneTime (price) {
       const stripe = window.Stripe('pk_live_wnnqlGjrN71cV9uwBXDvNQJP009Chm8Nt0') // public key
-      this.$axios.$post('/payment/checkout-session/onetime', {
-        amount
+      this.$axios.$post('api/v3/donation/session/onetime', {
+        amount: price
       }, {
         headers: { 'Content-Type': 'application/json' }
       }).then((response) => {

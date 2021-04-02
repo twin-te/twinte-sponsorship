@@ -91,6 +91,10 @@ export default {
         {
           title: 'マイページ',
           to: { name: 'mypage' }
+        },
+        {
+          title: '返礼品一覧',
+          to: { name: 'gift' }
         }
       ],
       isComponentModalActive: false
@@ -114,7 +118,7 @@ export default {
         html: `
       <p>Twin:teアプリと同じアカウントでログインすることができます。</p>
       <div>
-          <a href="https://api.twinte.net/v1/auth/google?redirect-to=https://sponsorship.twinte.net">
+          <a href="https://app.twinte.net/auth/v3/google?redirect_url=https://sponsorship.twinte.net">
             <img
               width="250"
               src="authing/sign-in-with-google.png"
@@ -123,7 +127,7 @@ export default {
           </a>
         </div>
         <div>
-          <a href="https://api.twinte.net/v1/auth/apple?redirect-to=https://sponsorship.twinte.net">
+          <a href="https://app.twinte.net/auth/v3/apple?redirect_url=https://sponsorship.twinte.net">
             <img
               width="250"
               src="/authing/sign-in-with-apple.png"
@@ -132,7 +136,7 @@ export default {
           </a>
         </div>
         <div>
-          <a href="https://api.twinte.net/v1/auth/twitter?redirect-to=https://sponsorship.twinte.net">
+          <a href="https://app.twinte.net/auth/v3/twitter?redirect_url=https://sponsorship.twinte.net">
             <img
               width="250"
               src="/authing/sign-in-with-twitter.png"

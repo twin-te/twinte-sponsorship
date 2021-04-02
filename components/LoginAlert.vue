@@ -8,7 +8,7 @@
       </header>
       <section class="modal-card-body">
         <div>
-          <a href="https://api.twinte.net/v1/auth/google?redirect-to=https://sponsorship.twinte.net">
+          <a href="https://app.twinte.net/auth/v3/google?redirect_url=https://sponsorship.twinte.net">
             <img
               src="~assets/authing/sign-in-with-google.png"
               alt="sign in with google"
@@ -16,7 +16,7 @@
           </a>
         </div>
         <div>
-          <a href="https://api.twinte.net/v1/auth/apple?redirect-to=https://sponsorship.twinte.net">
+          <a href="https://app.twinte.net/auth/v3/apple?redirect_url=https://sponsorship.twinte.net">
             <img
               src="~assets/authing/sign-in-with-apple.png"
               alt="SignInWithApple"
@@ -24,7 +24,7 @@
           </a>
         </div>
         <div>
-          <a href="https://api.twinte.net/v1/auth/twitter?redirect-to=https://sponsorship.twinte.net">
+          <a href="https://app.twinte.net/auth/v3/twitter?redirect_url=https://sponsorship.twinte.net">
             <img
               src="~assets/authing/sign-in-with-twitter.png"
               alt="ign-in-with-twitter"

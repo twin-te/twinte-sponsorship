@@ -28,6 +28,12 @@
         <div>
           <section class="userinfo">
             <h2 class="has-text-primary has-text-weight-bold">
+              ID
+            </h2>
+            <p>{{ userId }}</p>
+          </section>
+          <section class="userinfo">
+            <h2 class="has-text-primary has-text-weight-bold">
               現在の表示名
             </h2>
             <p>{{ userName | unregisterd }}</p>
@@ -62,12 +68,12 @@
         </div>
         <div v-for="item in history" :key="item.subscription_id" class="history">
           <span style="line-height:36px" class="has-text-weight-bold">
-            {{ item.plan[0].name }}寄付
+            {{ item.plans[0].name }}寄付
           </span>
           <!-- <li>登録日：{{ item.start_at | formatDate }}</li> -->
 
           <b-button
-            v-on:click="deletePlan(item.subscription_id)"
+            v-on:click="deletePlan(item.id)"
             class="delete-button  is-danger"
             outlined
           >
@@ -85,7 +91,7 @@
         <div v-for="item in paymentItems" :key="item.id" class="history">
           <div v-if="item.status==='succeeded'" class="columns is-mobile">
             <div class="column is-5-mobile is-3-tablet is-2-desktop">
-              {{ item.paid_at | formatDate }}
+              {{ item.created }}
             </div>
             <div class="column">
               <div class="columns is-gapless">
@@ -127,6 +133,7 @@ export default {
   },
   data () {
     return {
+      userId: '',
       payments: [],
       userName: '',
       userUrl: '',
@@ -149,19 +156,21 @@ export default {
     (!this.$store.getters.authorized ? this.$router.push('/login') : this.isLoading = false)
   },
   mounted () {
-    this.$axios.get('/payment/')
+    this.$axios.get('api/v3/donation/payment/')
       .then((response) => { this.payments = response.data; this.loading2 = false })
-    this.$axios.$get('/payment/subscriptions')
+    this.$axios.$get('api/v3/donation/subscriptions')
       .then((response) => { this.history = response; this.loading1 = false })
-    this.$axios.get('/payment/users/me')
-      .then(response => (this.userName = response.data.nickname))
-    this.$axios.get('/payment/users/me')
-      .then(response => (this.userUrl = response.data.link))
+    this.$axios.get('api/v3/donation/users/me')
+      .then((response) => {
+        this.userName = response.data.displayName
+        this.userUrl = response.data.link
+        this.userId = response.data.twinteUserId
+      })
   },
   methods: {
     updateUserInfo (editnickname, editlink) {
-      this.$axios.patch('/payment/users/me', {
-        nickname: editnickname,
+      this.$axios.patch('api/v3/donation/users/me', {
+        displayName: editnickname,
         link: editlink
       }
       )
@@ -187,7 +196,7 @@ export default {
         cancelButtonText: 'いいえ'
       }).then((result) => {
         if (result.value) {
-          this.$axios.$delete('/payment/subscriptions/' + planId)
+          this.$axios.$delete('api/v3/donation/subscriptions/' + planId)
             .then(
               this.$buefy.toast.open({
                 message: '解約しました',

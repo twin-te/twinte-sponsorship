@@ -21,14 +21,14 @@ export const getters = {
 export const actions = {
   async login ({ commit }) {
     try {
-      await this.$axios.$get('/users/me')
+      await this.$axios.$get('api/v3/users/me')
       commit('login')
     } catch (err) {
       console.log(err)
     }
   },
   logout ({ commit }) {
-    this.$axios.$get('/auth/logout')
+    this.$axios.$get('auth/v3/logout')
     commit('logout')
     this.$router.push('/') // /に飛ばす
   }
