@@ -100,7 +100,7 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-    baseURL: 'https://app.dev.twinte.net/',
+    baseURL: 'https://app.twinte.net/',
     credentials: 'true'
   },
   /*
