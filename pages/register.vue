@@ -112,7 +112,7 @@ export default {
         }).then(() => this.$router.push('login'))
       } else {
         const stripe = window.Stripe('pk_live_wnnqlGjrN71cV9uwBXDvNQJP009Chm8Nt0') // public key
-        this.$axios.$post('/payment/checkout-session/subscription', {
+        this.$axios.$post('api/v3/donation/session/subscription', {
           plan_id: plan
         }, {
           headers: { 'Content-Type': 'application/json' }
@@ -126,10 +126,10 @@ export default {
         })
       }
     },
-    registerOneTime (amount) {
+    registerOneTime (price) {
       const stripe = window.Stripe('pk_live_wnnqlGjrN71cV9uwBXDvNQJP009Chm8Nt0') // public key
-      this.$axios.$post('/payment/checkout-session/onetime', {
-        amount
+      this.$axios.$post('api/v3/donation/session/onetime', {
+        amount: price
       }, {
         headers: { 'Content-Type': 'application/json' }
       }).then((response) => {
