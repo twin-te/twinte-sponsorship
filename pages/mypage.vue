@@ -89,7 +89,7 @@
           <div class="contents-loader" />
         </div>
         <div v-for="item in paymentItems" :key="item.id" class="history">
-          <div v-if="item.status==='succeeded'" class="columns is-mobile">
+          <div v-if="item.status==='Succeeded'" class="columns is-mobile">
             <div class="column is-5-mobile is-3-tablet is-2-desktop">
               {{ item.created }}
             </div>
@@ -148,7 +148,7 @@ export default {
   },
   computed: {
     paymentItems () {
-      return this.payments.filter(e => e.status === 'succeeded').slice(0, this.displayItems) // paymentから成功のものを取り出し表示する分をpaymemtItemsへ
+      return this.payments.filter(e => e.status === 'Succeeded').slice(0, this.displayItems) // paymentから成功のものを取り出し表示する分をpaymemtItemsへ
     }
   },
   async created () {
@@ -208,7 +208,7 @@ export default {
     },
     readMore () {
       this.isShow = false
-      this.displayItems = this.payments.filter(e => e.status === 'succeeded').length
+      this.displayItems = this.payments.filter(e => e.status === 'Succeeded').length
     }
   }
 }
