@@ -68,6 +68,11 @@
           <main>
             <nuxt />
           </main>
+          <footer>
+            <a href="https://vercel.com?utm_source=twin-te&utm_campaign=oss">
+              <img src="https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg" alt="Vercel">
+            </a>
+          </footer>
         </section>
       </div>
     </section>
@@ -172,6 +177,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 $tab: 1024px; // タブレット
 $sp: 560px;  // スマホ
 @mixin tab {
@@ -359,6 +365,17 @@ main{
     @include sp {
       margin-top:$sp-header-height;
   };
+}
+
+footer{
+  @include sp {
+      text-align: center;
+      img{
+        width:120px;
+      }
+  };
+  text-align: right;
+  margin-top:2rem;
 }
 
 </style>
