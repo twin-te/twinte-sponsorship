@@ -22,7 +22,7 @@
         </div>
 
         <p>
-          <a href="https://www.twinte.net/sponsorship/index.html">寄付者一覧</a>に表示するお名前とリンクです。
+          <a href="https://www.twinte.net/sponsor">寄付者一覧</a>に表示するお名前とリンクです。
         </p>
 
         <div>
