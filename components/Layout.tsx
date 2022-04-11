@@ -9,7 +9,7 @@ export const Layout: React.FC = ({ children }) => {
 				<meta name="description" content="Learn how to build a personal website using Next.js" />
 			</Head>
 			<header className={styles.header}></header>
-			<main className={styles.main}>{children}</main>
+			<main>{children}</main>
 			<footer className={styles.footer}>
 				<a href="https://vercel.com?utm_source=twin-te&utm_campaign=oss">
 					<img src="https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg" alt="Vercel" />
