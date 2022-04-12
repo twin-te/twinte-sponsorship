@@ -10,8 +10,10 @@
     "format": "prettier --write './**/*.{ts,tsx}'"
   },
   "dependencies": {
+    "bulma": "^0.9.3",
     "next": "12.1.4",
     "react": "18.0.0",
+    "react-bulma-components": "4.1.0",
     "react-dom": "18.0.0"
   },
   "devDependencies": {
@@ -25,6 +27,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-react": "^7.29.4",
     "prettier": "^2.6.2",
+    "sass": "^1.50.0",
     "typescript": "4.6.3"
   }
 }
