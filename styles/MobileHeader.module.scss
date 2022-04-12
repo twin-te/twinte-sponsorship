@@ -1,0 +1,13 @@
+$sp-header-height: 10vh;
+$menu-color: #1A1D32;
+
+.header {
+    height: $sp-header-height;
+    background-color: $menu-color;
+
+    padding: 1rem;
+
+    img {
+        height: 100%;
+    }
+}
