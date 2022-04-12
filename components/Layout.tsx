@@ -11,7 +11,7 @@ export const Layout: React.FC = ({ children }) => {
 				<meta name="description" content="Learn how to build a personal website using Next.js" />
 			</Head>
 			<div className="columns is-gapless">
-				<div className="is-hidden-tablet">
+				<div className="column is-hidden-tablet">
 					<MobileHeader />
 				</div>
 				<div className="column is-one-fifth is-hidden-mobile">
