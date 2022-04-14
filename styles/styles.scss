@@ -56,10 +56,13 @@ $link-focus-border: #4c94bd;
     font-size: 23px;
     line-height: 28px;
     margin-bottom: 1rem;
+    border-left: 5px solid #00c0c0;
+    padding-left: 1rem;
 }
 
 .title.pagetitle {
     border: initial;
+    padding-left: 0;
 }
 
 .title.pagetitle:before {
