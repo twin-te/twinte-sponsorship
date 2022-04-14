@@ -6,8 +6,7 @@
     padding: 0 1rem;
     background-color: $menu-color;
 
-
-    .menu_content {
+    .menuContent {
         position: sticky;
         top: 1rem;
     }
@@ -17,14 +16,13 @@
         padding-bottom: 1rem;
     }
 
-
     a {
         box-sizing: border-box;
         border-radius: 5px;
         color: #ffffff;
     }
 
-    .menu_footer {
+    .menuFooter {
         position: fixed;
         width: 100%;
         bottom: 1rem;

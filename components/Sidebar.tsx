@@ -4,7 +4,7 @@ import Link from 'next/link';
 const Sidebar: React.FC = () => {
 	return (
 		<aside className={styles.sidebar}>
-			<div className={styles.menu_content}>
+			<div className={styles.menuContent}>
 				<div className={styles.logo}>
 					<a href="https://sponsorship.twinte.net">
 						<img src="/images/twinte-sponsor-title.png" alt="Twin:te_Logo" />
@@ -25,7 +25,7 @@ const Sidebar: React.FC = () => {
 					</li>
 				</ul>
 			</div>
-			<div className={`${styles.menu_footer} has-text-white`}>
+			<div className={`${styles.menuFooter} has-text-white`}>
 				<p>
 					<span className="has-text-weight-bold">WEB SITE</span>
 					<br />
