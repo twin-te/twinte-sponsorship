@@ -15,28 +15,6 @@ $menu-list-link-padding: 0.8rem;
 // デフォルトのテキストの色
 $text: #555555;
 
-// Setup $colors to use as bulma classes (e.g. 'is-twitter')
-$colors: ("white": ($white,
-        $black),
-    "black": ($black,
-        $white),
-    "light": ($light,
-        $light-invert),
-    "dark": ($dark,
-        $dark-invert),
-    "primary": ($primary,
-        $primary-invert),
-    "info": ($info,
-        $info-invert),
-    "success": ($success,
-        $success-invert),
-    "warning": ($warning,
-        $warning-invert),
-    "danger": ($danger,
-        $danger-invert),
-    "twitter": ($twitter,
-        $twitter-invert));
-
 // Links
 $link: #4c94bd;
 $link-invert: findColorInvert(#4c94bd);
