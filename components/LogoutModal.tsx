@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import { Button, Modal } from 'react-bulma-components';
+import { getLogoutUrl } from '../usecases/getAuthUrl';
 
 type Props = {
 	show: boolean;
@@ -18,7 +18,7 @@ const LogoutModal: React.FC<Props> = ({ show, onClose }) => {
 				</Modal.Card.Body>
 				<Modal.Card.Footer>
 					<Button className="is-info">
-						<Link href="https://app.twinte.net/auth/v3/logout?redirect_url=https://sponsorship.twinte.net">はい</Link>
+						<a href={getLogoutUrl()}>はい</a>
 					</Button>
 					<Button onClick={onClose}>いいえ</Button>
 				</Modal.Card.Footer>
