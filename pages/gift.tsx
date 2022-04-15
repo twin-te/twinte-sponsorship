@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import styles from '../styles/Gift.module.scss';
+import styles from '../styles/pages/Gift.module.scss';
 
 const Gift: NextPage = () => {
 	return (

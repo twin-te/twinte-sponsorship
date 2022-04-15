@@ -1,4 +1,4 @@
-$menu-color: #1A1D32;
+@import "../variables.scss";
 
 .sidebar {
     height: 100vh;
@@ -6,8 +6,7 @@ $menu-color: #1A1D32;
     padding: 0 1rem;
     background-color: $menu-color;
 
-
-    .menu_content {
+    .menuContent {
         position: sticky;
         top: 1rem;
     }
@@ -17,14 +16,13 @@ $menu-color: #1A1D32;
         padding-bottom: 1rem;
     }
 
-
     a {
         box-sizing: border-box;
         border-radius: 5px;
         color: #ffffff;
     }
 
-    .menu_footer {
+    .menuFooter {
         position: fixed;
         width: 100%;
         bottom: 1rem;

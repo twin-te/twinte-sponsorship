@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Sidebar from './Sidebar';
 import MobileHeader from './MobileHeader';
-import styles from '../styles/Layout.module.scss';
+import styles from '../styles/components/Layout.module.scss';
 
 export const Layout: React.FC = ({ children }) => {
 	return (

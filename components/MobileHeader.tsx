@@ -1,4 +1,4 @@
-import styles from '../styles/MobileHeader.module.scss';
+import styles from '../styles/components/MobileHeader.module.scss';
 import Link from 'next/link';
 
 const MobileHeader: React.FC = () => {
