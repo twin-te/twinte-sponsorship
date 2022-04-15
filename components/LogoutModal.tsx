@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Button, Modal } from 'react-bulma-components';
 
 type Props = {
@@ -16,7 +17,9 @@ const LogoutModal: React.FC<Props> = ({ show, onClose }) => {
 					<p>すべてのTwin:teサービスからログアウトします。</p>
 				</Modal.Card.Body>
 				<Modal.Card.Footer>
-					<Button className="is-info">はい</Button>
+					<Button className="is-info">
+						<Link href="https://app.twinte.net/auth/v3/logout?redirect_url=https://sponsorship.twinte.net">はい</Link>
+					</Button>
 					<Button onClick={onClose}>いいえ</Button>
 				</Modal.Card.Footer>
 			</Modal.Card>
