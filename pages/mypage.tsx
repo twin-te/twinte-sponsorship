@@ -2,6 +2,7 @@ import axios from 'axios';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
+import { Button } from 'react-bulma-components';
 import { useLoginStatus } from '../hooks/useLoginStatus';
 import { Payment, Subscription, User } from '../types';
 
@@ -13,14 +14,36 @@ const MyPage: NextPage = () => {
 	const [paymentHistory, setPaymentHistory] = useState<null | [Payment]>(null);
 
 	useEffect(() => {
-		(async () => {
+		const getCurrentUser = async () => {
 			try {
 				const res = await axios.get('https://app.twinte.net/api/v3/donation/users/me');
 				setCurrentUser(res.data);
 			} catch (error) {
 				console.error(error);
 			}
-		})();
+		};
+
+		const getSubscriptions = async () => {
+			try {
+				const res = await axios.get('https://app.twinte.net/api/v3/donation/subscriptions');
+				setSubscriptions(res.data);
+			} catch (error) {
+				console.error(error);
+			}
+		};
+
+		const getPaymentHistory = async () => {
+			try {
+				const res = await axios.get('https://app.twinte.net/api/v3/donation/payment');
+				setPaymentHistory(res.data);
+			} catch (error) {
+				console.error(error);
+			}
+		};
+
+		getCurrentUser();
+		getSubscriptions();
+		getPaymentHistory();
 	}, []);
 
 	if (isLogin == null) return <div>loading...</div>;
@@ -65,12 +88,49 @@ const MyPage: NextPage = () => {
 							<h1 className="title">サブスクリプションの登録状況</h1>
 							<div>
 								<h2 className="has-text-primary has-text-weight-bold">ご利用中のプラン</h2>
-								<p>プラン</p>
+								{subscriptions != null ? (
+									subscriptions.length ? (
+										subscriptions.map((subscription) => (
+											<div key={subscription.id}>
+												<span>{subscription.plans[0].name}寄付</span>
+												<Button className="is-danger">解約</Button>
+											</div>
+										))
+									) : (
+										<div>ご利用中のプランはありません。</div>
+									)
+								) : (
+									<div>情報の取得に失敗しました。</div>
+								)}
 							</div>
 						</div>
 
 						<div className="card">
 							<h1 className="title">寄付の履歴</h1>
+							{paymentHistory != null ? (
+								paymentHistory.length ? (
+									paymentHistory.map((payment) => (
+										<div className="columns is-mobile" key={payment.id}>
+											<div className="column">{payment.created}</div>
+											<div className="column">
+												<div className="columns is-gapless">
+													<div className="column">
+														<p>{payment.amount}円</p>
+													</div>
+													<div className="column">
+														<p className="has-text-grey">{payment.type}</p>
+													</div>
+												</div>
+											</div>
+											<hr className="is-marginless" />
+										</div>
+									))
+								) : (
+									<div>寄付の履歴はありません。</div>
+								)
+							) : (
+								<div>情報の取得に失敗しました。</div>
+							)}
 						</div>
 					</>
 				) : (
