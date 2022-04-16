@@ -2,13 +2,18 @@
 
 $sp-header-height: 10vh;
 
-.header {
+.navbar {
     height: $sp-header-height;
     background-color: $menu-color;
+    display: flex;
 
     padding: 1rem;
 
-    img {
-        height: 100%;
+    .navbarBurger {
+        margin-left: 0;
+
+        span {
+            background-color: #ffffff;
+        }
     }
 }
