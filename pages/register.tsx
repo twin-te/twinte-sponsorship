@@ -5,12 +5,13 @@ import { useLoginStatus } from '../hooks/useLoginStatus';
 import Slider from 'react-input-slider';
 import { Button, Card, Form } from 'react-bulma-components';
 import styles from '../styles/pages/Register.module.scss';
+import { registOneTime, registSubscription } from '../api/stripeApi';
 
 const MyPage: NextPage = () => {
 	const isLogin = useLoginStatus();
 	const [donationPriceIndex, setDonationPriceIndex] = useState(0);
 	const donationPrices = [500, 1000, 1500, 2000, 3000, 5000, 7000, 10000];
-	if (isLogin == null) return <div>loading...</div>;
+	const [subscriptionID, setSubscriptionID] = useState('plan_H9D4eZ0Vohpqpy');
 
 	return (
 		<>
@@ -52,7 +53,7 @@ const MyPage: NextPage = () => {
 					className="is-primary"
 					fullwidth={true}
 					onClick={() => {
-						alert('www');
+						registOneTime(donationPrices[donationPriceIndex]);
 					}}
 				>
 					寄付する
@@ -68,22 +69,46 @@ const MyPage: NextPage = () => {
 				</p>
 				<div style={{ margin: '2rem 0 2rem 0' }}>
 					<div className="field has-text-weight-bold">
-						<Form.Radio name="priceChoice" native-value="plan_H9D4eZ0Vohpqpy">
+						<Form.Radio
+							name="priceChoice"
+							value="plan_H9D4eZ0Vohpqpy"
+							onChange={(elm) => {
+								setSubscriptionID(elm.target.value);
+							}}
+						>
 							200円/月
 						</Form.Radio>
 					</div>
 					<div className="field has-text-weight-bold">
-						<Form.Radio name="priceChoice" native-value="plan_H9D4AJchCmsejL">
+						<Form.Radio
+							name="priceChoice"
+							value="plan_H9D4AJchCmsejL"
+							onChange={(elm) => {
+								setSubscriptionID(elm.target.value);
+							}}
+						>
 							500円/月
 						</Form.Radio>
 					</div>
 					<div className="field has-text-weight-bold">
-						<Form.Radio name="priceChoice" native-value="plan_H9D48FqtiALjlL">
+						<Form.Radio
+							name="priceChoice"
+							value="plan_H9D48FqtiALjlL"
+							onChange={(elm) => {
+								setSubscriptionID(elm.target.value);
+							}}
+						>
 							1000円/月
 						</Form.Radio>
 					</div>
 				</div>
-				<Button className="is-primary" fullwidth={true}>
+				<Button
+					className="is-primary"
+					fullwidth={true}
+					onClick={() => {
+						isLogin ? registSubscription(subscriptionID) : alert('ログインしろ');
+					}}
+				>
 					寄付する
 				</Button>
 			</Card>
