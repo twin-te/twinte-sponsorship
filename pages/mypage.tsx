@@ -27,7 +27,7 @@ const MyPage: NextPage = () => {
 					<>
 						<h1 className="title pagetitle">マイページ</h1>
 						<Card>
-							<h1 className="title">ユーザ情報</h1>
+							<h2 className="title">ユーザ情報</h2>
 							<div className="content">
 								<p>
 									<a href="https://www.twinte.net/sponsor">寄附者一覧</a>
@@ -49,18 +49,40 @@ const MyPage: NextPage = () => {
 								)}
 							</div>
 						</Card>
+
 						<Card>
-							<h1 className="title">サブスクリプションの登録状況</h1>
+							<h2 className="title">サブスクリプションの登録状況</h2>
 							<div className="content">
 								<p className="has-text-primary has-text-weight-bold">ご利用中のプラン</p>
 								{subscriptions != null ? (
 									subscriptions.length ? (
-										subscriptions.map((subscription) => (
-											<div key={subscription.id}>
-												<span>{subscription.plans[0].name}寄付</span>
-												<Button className="is-danger">解約</Button>
-											</div>
-										))
+										<table>
+											<thead>
+												<tr>
+													<th>プラン</th>
+													<th>登録日</th>
+													<th>解約</th>
+												</tr>
+											</thead>
+											<tbody>
+												{subscriptions
+													.filter((subscription) => subscription.status === 'Active')
+													.map((subscription) => (
+														<tr key={subscription.id}>
+															<td>{subscription.plans[0].name}</td>
+															<td>{dayjs(subscription.created).format('YYYY.MM.DD')}</td>
+															<td>
+																<Button
+																	className="is-danger is-outlined is-small"
+																	onClick={() => handleClick(subscription.id)}
+																>
+																	解約
+																</Button>
+															</td>
+														</tr>
+													))}
+											</tbody>
+										</table>
 									) : (
 										<div>ご利用中のプランはありません。</div>
 									)
@@ -71,26 +93,34 @@ const MyPage: NextPage = () => {
 						</Card>
 
 						<Card>
-							<h1 className="title">寄付の履歴</h1>
+							<h2 className="title">寄付の履歴</h2>
 							<div className="content">
 								{paymentHistory != null ? (
 									paymentHistory.length ? (
-										paymentHistory.map((payment) => (
-											<div className="columns is-mobile" key={payment.id}>
-												<div className="column">{dayjs(payment.created).format('YYYY.MM.DD')}</div>
-												<div className="column">
-													<div className="columns is-gapless">
-														<div className="column">
-															<p>{payment.amount}円</p>
-														</div>
-														<div className="column">
-															<p className="has-text-grey">{payment.type}</p>
-														</div>
-													</div>
-												</div>
-												<hr className="is-marginless" />
-											</div>
-										))
+										<table>
+											<thead>
+												<tr>
+													<th>日付</th>
+													<th>金額</th>
+													<th>種別</th>
+												</tr>
+											</thead>
+											<tbody>
+												{paymentHistory
+													.filter((payment) => payment.status === 'Succeeded')
+													.map((payment) => (
+														<tr key={payment.id}>
+															<td>{dayjs(payment.created).format('YYYY.MM.DD')}</td>
+															<td>
+																<p>{payment.amount}円</p>
+															</td>
+															<td>
+																<p className="has-text-grey">{payment.type}</p>
+															</td>
+														</tr>
+													))}
+											</tbody>
+										</table>
 									) : (
 										<div>寄付の履歴はありません。</div>
 									)
