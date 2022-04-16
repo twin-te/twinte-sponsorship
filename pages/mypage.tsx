@@ -3,9 +3,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import { useLoginStatus } from '../hooks/useLoginStatus';
-import { User } from '../types/User';
-import { Subscription } from '../types/Subscription';
-import { Payment } from '../types/Payment';
+import { Payment, Subscription, User } from '../types';
 
 const MyPage: NextPage = () => {
 	const isLogin = useLoginStatus();
