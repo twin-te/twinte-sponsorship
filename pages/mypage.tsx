@@ -1,9 +1,29 @@
+import axios from 'axios';
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import { useEffect, useState } from 'react';
 import { useLoginStatus } from '../hooks/useLoginStatus';
+import { User } from '../types/User';
+import { Subscription } from '../types/Subscription';
+import { Payment } from '../types/Payment';
 
 const MyPage: NextPage = () => {
 	const isLogin = useLoginStatus();
+
+	const [currentUser, setCurrentUser] = useState<null | User>(null);
+	const [subscriptions, setSubscriptions] = useState<null | [Subscription]>(null);
+	const [paymentHistory, setPaymentHistory] = useState<null | [Payment]>(null);
+
+	useEffect(() => {
+		(async () => {
+			try {
+				const res = await axios.get('https://app.twinte.net/api/v3/donation/users/me');
+				setCurrentUser(res.data);
+			} catch (error) {
+				console.error(error);
+			}
+		})();
+	}, []);
 
 	if (isLogin == null) return <div>loading...</div>;
 
@@ -18,7 +38,42 @@ const MyPage: NextPage = () => {
 				{isLogin ? (
 					<>
 						<h1 className="title pagetitle">マイページ</h1>
-						<p>ここにユーザ情報が入ります。</p>
+						<div className="card">
+							<h1 className="title">ユーザ情報</h1>
+							<p>
+								<a href="https://www.twinte.net/sponsor">寄附者一覧</a>
+								に表示するお名前とリンクです。
+							</p>
+							{currentUser ? (
+								<>
+									<div>
+										<h2 className="has-text-primary has-text-weight-bold">ID</h2>
+										<p>{currentUser.twinteUserId}</p>
+									</div>
+									<div>
+										<h2 className="has-text-primary has-text-weight-bold">現在の表示名</h2>
+										<p>{currentUser.displayName || '未設定'}</p>
+									</div>
+									<div>
+										<h2 className="has-text-primary has-text-weight-bold">リンク</h2>
+										<p>{currentUser.link || '未設定'}</p>
+									</div>
+								</>
+							) : (
+								<div>情報の取得に失敗しました。</div>
+							)}
+						</div>
+						<div className="card">
+							<h1 className="title">サブスクリプションの登録状況</h1>
+							<div>
+								<h2 className="has-text-primary has-text-weight-bold">ご利用中のプラン</h2>
+								<p>プラン</p>
+							</div>
+						</div>
+
+						<div className="card">
+							<h1 className="title">寄付の履歴</h1>
+						</div>
 					</>
 				) : (
 					<p>右上のログインボタンからログインしてください。</p>
