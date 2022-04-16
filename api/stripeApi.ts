@@ -1,12 +1,13 @@
 import { apiClient } from './apiClient';
 import { loadStripe } from '@stripe/stripe-js/pure';
+import { stripePublickKey } from '../usecases/stripe';
 
 interface stripeResponse {
 	sessionId: string;
 }
 
 export const registOneTime = async (price: number) => {
-	const stripe = await loadStripe('pk_live_wnnqlGjrN71cV9uwBXDvNQJP009Chm8Nt0');
+	const stripe = await loadStripe(stripePublickKey);
 	apiClient
 		.post<stripeResponse>('/donation/session/onetime', {
 			amount: price
@@ -24,7 +25,7 @@ export const registOneTime = async (price: number) => {
 };
 
 export const registSubscription = async (plan: string) => {
-	const stripe = await loadStripe('pk_live_wnnqlGjrN71cV9uwBXDvNQJP009Chm8Nt0');
+	const stripe = await loadStripe(stripePublickKey);
 	apiClient
 		.post<stripeResponse>('/donation/session/subscription', {
 			planId: plan

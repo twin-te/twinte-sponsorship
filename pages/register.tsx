@@ -3,15 +3,20 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useLoginStatus } from '../hooks/useLoginStatus';
 import Slider from 'react-input-slider';
-import { Button, Card, Form } from 'react-bulma-components';
+import { Button, Card } from 'react-bulma-components';
 import styles from '../styles/pages/Register.module.scss';
 import { registOneTime, registSubscription } from '../api/stripeApi';
+import {
+	stripeSubscription200yenID,
+	stripeSubscription500yenID,
+	stripeSubscription1000yenID
+} from '../usecases/stripe';
 
 const Register: NextPage = () => {
 	const isLogin = useLoginStatus();
 	const [donationPriceIndex, setDonationPriceIndex] = useState(0);
 	const donationPrices = [500, 1000, 1500, 2000, 3000, 5000, 7000, 10000];
-	const [subscriptionID, setSubscriptionID] = useState('plan_H9D4eZ0Vohpqpy');
+	const [subscriptionID, setSubscriptionID] = useState(stripeSubscription200yenID);
 
 	return (
 		<>
@@ -82,9 +87,8 @@ const Register: NextPage = () => {
 							type="radio"
 							name="priceChoice"
 							id="radio1"
-							value="plan_H9D4eZ0Vohpqpy"
-							onChange={(elm) => {
-								setSubscriptionID(elm.target.value);
+							onChange={() => {
+								setSubscriptionID(stripeSubscription200yenID);
 							}}
 						/>
 						<label htmlFor="radio1">200円/月</label>
@@ -95,9 +99,8 @@ const Register: NextPage = () => {
 							type="radio"
 							name="priceChoice"
 							id="radio2"
-							value="plan_H9D4AJchCmsejL"
-							onChange={(elm) => {
-								setSubscriptionID(elm.target.value);
+							onChange={() => {
+								setSubscriptionID(stripeSubscription500yenID);
 							}}
 						/>
 						<label htmlFor="radio2">500円/月</label>
@@ -108,9 +111,8 @@ const Register: NextPage = () => {
 							type="radio"
 							name="priceChoice"
 							id="radio3"
-							value="plan_H9D48FqtiALjlL"
-							onChange={(elm) => {
-								setSubscriptionID(elm.target.value);
+							onChange={() => {
+								setSubscriptionID(stripeSubscription1000yenID);
 							}}
 						/>
 						<label htmlFor="radio3">1000円/月</label>
