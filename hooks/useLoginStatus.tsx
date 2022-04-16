@@ -1,5 +1,5 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { apiClient } from '../api/apiClient';
 
 export const useLoginStatus = () => {
 	// null: ログイン状態を確認できていない
@@ -9,7 +9,7 @@ export const useLoginStatus = () => {
 	useEffect(() => {
 		(async () => {
 			try {
-				await axios.get('https://app.twinte.net/api/v3/users/me');
+				await apiClient.get('/users/me');
 				setIsLogin(true);
 			} catch (error) {
 				setIsLogin(false);
