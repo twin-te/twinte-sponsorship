@@ -27,7 +27,8 @@ const MyPage: NextPage = () => {
 		}
 	};
 
-	if (isLogin == null) return <div>loading...</div>;
+	if (isLogin === undefined || currentUser === undefined || subscriptions === undefined || paymentHistory === undefined)
+		return <div>loading...</div>;
 
 	return (
 		<>
