@@ -22,7 +22,7 @@ const Register: NextPage = () => {
 			</Head>
 			<h1 className="title pagetitle">寄付・サブスク登録</h1>
 			<Card>
-				<h1 className="title">1回きりの決済による寄付</h1>
+				<h1 className={`title ${styles.title}`}>1回きりの決済による寄付</h1>
 				<p>
 					1回の決済による単発の寄付です。 <br />
 					スライダーを動かして金額を設定し、「寄付する」ボタンを押すと、決済ページへ移動します。
@@ -58,7 +58,7 @@ const Register: NextPage = () => {
 					運営することができます。
 				</p>
 				<Button
-					className="is-primary"
+					className={`is-primary ${styles.buttons}`}
 					fullwidth={true}
 					onClick={() => {
 						registOneTime(donationPrices[donationPriceIndex]);
@@ -69,49 +69,55 @@ const Register: NextPage = () => {
 			</Card>
 
 			<Card>
-				<h1 className="title">サブスクリプション（毎月のお支払い）の登録</h1>
+				<h1 className={`title ${styles.title}`}>サブスクリプション（毎月のお支払い）の登録</h1>
 				<p>
 					毎月決済が行われるサブスクリプションです。
 					<br />
 					月ごとにお支払いいただく金額を下記から選択し、「登録する」ボタンを押すと、決済ページへ移動します。
 				</p>
-				<div style={{ margin: '2rem 0 2rem 0' }}>
+				<div style={{ margin: '2rem 0 2rem 0' }} className="field">
 					<div className="field has-text-weight-bold">
-						<Form.Radio
+						<input
+							className="is-checkradio"
+							type="radio"
 							name="priceChoice"
+							id="radio1"
 							value="plan_H9D4eZ0Vohpqpy"
 							onChange={(elm) => {
 								setSubscriptionID(elm.target.value);
 							}}
-						>
-							200円/月
-						</Form.Radio>
+						/>
+						<label htmlFor="radio1">200円/月</label>
 					</div>
 					<div className="field has-text-weight-bold">
-						<Form.Radio
+						<input
+							className="is-checkradio"
+							type="radio"
 							name="priceChoice"
+							id="radio2"
 							value="plan_H9D4AJchCmsejL"
 							onChange={(elm) => {
 								setSubscriptionID(elm.target.value);
 							}}
-						>
-							500円/月
-						</Form.Radio>
+						/>
+						<label htmlFor="radio2">500円/月</label>
 					</div>
 					<div className="field has-text-weight-bold">
-						<Form.Radio
+						<input
+							className="is-checkradio"
+							type="radio"
 							name="priceChoice"
+							id="radio3"
 							value="plan_H9D48FqtiALjlL"
 							onChange={(elm) => {
 								setSubscriptionID(elm.target.value);
 							}}
-						>
-							1000円/月
-						</Form.Radio>
+						/>
+						<label htmlFor="radio3">1000円/月</label>
 					</div>
 				</div>
 				<Button
-					className="is-primary"
+					className={`is-primary ${styles.buttons}`}
 					fullwidth={true}
 					onClick={() => {
 						isLogin ? registSubscription(subscriptionID) : alert('ログインしろ');
