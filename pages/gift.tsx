@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import Card from '../components/Card';
 import styles from '../styles/pages/Gift.module.scss';
 
 const Gift: NextPage = () => {
@@ -20,7 +21,7 @@ const Gift: NextPage = () => {
 						<a href="mailto:info@twinte.net?subject=返礼品について">info@twinte.net</a>までご連絡ください。
 					</p>
 				</div>
-				<div className="card">
+				<Card>
 					<div>
 						<h1 className="title">3000円 Twin:teオリジナルステッカー</h1>
 					</div>
@@ -29,8 +30,8 @@ const Gift: NextPage = () => {
 						<img src="/images/twinte-sticker1.jpg" alt="Twin:teステッカー" />
 					</div>
 					<p>Twin:teのロゴのステッカーです！シールになっているので好きなところに張れますよ！</p>
-				</div>
-				<div className="card">
+				</Card>
+				<Card>
 					<div>
 						<h1 className="title">10000円 Twin:teオリジナルUSB</h1>
 					</div>
@@ -51,7 +52,7 @@ const Gift: NextPage = () => {
 						<br />
 						※使用したことによって起こった損害に関してTwin:teは一切の責任を負いません。
 					</p>
-				</div>
+				</Card>
 			</div>
 		</>
 	);
