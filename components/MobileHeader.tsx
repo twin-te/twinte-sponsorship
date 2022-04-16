@@ -8,22 +8,26 @@ import Router from 'next/router';
 
 const MobileHeader: React.FC = () => {
 	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-	const toggleDrawer = () => {
-		setIsDrawerOpen((prevState) => !prevState);
+	const toggleDrawer = (state: boolean) => {
+		setIsDrawerOpen(() => state);
 	};
 
-	// ドロワーから画面遷移したときに，ドロワーを閉じる
+	// 画面遷移したときに，ドロワーを閉じる
 	useEffect(() => {
-		Router.events.on('routeChangeStart', toggleDrawer);
+		Router.events.on('routeChangeStart', () => {
+			toggleDrawer(false);
+		});
 		return () => {
-			Router.events.off('routeChangeStart', toggleDrawer);
+			Router.events.off('routeChangeStart', () => {
+				toggleDrawer(false);
+			});
 		};
 	}, []);
 
 	return (
 		<header>
 			<div className={styles.navbar}>
-				<button onClick={toggleDrawer} className={`navbar-burger ${styles.navbarBurger}`}>
+				<button onClick={() => toggleDrawer(true)} className={`navbar-burger ${styles.navbarBurger}`}>
 					<span aria-hidden="true"></span>
 					<span aria-hidden="true"></span>
 					<span aria-hidden="true"></span>
@@ -35,7 +39,7 @@ const MobileHeader: React.FC = () => {
 				</div>
 			</div>
 
-			<Drawer open={isDrawerOpen} onClose={toggleDrawer} direction="left">
+			<Drawer open={isDrawerOpen} onClose={() => toggleDrawer(false)} direction="left">
 				<Sidebar />
 			</Drawer>
 		</header>
