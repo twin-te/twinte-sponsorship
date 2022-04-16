@@ -1,5 +1,5 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { apiClient } from '../api/apiClient';
 import { User } from '../types';
 
 export const useCurrentUser = () => {
@@ -10,7 +10,7 @@ export const useCurrentUser = () => {
 	useEffect(() => {
 		(async () => {
 			try {
-				const res = await axios.get('https://app.twinte.net/api/v3/donation/users/me');
+				const res = await apiClient.get('/donation/users/me');
 				setCurrentUser(res.data);
 			} catch (error) {
 				console.error(error);

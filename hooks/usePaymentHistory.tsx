@@ -1,5 +1,5 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { apiClient } from '../api/apiClient';
 import { Payment } from '../types';
 
 export const usePaymentHistory = () => {
@@ -10,7 +10,7 @@ export const usePaymentHistory = () => {
 	useEffect(() => {
 		(async () => {
 			try {
-				const res = await axios.get('https://app.twinte.net/api/v3/donation/payment');
+				const res = await apiClient.get('/donation/payment');
 				setPaymentHistory(res.data);
 			} catch (error) {
 				console.error(error);

@@ -1,5 +1,5 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { apiClient } from '../api/apiClient';
 import { Subscription } from '../types';
 
 export const useSubscriptions = () => {
@@ -10,7 +10,7 @@ export const useSubscriptions = () => {
 	useEffect(() => {
 		(async () => {
 			try {
-				const res = await axios.get('https://app.twinte.net/api/v3/donation/subscriptions');
+				const res = await apiClient.get('/donation/subscriptions');
 				setSubscriptions(res.data);
 			} catch (error) {
 				console.error(error);
