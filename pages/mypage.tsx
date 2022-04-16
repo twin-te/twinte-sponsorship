@@ -8,6 +8,7 @@ import { usePaymentHistory } from '../hooks/usePaymentHistory';
 import { useSubscriptions } from '../hooks/useSubscriptions';
 import { cancelSubscription } from '../api/stripeApi';
 import { useRouter } from 'next/router';
+import { PaymentTypeMap } from '../types/Payment';
 
 const MyPage: NextPage = () => {
 	const isLogin = useLoginStatus();
@@ -130,7 +131,7 @@ const MyPage: NextPage = () => {
 																<p>{payment.amount}円</p>
 															</td>
 															<td>
-																<p className="has-text-grey">{payment.type}</p>
+																<p className="has-text-grey">{PaymentTypeMap[payment.type]}</p>
 															</td>
 														</tr>
 													))}
