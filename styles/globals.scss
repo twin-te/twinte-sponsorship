@@ -2,7 +2,7 @@
 @import "./variables.scss";
 // Import Bulma styles
 @import "../node_modules/bulma/bulma.sass";
-
+@import '../node_modules/bulma-extensions/bulma-slider/dist/css/bulma-slider.min.css';
 html,
 body {
   padding: 0;
