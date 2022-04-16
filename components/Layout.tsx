@@ -30,12 +30,9 @@ export const Layout: React.FC = ({ children }) => {
 						<header className={styles.header}>
 							<div className="has-text-right">
 								{isLogin == null ? (
-									<Button className="button is-primary is-outlined is-loading" />
+									<Button className="is-primary is-outlined is-loading" />
 								) : (
-									<Button
-										className="button is-primary is-outlined has-text-weight-bold"
-										onClick={() => setIsModalOpen(true)}
-									>
+									<Button className="is-primary is-outlined has-text-weight-bold" onClick={() => setIsModalOpen(true)}>
 										{isLogin ? 'ログアウト' : 'ログイン'}
 									</Button>
 								)}
