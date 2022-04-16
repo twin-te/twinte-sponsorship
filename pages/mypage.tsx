@@ -6,12 +6,26 @@ import { useCurrentUser } from '../hooks/useCurrentUser';
 import { useLoginStatus } from '../hooks/useLoginStatus';
 import { usePaymentHistory } from '../hooks/usePaymentHistory';
 import { useSubscriptions } from '../hooks/useSubscriptions';
+import { cancelSubscription } from '../api/stripeApi';
+import { useRouter } from 'next/router';
 
 const MyPage: NextPage = () => {
 	const isLogin = useLoginStatus();
 	const currentUser = useCurrentUser();
 	const subscriptions = useSubscriptions();
 	const paymentHistory = usePaymentHistory();
+	const router = useRouter();
+
+	const handleClick = async (id: string) => {
+		try {
+			await cancelSubscription(id);
+			alert('解約に成功しました');
+			router.reload();
+		} catch (error) {
+			console.error(error);
+			alert('エラーが発生しました');
+		}
+	};
 
 	if (isLogin == null) return <div>loading...</div>;
 

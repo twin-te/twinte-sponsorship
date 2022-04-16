@@ -41,3 +41,7 @@ export const registSubscription = async (plan: string) => {
 				});
 		});
 };
+
+export const cancelSubscription = async (id: string) => {
+	await apiClient.delete(`/donation/subscriptions/${id}`);
+};
