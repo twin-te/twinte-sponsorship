@@ -2,9 +2,9 @@ import styles from '../styles/components/MobileHeader.module.scss';
 import Link from 'next/link';
 import Drawer from 'react-modern-drawer';
 import 'react-modern-drawer/dist/index.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Sidebar from './Sidebar';
-import { useRouter } from 'next/router';
+import Router from 'next/router';
 
 const MobileHeader: React.FC = () => {
 	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -13,8 +13,12 @@ const MobileHeader: React.FC = () => {
 	};
 
 	// ドロワーから画面遷移したときに，ドロワーを閉じる
-	const router = useRouter();
-	router.events?.on('routeChangeComplete', () => toggleDrawer());
+	useEffect(() => {
+		Router.events.on('routeChangeStart', toggleDrawer);
+		return () => {
+			Router.events.off('routeChangeStart', toggleDrawer);
+		};
+	}, []);
 
 	return (
 		<header>
