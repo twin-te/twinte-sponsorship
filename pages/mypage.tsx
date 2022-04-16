@@ -1,50 +1,16 @@
-import axios from 'axios';
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { useEffect, useState } from 'react';
 import { Button } from 'react-bulma-components';
+import { useCurrentUser } from '../hooks/useCurrentUser';
 import { useLoginStatus } from '../hooks/useLoginStatus';
-import { Payment, Subscription, User } from '../types';
+import { usePaymentHistory } from '../hooks/usePaymentHistory';
+import { useSubscriptions } from '../hooks/useSubscriptions';
 
 const MyPage: NextPage = () => {
 	const isLogin = useLoginStatus();
-
-	const [currentUser, setCurrentUser] = useState<null | User>(null);
-	const [subscriptions, setSubscriptions] = useState<null | [Subscription]>(null);
-	const [paymentHistory, setPaymentHistory] = useState<null | [Payment]>(null);
-
-	useEffect(() => {
-		const getCurrentUser = async () => {
-			try {
-				const res = await axios.get('https://app.twinte.net/api/v3/donation/users/me');
-				setCurrentUser(res.data);
-			} catch (error) {
-				console.error(error);
-			}
-		};
-
-		const getSubscriptions = async () => {
-			try {
-				const res = await axios.get('https://app.twinte.net/api/v3/donation/subscriptions');
-				setSubscriptions(res.data);
-			} catch (error) {
-				console.error(error);
-			}
-		};
-
-		const getPaymentHistory = async () => {
-			try {
-				const res = await axios.get('https://app.twinte.net/api/v3/donation/payment');
-				setPaymentHistory(res.data);
-			} catch (error) {
-				console.error(error);
-			}
-		};
-
-		getCurrentUser();
-		getSubscriptions();
-		getPaymentHistory();
-	}, []);
+	const currentUser = useCurrentUser();
+	const subscriptions = useSubscriptions();
+	const paymentHistory = usePaymentHistory();
 
 	if (isLogin == null) return <div>loading...</div>;
 
