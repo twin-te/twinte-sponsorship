@@ -1,6 +1,7 @@
+import dayjs from 'dayjs';
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { Button } from 'react-bulma-components';
+import { Button, Card } from 'react-bulma-components';
 import { useCurrentUser } from '../hooks/useCurrentUser';
 import { useLoginStatus } from '../hooks/useLoginStatus';
 import { usePaymentHistory } from '../hooks/usePaymentHistory';
@@ -25,35 +26,33 @@ const MyPage: NextPage = () => {
 				{isLogin ? (
 					<>
 						<h1 className="title pagetitle">マイページ</h1>
-						<div className="card">
+						<Card>
 							<h1 className="title">ユーザ情報</h1>
-							<p>
-								<a href="https://www.twinte.net/sponsor">寄附者一覧</a>
-								に表示するお名前とリンクです。
-							</p>
-							{currentUser ? (
-								<>
-									<div>
-										<h2 className="has-text-primary has-text-weight-bold">ID</h2>
+							<div className="content">
+								<p>
+									<a href="https://www.twinte.net/sponsor">寄附者一覧</a>
+									に表示するお名前とリンクです。
+								</p>
+								{currentUser ? (
+									<>
+										<p className="has-text-primary has-text-weight-bold is-marginless">ID</p>
 										<p>{currentUser.twinteUserId}</p>
-									</div>
-									<div>
-										<h2 className="has-text-primary has-text-weight-bold">現在の表示名</h2>
+
+										<p className="has-text-primary has-text-weight-bold is-marginless">現在の表示名</p>
 										<p>{currentUser.displayName || '未設定'}</p>
-									</div>
-									<div>
-										<h2 className="has-text-primary has-text-weight-bold">リンク</h2>
+
+										<p className="has-text-primary has-text-weight-bold is-marginless">リンク</p>
 										<p>{currentUser.link || '未設定'}</p>
-									</div>
-								</>
-							) : (
-								<div>情報の取得に失敗しました。</div>
-							)}
-						</div>
-						<div className="card">
+									</>
+								) : (
+									<div>情報の取得に失敗しました。</div>
+								)}
+							</div>
+						</Card>
+						<Card>
 							<h1 className="title">サブスクリプションの登録状況</h1>
-							<div>
-								<h2 className="has-text-primary has-text-weight-bold">ご利用中のプラン</h2>
+							<div className="content">
+								<p className="has-text-primary has-text-weight-bold">ご利用中のプラン</p>
 								{subscriptions != null ? (
 									subscriptions.length ? (
 										subscriptions.map((subscription) => (
@@ -69,35 +68,37 @@ const MyPage: NextPage = () => {
 									<div>情報の取得に失敗しました。</div>
 								)}
 							</div>
-						</div>
+						</Card>
 
-						<div className="card">
+						<Card>
 							<h1 className="title">寄付の履歴</h1>
-							{paymentHistory != null ? (
-								paymentHistory.length ? (
-									paymentHistory.map((payment) => (
-										<div className="columns is-mobile" key={payment.id}>
-											<div className="column">{payment.created}</div>
-											<div className="column">
-												<div className="columns is-gapless">
-													<div className="column">
-														<p>{payment.amount}円</p>
-													</div>
-													<div className="column">
-														<p className="has-text-grey">{payment.type}</p>
+							<div className="content">
+								{paymentHistory != null ? (
+									paymentHistory.length ? (
+										paymentHistory.map((payment) => (
+											<div className="columns is-mobile" key={payment.id}>
+												<div className="column">{dayjs(payment.created).format('YYYY.MM.DD')}</div>
+												<div className="column">
+													<div className="columns is-gapless">
+														<div className="column">
+															<p>{payment.amount}円</p>
+														</div>
+														<div className="column">
+															<p className="has-text-grey">{payment.type}</p>
+														</div>
 													</div>
 												</div>
+												<hr className="is-marginless" />
 											</div>
-											<hr className="is-marginless" />
-										</div>
-									))
+										))
+									) : (
+										<div>寄付の履歴はありません。</div>
+									)
 								) : (
-									<div>寄付の履歴はありません。</div>
-								)
-							) : (
-								<div>情報の取得に失敗しました。</div>
-							)}
-						</div>
+									<div>情報の取得に失敗しました。</div>
+								)}
+							</div>
+						</Card>
 					</>
 				) : (
 					<p>右上のログインボタンからログインしてください。</p>
