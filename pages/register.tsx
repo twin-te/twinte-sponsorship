@@ -7,7 +7,7 @@ import { Button, Card, Form } from 'react-bulma-components';
 import styles from '../styles/pages/Register.module.scss';
 import { registOneTime, registSubscription } from '../api/stripeApi';
 
-const MyPage: NextPage = () => {
+const Register: NextPage = () => {
 	const isLogin = useLoginStatus();
 	const [donationPriceIndex, setDonationPriceIndex] = useState(0);
 	const donationPrices = [500, 1000, 1500, 2000, 3000, 5000, 7000, 10000];
@@ -32,7 +32,15 @@ const MyPage: NextPage = () => {
 					<Slider
 						styles={{
 							active: {
-								backgroundColor: '#00c0c0'
+								backgroundColor: '#97C3C3'
+							},
+							track: {
+								width: '100%'
+							},
+							thumb: {
+								height: '1.5rem',
+								width: '1.5rem',
+								border: 'solid 0.4rem #00c0c0'
 							}
 						}}
 						axis="x"
@@ -116,4 +124,4 @@ const MyPage: NextPage = () => {
 	);
 };
 
-export default MyPage;
+export default Register;
