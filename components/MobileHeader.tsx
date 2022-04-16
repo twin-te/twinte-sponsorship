@@ -4,12 +4,17 @@ import Drawer from 'react-modern-drawer';
 import 'react-modern-drawer/dist/index.css';
 import { useState } from 'react';
 import Sidebar from './Sidebar';
+import { useRouter } from 'next/router';
 
 const MobileHeader: React.FC = () => {
 	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 	const toggleDrawer = () => {
 		setIsDrawerOpen((prevState) => !prevState);
 	};
+
+	// ドロワーから画面遷移したときに，ドロワーを閉じる
+	const router = useRouter();
+	router.events?.on('routeChangeComplete', () => toggleDrawer());
 
 	return (
 		<header>
