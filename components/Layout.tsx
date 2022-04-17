@@ -5,7 +5,7 @@ import styles from '../styles/components/Layout.module.scss';
 import { useLoginStatus } from '../hooks/useLoginStatus';
 import { Button } from 'react-bulma-components';
 import LoginModalContent from './LoginModalContent';
-import { MySwal } from './SweetAlert';
+import { SweetModal } from './SweetAlert';
 import { useRouter } from 'next/router';
 import { getLogoutUrl } from '../usecases/getAuthUrl';
 
@@ -14,7 +14,7 @@ export const Layout: React.FC = ({ children }) => {
 	const router = useRouter();
 
 	const handleLogout = async () => {
-		const result = await MySwal.fire({
+		const result = await SweetModal.fire({
 			title: 'ログアウトしますか？',
 			text: 'すべてのTwin:teサービスからログアウトします',
 			showCancelButton: true,
@@ -28,7 +28,7 @@ export const Layout: React.FC = ({ children }) => {
 	};
 
 	const handleLogin = async () => {
-		await MySwal.fire({
+		await SweetModal.fire({
 			title: 'どのアカウントでログインしますか?',
 			html: LoginModalContent,
 			showConfirmButton: false,
