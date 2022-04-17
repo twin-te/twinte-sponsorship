@@ -4,13 +4,38 @@ import MobileHeader from './MobileHeader';
 import styles from '../styles/components/Layout.module.scss';
 import { useLoginStatus } from '../hooks/useLoginStatus';
 import { Button } from 'react-bulma-components';
-import { useState } from 'react';
-import LoginModal from './LoginModal';
-import LogoutModal from './LogoutModal';
+import LoginModalContent from './LoginModalContent';
+import { MySwal } from './SweetAlert';
+import { useRouter } from 'next/router';
+import { getLogoutUrl } from '../usecases/getAuthUrl';
 
 export const Layout: React.FC = ({ children }) => {
 	const isLogin = useLoginStatus();
-	const [isModalOpen, setIsModalOpen] = useState(false);
+	const router = useRouter();
+
+	const handleLogout = async () => {
+		const result = await MySwal.fire({
+			title: 'ログアウトしますか？',
+			text: 'すべてのTwin:teサービスからログアウトします',
+			showCancelButton: true,
+			confirmButtonText: 'はい',
+			cancelButtonText: 'いいえ'
+		});
+		if (result.isConfirmed) {
+			alert('confirm');
+			router.push(getLogoutUrl());
+		}
+	};
+
+	const handleLogin = async () => {
+		await MySwal.fire({
+			title: 'どのアカウントでログインしますか?',
+			html: LoginModalContent,
+			showConfirmButton: false,
+			showCancelButton: true,
+			cancelButtonText: '閉じる'
+		});
+	};
 
 	return (
 		<>
@@ -32,20 +57,16 @@ export const Layout: React.FC = ({ children }) => {
 								{isLogin == null ? (
 									<Button className="is-primary is-outlined is-loading" />
 								) : (
-									<Button className="is-primary is-outlined has-text-weight-bold" onClick={() => setIsModalOpen(true)}>
+									<Button
+										className="is-primary is-outlined has-text-weight-bold"
+										onClick={() => (isLogin ? handleLogout() : handleLogin())}
+									>
 										{isLogin ? 'ログアウト' : 'ログイン'}
 									</Button>
 								)}
 							</div>
 						</header>
-						<main>
-							{isLogin ? (
-								<LogoutModal show={isModalOpen} onClose={() => setIsModalOpen(false)} />
-							) : (
-								<LoginModal show={isModalOpen} onClose={() => setIsModalOpen(false)} />
-							)}
-							{children}
-						</main>
+						<main>{children}</main>
 						<footer className={styles.footer}>
 							<a href="https://vercel.com?utm_source=twin-te&utm_campaign=oss">
 								<img src="https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg" alt="Vercel" />
