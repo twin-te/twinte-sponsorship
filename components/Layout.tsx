@@ -18,7 +18,6 @@ export const Layout: React.FC = ({ children }) => {
 			title: 'ログアウトしますか？',
 			text: 'すべてのTwin:teサービスからログアウトします',
 			showCancelButton: true,
-			confirmButtonColor: '#3085d6',
 			confirmButtonText: 'はい',
 			cancelButtonText: 'いいえ'
 		});
