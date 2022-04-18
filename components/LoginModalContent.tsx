@@ -1,4 +1,8 @@
+import Image from 'next/image';
 import { getLoginUrl } from '../usecases/getAuthUrl';
+import AppleLogin from '../public/images/auth/login-apple.svg';
+import TwitterLogin from '../public/images/auth/login-twitter.svg';
+import GoogleLogin from '../public/images/auth/login-google.svg';
 
 const LoginModalContent = (
 	<>
@@ -6,17 +10,17 @@ const LoginModalContent = (
 		<div className="has-text-centered">
 			<div>
 				<a href={getLoginUrl('apple')}>
-					<img width="250" src="/images/auth/sign-in-with-apple.png" alt="sign in with apple" />
+					<Image src={AppleLogin} alt="sign in with apple" />
 				</a>
 			</div>
 			<div>
 				<a href={getLoginUrl('twitter')}>
-					<img width="250" src="/images/auth/sign-in-with-twitter.png" alt="sign in with twitter" />
+					<Image src={TwitterLogin} alt="sign in with apple" />
 				</a>
 			</div>
 			<div>
 				<a href={getLoginUrl('google')}>
-					<img width="250" src="/images/auth/sign-in-with-google.png" alt="sign in with google" />
+					<Image src={GoogleLogin} alt="sign in with apple" />
 				</a>
 			</div>
 		</div>
