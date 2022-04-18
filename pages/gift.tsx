@@ -1,6 +1,9 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import Image from 'next/image';
 import styles from '../styles/pages/Gift.module.scss';
+import TwinteSticker from '../public/images/twinte-sticker1.jpg';
+import TwinteUSB from '../public/images/Twinte-usb.jpg';
 
 const Gift: NextPage = () => {
 	return (
@@ -25,8 +28,8 @@ const Gift: NextPage = () => {
 						<h1 className="title">3000円 Twin:teオリジナルステッカー</h1>
 					</div>
 
-					<div className="img-wrapper">
-						<img src="/images/twinte-sticker1.jpg" alt="Twin:teステッカー" />
+					<div className={styles.imageWrapper}>
+						<Image objectFit="contain" src={TwinteSticker} alt="Twin:teステッカー" />
 					</div>
 					<p>Twin:teのロゴのステッカーです！シールになっているので好きなところに張れますよ！</p>
 				</div>
@@ -35,8 +38,8 @@ const Gift: NextPage = () => {
 						<h1 className="title">10000円 Twin:teオリジナルUSB</h1>
 					</div>
 
-					<div className="img-wrapper">
-						<img src="/images/Twinte-usb.jpg" alt="Twin:teステッカー" />
+					<div className={styles.imageWrapper}>
+						<Image objectFit="contain" src={TwinteUSB} alt="Twin:teステッカー" />
 					</div>
 					<p>
 						オリジナルキャラクター「コロン」とロゴが描かれたオリジナルUSBです！
