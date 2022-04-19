@@ -8,10 +8,16 @@
     padding: 1rem;
 
     .navbarBurger {
-        margin-left: 0;
+        margin: auto 0;
+        height: 40px;
 
         span {
             background-color: #ffffff;
         }
+    }
+
+    .logo {
+        margin: auto 0;
+
     }
 }

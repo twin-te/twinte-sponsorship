@@ -5,6 +5,8 @@ import 'react-modern-drawer/dist/index.css';
 import { useEffect, useState } from 'react';
 import Sidebar from './Sidebar';
 import Router from 'next/router';
+import Image from 'next/image';
+import TwinteLogo from '../public/images/twinte-sponsor-title.png';
 
 const MobileHeader: React.FC = () => {
 	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -32,11 +34,16 @@ const MobileHeader: React.FC = () => {
 					<span aria-hidden="true"></span>
 					<span aria-hidden="true"></span>
 				</button>
-				<div className="navbar-brand">
-					<Link href="/" passHref>
-						<img src="/images/twinte-sponsor-title.png" alt="Twin:te_Logo" />
-					</Link>
-				</div>
+				<Link href="/" passHref>
+					<Image
+						src={TwinteLogo}
+						alt="Twin:te_Logo"
+						className={styles.logo}
+						width={100}
+						height={40}
+						objectFit="contain"
+					/>
+				</Link>
 			</div>
 
 			<Drawer open={isDrawerOpen} onClose={() => toggleDrawer(false)} direction="left">
