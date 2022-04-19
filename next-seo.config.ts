@@ -12,7 +12,7 @@ const SEO: NextSeoProps = {
 		site_name: 'Twin:te Sponsorship',
 		images: [
 			{
-				url: 'https://sponsorship.twinte.net/sponsor-ogp.jpg',
+				url: 'https://sponsorship.twinte.net/images/sponsor-ogp.jpg',
 				alt: 'Twin:te 協賛ページ'
 			}
 		]
