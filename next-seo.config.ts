@@ -12,7 +12,7 @@ const SEO: NextSeoProps = {
 		site_name: 'Twin:te Sponsorship',
 		images: [
 			{
-				url: 'https://sponsorship.twinte.net/sponsor-ogp.png',
+				url: 'https://sponsorship.twinte.net/sponsor-ogp.jpg',
 				alt: 'Twin:te 協賛ページ'
 			}
 		]
@@ -25,7 +25,7 @@ const SEO: NextSeoProps = {
 	additionalLinkTags: [
 		{
 			rel: 'icon',
-			href: '/favicon.png'
+			href: '/favicon.ico'
 		}
 	]
 };
