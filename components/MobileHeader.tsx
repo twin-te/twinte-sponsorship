@@ -7,8 +7,15 @@ import Sidebar from './Sidebar';
 import Router from 'next/router';
 import Image from 'next/image';
 import TwinteLogo from '../public/images/twinte-sponsor-title.png';
+import { Button } from 'react-bulma-components';
 
-const MobileHeader: React.FC = () => {
+type Props = {
+	isLogin: undefined | boolean;
+	handleLogin: () => void;
+	handleLogout: () => void;
+};
+
+const MobileHeader: React.FC<Props> = ({ isLogin, handleLogin, handleLogout }) => {
 	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 	const toggleDrawer = (state: boolean) => {
 		setIsDrawerOpen(() => state);
@@ -44,6 +51,18 @@ const MobileHeader: React.FC = () => {
 						objectFit="contain"
 					/>
 				</Link>
+				<div className={styles.button}>
+					{isLogin == undefined ? (
+						<Button className="is-ghost is-loading" />
+					) : (
+						<Button
+							className="is-ghost has-text-weight-bold"
+							onClick={() => (isLogin ? handleLogout() : handleLogin())}
+						>
+							{isLogin ? 'ログアウト' : 'ログイン'}
+						</Button>
+					)}
+				</div>
 			</div>
 
 			<Drawer open={isDrawerOpen} onClose={() => toggleDrawer(false)} direction="left">
