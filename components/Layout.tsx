@@ -53,7 +53,7 @@ export const Layout: React.FC = ({ children }) => {
 				</div>
 				<div className="column">
 					<section className="section">
-						<header className={styles.header}>
+						<header className={`is-hidden-mobile ${styles.header}`}>
 							<div className="has-text-right">
 								{isLogin == null ? (
 									<Button className="is-primary is-outlined is-loading" />
