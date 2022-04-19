@@ -5,5 +5,6 @@ const _MySwal = withReactContent(Swal);
 
 // sweet alertの共通の設定を書く
 export const SweetModal = _MySwal.mixin({
-	confirmButtonColor: '#3085d6'
+	confirmButtonColor: '#3085d6',
+	background: 'whitesmoke'
 });

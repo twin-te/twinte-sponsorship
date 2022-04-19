@@ -1,6 +1,8 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import styles from '../styles/pages/Home.module.scss';
+import TwinteCost from '../public/images/twinte-cost.png';
+import Image from 'next/image';
 
 const Home: NextPage = () => {
 	return (
@@ -24,7 +26,7 @@ const Home: NextPage = () => {
 				</p>
 				<p>当初と比較してユーザー数が増え、それに伴って運営に必要な資金も増えています。</p>
 				<div className="has-text-centered">
-					<img src="/images/twinte-cost.png" alt="Twin:te_Cost" />
+					<Image src={TwinteCost} alt="Twin:te_Cost" />
 				</div>
 				<p>
 					また、Twin:te の開発は現在も続いておりますが、メンテナンスや機能の追加等で

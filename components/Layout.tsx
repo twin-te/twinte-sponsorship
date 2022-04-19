@@ -8,6 +8,7 @@ import LoginModalContent from './LoginModalContent';
 import { SweetModal } from './SweetAlert';
 import { useRouter } from 'next/router';
 import { getLogoutUrl } from '../usecases/getAuthUrl';
+import Image from 'next/image';
 
 export const Layout: React.FC = ({ children }) => {
 	const isLogin = useLoginStatus();
@@ -69,7 +70,12 @@ export const Layout: React.FC = ({ children }) => {
 						<main>{children}</main>
 						<footer className={styles.footer}>
 							<a href="https://vercel.com?utm_source=twin-te&utm_campaign=oss">
-								<img src="https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg" alt="Vercel" />
+								<Image
+									src="https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg"
+									width={212}
+									height={44}
+									alt="Vercel"
+								/>
 							</a>
 						</footer>
 					</section>

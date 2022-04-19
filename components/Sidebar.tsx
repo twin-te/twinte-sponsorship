@@ -1,5 +1,7 @@
 import styles from '../styles/components/Sidebar.module.scss';
 import Link from 'next/link';
+import Image from 'next/image';
+import TwinteLogo from '../public/images/twinte-sponsor-title.png';
 
 const Sidebar: React.FC = () => {
 	return (
@@ -7,7 +9,7 @@ const Sidebar: React.FC = () => {
 			<div className={styles.menuContent}>
 				<div className={styles.logo}>
 					<a href="https://sponsorship.twinte.net">
-						<img src="/images/twinte-sponsor-title.png" alt="Twin:te_Logo" />
+						<Image src={TwinteLogo} alt="Twin:te_Logo" />
 					</a>
 				</div>
 				<ul className="menu-list">
