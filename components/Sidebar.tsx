@@ -1,7 +1,7 @@
 import styles from '../styles/components/Sidebar.module.scss';
 import Link from 'next/link';
 import Image from 'next/image';
-import TwinteLogo from '../public/images/twinte-sponsor-title.png'
+import TwinteLogo from '../public/images/twinte-sponsor-title.png';
 
 const Sidebar: React.FC = () => {
 	return (
