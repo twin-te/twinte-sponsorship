@@ -2,6 +2,7 @@
 
 .sidebar {
     height: 100vh;
+    max-width: 250px;
     min-height: 100%;
     padding: 0 1rem;
     background-color: $menu-color;
@@ -12,8 +13,8 @@
     }
 
     .logo {
-        width: 80%;
-        padding-bottom: 1rem;
+        max-width: 200px;
+        padding: 1rem 0.5rem;
     }
 
     a {
@@ -24,7 +25,6 @@
 
     .menuFooter {
         position: fixed;
-        width: 100%;
         bottom: 1rem;
         word-break: break-all;
     }
