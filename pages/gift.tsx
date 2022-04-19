@@ -1,8 +1,8 @@
 import type { NextPage } from 'next';
 import Image from 'next/image';
 import styles from '../styles/pages/Gift.module.scss';
-import TwinteSticker from '../public/images/twinte-sticker1.jpg';
-import TwinteUSB from '../public/images/Twinte-usb.jpg';
+import TwinteSticker from '../public/images/twinte-sticker.jpg';
+import TwinteUSB from '../public/images/twinte-usb.jpg';
 import { NextSeo } from 'next-seo';
 
 const Gift: NextPage = () => {

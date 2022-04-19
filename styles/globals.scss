@@ -3,6 +3,7 @@
 // Import Bulma styles
 @import "../node_modules/bulma/bulma.sass";
 @import '../node_modules/bulma-checkradio/dist/css/bulma-checkradio.min.css';
+
 html,
 body {
   padding: 0;
@@ -61,7 +62,7 @@ $colors: ("white": ($white,
 
 .title.pagetitle:before {
   content: "";
-  background-image: url("/images/Twintelogo-color.png");
+  background-image: url("/images/twinte-logo-color.png");
   background-repeat: no-repeat;
   display: inline-block;
   height: 1.5em;
