@@ -6,8 +6,13 @@ import * as dayjs from 'dayjs';
 import 'dayjs/locale/ja';
 import { DefaultSeo } from 'next-seo';
 import SEO from '../next-seo.config';
+import * as bulmaToast from 'bulma-toast';
 
 dayjs.locale('ja');
+
+bulmaToast.setDefaults({
+	position: 'top-center'
+});
 
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
