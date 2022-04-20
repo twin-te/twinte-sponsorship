@@ -23,7 +23,6 @@ export const Layout: React.FC = ({ children }) => {
 			cancelButtonText: 'いいえ'
 		});
 		if (result.isConfirmed) {
-			alert('confirm');
 			router.push(getLogoutUrl());
 		}
 	};
