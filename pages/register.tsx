@@ -11,12 +11,34 @@ import {
 	stripeSubscription1000yenID
 } from '../usecases/stripe';
 import { NextSeo } from 'next-seo';
+import { SweetModal } from '../components/SweetAlert';
 
 const Register: NextPage = () => {
 	const isLogin = useLoginStatus();
 	const [donationPriceIndex, setDonationPriceIndex] = useState(0);
 	const donationPrices = [500, 1000, 1500, 2000, 3000, 5000, 7000, 10000];
 	const [subscriptionID, setSubscriptionID] = useState(stripeSubscription200yenID);
+
+	const confirmRegistOneTime = async () => {
+		const result = await SweetModal.fire({
+			title: 'ログインをせずに続けますか？',
+			text: 'ログインをしなくても単発の寄付はできますが、履歴に残らず返礼品等の申請ができません。ログインしないまま寄付しますか？',
+			showCancelButton: true,
+			confirmButtonText: 'はい',
+			cancelButtonText: 'いいえ'
+		});
+		if (result.isConfirmed) {
+			registOneTime(donationPrices[donationPriceIndex]);
+		}
+	};
+	const confirmRegistSubscription = async () => {
+		const result = await SweetModal.fire({
+			title: 'ログインをしてください。',
+			text: '継続的な寄付をするには、右上のログインボタンよりログインをしてください。',
+			showCancelButton: false,
+			confirmButtonText: 'はい'
+		});
+	};
 
 	return (
 		<>
@@ -62,7 +84,7 @@ const Register: NextPage = () => {
 					className={`is-primary ${styles.buttons}`}
 					fullwidth={true}
 					onClick={() => {
-						registOneTime(donationPrices[donationPriceIndex]);
+						isLogin ? registOneTime(donationPrices[donationPriceIndex]) : confirmRegistOneTime();
 					}}
 				>
 					寄付する
@@ -118,7 +140,7 @@ const Register: NextPage = () => {
 					className={`is-primary ${styles.buttons}`}
 					fullwidth={true}
 					onClick={() => {
-						isLogin ? registSubscription(subscriptionID) : alert('ログインしろ');
+						isLogin ? registSubscription(subscriptionID) : confirmRegistSubscription();
 					}}
 				>
 					寄付する
