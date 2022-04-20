@@ -46,16 +46,16 @@ export const Layout: React.FC = ({ children }) => {
 			</Head>
 			<div className="columns is-gapless">
 				<div className="column is-hidden-tablet">
-					<MobileHeader />
+					<MobileHeader isLogin={isLogin} handleLogin={handleLogin} handleLogout={handleLogout} />
 				</div>
 				<div className="column is-one-fifth is-hidden-mobile">
 					<Sidebar />
 				</div>
 				<div className="column">
 					<section className="section">
-						<header className={styles.header}>
+						<header className={`is-hidden-mobile ${styles.header}`}>
 							<div className="has-text-right">
-								{isLogin == null ? (
+								{isLogin == undefined ? (
 									<Button className="is-primary is-outlined is-loading" />
 								) : (
 									<Button
