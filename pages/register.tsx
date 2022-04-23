@@ -2,7 +2,6 @@ import { useState } from 'react';
 import type { NextPage } from 'next';
 import { useLoginStatus } from '../hooks/useLoginStatus';
 import Slider from 'react-input-slider';
-import { Button, Card } from 'react-bulma-components';
 import styles from '../styles/pages/Register.module.scss';
 import { registOneTime, registSubscription } from '../api/stripeApi';
 import {
@@ -44,7 +43,7 @@ const Register: NextPage = () => {
 		<>
 			<NextSeo title="寄付・サブスク登録" />
 			<h1 className="title pagetitle">寄付・サブスク登録</h1>
-			<Card>
+			<div className="card">
 				<h1 className={`title ${styles.title}`}>1回きりの決済による寄付</h1>
 				<p>
 					1回の決済による単発の寄付です。 <br />
@@ -80,18 +79,17 @@ const Register: NextPage = () => {
 					</span>
 					運営することができます。
 				</p>
-				<Button
-					className={`is-primary ${styles.buttons}`}
-					fullwidth={true}
+				<button
+					className={`button is-fullwidth is-primary ${styles.buttons}`}
 					onClick={() => {
 						isLogin ? registOneTime(donationPrices[donationPriceIndex]) : confirmRegistOneTime();
 					}}
 				>
 					寄付する
-				</Button>
-			</Card>
+				</button>
+			</div>
 
-			<Card>
+			<div className="card">
 				<h1 className={`title ${styles.title}`}>サブスクリプション（毎月のお支払い）の登録</h1>
 				<p>
 					毎月決済が行われるサブスクリプションです。
@@ -136,16 +134,15 @@ const Register: NextPage = () => {
 						<label htmlFor="radio3">1000円/月</label>
 					</div>
 				</div>
-				<Button
-					className={`is-primary ${styles.buttons}`}
-					fullwidth={true}
+				<button
+					className={`button is-fullwidth is-primary ${styles.buttons}`}
 					onClick={() => {
 						isLogin ? registSubscription(subscriptionID) : confirmRegistSubscription();
 					}}
 				>
 					寄付する
-				</Button>
-			</Card>
+				</button>
+			</div>
 		</>
 	);
 };

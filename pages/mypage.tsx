@@ -1,6 +1,5 @@
 import dayjs from 'dayjs';
 import type { NextPage } from 'next';
-import { Button, Card } from 'react-bulma-components';
 import { useCurrentUser } from '../hooks/useCurrentUser';
 import { useLoginStatus } from '../hooks/useLoginStatus';
 import { usePaymentHistory } from '../hooks/usePaymentHistory';
@@ -51,11 +50,11 @@ const MyPage: NextPage = () => {
 				{isLogin ? (
 					<>
 						<h1 className="title pagetitle">マイページ</h1>
-						<Card>
+						<div className="card">
 							<h2 className="title">ユーザー情報</h2>
-							<Button className={`is-text ${styles.editButton}`} onClick={() => setIsEditUserModalOpen(true)}>
+							<button className={`button is-text ${styles.editButton}`} onClick={() => setIsEditUserModalOpen(true)}>
 								編集する
-							</Button>
+							</button>
 							<EditUserInfoModal
 								isOpen={isEditUserModalOpen}
 								onClose={() => setIsEditUserModalOpen(false)}
@@ -83,9 +82,9 @@ const MyPage: NextPage = () => {
 									<div>情報の取得に失敗しました。</div>
 								)}
 							</div>
-						</Card>
+						</div>
 
-						<Card>
+						<div className="card">
 							<h2 className="title">サブスクリプションの登録状況</h2>
 							<div className="content">
 								<p className="has-text-primary has-text-weight-bold">ご利用中のプラン</p>
@@ -107,12 +106,12 @@ const MyPage: NextPage = () => {
 															<td>{subscription.plans[0].name}</td>
 															<td>{dayjs(subscription.created).format('YYYY.MM.DD')}</td>
 															<td>
-																<Button
-																	className="is-danger is-outlined is-small"
+																<button
+																	className="button is-danger is-outlined is-small"
 																	onClick={() => handleClick(subscription.id)}
 																>
 																	解約
-																</Button>
+																</button>
 															</td>
 														</tr>
 													))}
@@ -125,9 +124,9 @@ const MyPage: NextPage = () => {
 									<div>情報の取得に失敗しました。</div>
 								)}
 							</div>
-						</Card>
+						</div>
 
-						<Card>
+						<div className="card">
 							<h2 className="title">寄付の履歴</h2>
 							<div className="content">
 								{paymentHistory != null ? (
@@ -163,7 +162,7 @@ const MyPage: NextPage = () => {
 									<div>情報の取得に失敗しました。</div>
 								)}
 							</div>
-						</Card>
+						</div>
 					</>
 				) : (
 					<p>右上のログインボタンからログインしてください。</p>
