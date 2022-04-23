@@ -50,25 +50,20 @@ $colors: ("white": ($white,
   font-size: 23px;
   line-height: 28px;
   margin-bottom: 1rem;
-  border-left: 5px solid $primary;
-  padding-left: 1rem;
 }
 
-.title.pagetitle {
-  border: initial;
-  padding-left: 0;
-}
-
-.title.pagetitle:before {
-  content: "";
-  background-image: url("/images/twinte-logo-color.png");
-  background-repeat: no-repeat;
-  display: inline-block;
-  height: 1.5em;
-  width: 1.5em;
-  background-size: contain;
-  vertical-align: middle;
-  margin-right: 8px;
+.pagetitle {
+  &:before {
+    content: "";
+    background-image: url("/images/twinte-logo-color.png");
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 1.5em;
+    width: 1.5em;
+    background-size: contain;
+    vertical-align: middle;
+    margin-right: 8px;
+  }
 }
 
 // カードを使いやすいように再定義
