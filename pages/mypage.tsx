@@ -49,7 +49,7 @@ const MyPage: NextPage = () => {
 			<div className={styles.content}>
 				{isLogin ? (
 					<>
-						<h1 className="pagetitle">マイページ</h1>
+						<h1 className="title pagetitle">マイページ</h1>
 						<div className="card">
 							<h2 className={`title ${styles.title}`}>ユーザー情報</h2>
 							<button className={`button is-text ${styles.editButton}`} onClick={() => setIsEditUserModalOpen(true)}>
