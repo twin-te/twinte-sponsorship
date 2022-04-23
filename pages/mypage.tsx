@@ -64,7 +64,7 @@ const MyPage: NextPage = () => {
 							/>
 							<div className="content">
 								<p>
-									<a href="https://www.twinte.net/sponsor">寄附者一覧</a>
+									<a href="https://www.twinte.net/sponsor">寄付者一覧</a>
 									に表示するお名前とリンクです。
 								</p>
 								{currentUser ? (
