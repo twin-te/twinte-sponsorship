@@ -12,6 +12,7 @@ import { NextSeo } from 'next-seo';
 import { useState } from 'react';
 import styles from '../styles/pages/MyPage.module.scss';
 import EditUserInfoModal from '../components/EditUserInfoModal';
+import { toast } from 'bulma-toast';
 
 const MyPage: NextPage = () => {
 	const isLogin = useLoginStatus();
@@ -25,11 +26,18 @@ const MyPage: NextPage = () => {
 	const handleClick = async (id: string) => {
 		try {
 			await cancelSubscription(id);
-			alert('解約に成功しました');
+			toast({
+				message: '解約に成功しました',
+				type: 'is-success'
+			});
+			await new Promise((s) => setTimeout(s, 2000));
 			router.reload();
 		} catch (error) {
 			console.error(error);
-			alert('エラーが発生しました');
+			toast({
+				message: 'エラーが発生しました',
+				type: 'is-danger'
+			});
 		}
 	};
 
