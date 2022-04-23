@@ -52,7 +52,7 @@ const MyPage: NextPage = () => {
 					<>
 						<h1 className="title pagetitle">マイページ</h1>
 						<Card>
-							<h2 className="title">ユーザ情報</h2>
+							<h2 className="title">ユーザー情報</h2>
 							<Button className={`is-text ${styles.editButton}`} onClick={() => setIsEditUserModalOpen(true)}>
 								編集する
 							</Button>
