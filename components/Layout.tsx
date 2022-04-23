@@ -3,7 +3,6 @@ import Sidebar from './Sidebar';
 import MobileHeader from './MobileHeader';
 import styles from '../styles/components/Layout.module.scss';
 import { useLoginStatus } from '../hooks/useLoginStatus';
-import { Button } from 'react-bulma-components';
 import LoginModalContent from './LoginModalContent';
 import { SweetModal } from './SweetAlert';
 import { useRouter } from 'next/router';
@@ -55,14 +54,14 @@ export const Layout: React.FC = ({ children }) => {
 						<header className={`is-hidden-mobile ${styles.header}`}>
 							<div className="has-text-right">
 								{isLogin == undefined ? (
-									<Button className="is-primary is-outlined is-loading" />
+									<button className="button is-primary is-outlined is-loading" />
 								) : (
-									<Button
-										className="is-primary is-outlined has-text-weight-bold"
+									<button
+										className="button is-primary is-outlined has-text-weight-bold"
 										onClick={() => (isLogin ? handleLogout() : handleLogin())}
 									>
 										{isLogin ? 'ログアウト' : 'ログイン'}
-									</Button>
+									</button>
 								)}
 							</div>
 						</header>

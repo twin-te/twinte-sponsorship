@@ -7,7 +7,6 @@ import Sidebar from './Sidebar';
 import Router from 'next/router';
 import Image from 'next/image';
 import TwinteLogo from '../public/images/twinte-sponsor-title.png';
-import { Button } from 'react-bulma-components';
 
 type Props = {
 	isLogin: undefined | boolean;
@@ -53,14 +52,14 @@ const MobileHeader: React.FC<Props> = ({ isLogin, handleLogin, handleLogout }) =
 				</Link>
 				<div className={styles.button}>
 					{isLogin == undefined ? (
-						<Button className="is-ghost is-loading" />
+						<button className="button is-ghost is-loading" />
 					) : (
-						<Button
-							className="is-ghost has-text-weight-bold"
+						<button
+							className="button is-ghost has-text-weight-bold"
 							onClick={() => (isLogin ? handleLogout() : handleLogin())}
 						>
 							{isLogin ? 'ログアウト' : 'ログイン'}
-						</Button>
+						</button>
 					)}
 				</div>
 			</div>
