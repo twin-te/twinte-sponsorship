@@ -46,7 +46,7 @@ export const Layout: React.FC = ({ children }) => {
 				<div className="column is-hidden-tablet">
 					<MobileHeader isLogin={isLogin} handleLogin={handleLogin} handleLogout={handleLogout} />
 				</div>
-				<div className="column is-one-fifth is-hidden-mobile">
+				<div className="column is-narrow is-hidden-mobile">
 					<Sidebar />
 				</div>
 				<div className="column">
