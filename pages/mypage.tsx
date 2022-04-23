@@ -9,14 +9,19 @@ import { cancelSubscription } from '../api/stripeApi';
 import { useRouter } from 'next/router';
 import { PaymentTypeMap } from '../types/Payment';
 import { NextSeo } from 'next-seo';
+import { useState } from 'react';
+import styles from '../styles/pages/MyPage.module.scss';
+import EditUserInfoModal from '../components/EditUserInfoModal';
 import { toast } from 'bulma-toast';
 
 const MyPage: NextPage = () => {
 	const isLogin = useLoginStatus();
-	const currentUser = useCurrentUser();
+	const [currentUser, setCurrentUser] = useCurrentUser();
 	const subscriptions = useSubscriptions();
 	const paymentHistory = usePaymentHistory();
 	const router = useRouter();
+
+	const [isEditUserModalOpen, setIsEditUserModalOpen] = useState<boolean>(false);
 
 	const handleClick = async (id: string) => {
 		try {
@@ -42,12 +47,22 @@ const MyPage: NextPage = () => {
 	return (
 		<>
 			<NextSeo title="マイページ" />
-			<div>
+			<div className={styles.content}>
 				{isLogin ? (
 					<>
 						<h1 className="title pagetitle">マイページ</h1>
 						<Card>
-							<h2 className="title">ユーザ情報</h2>
+							<h2 className="title">ユーザー情報</h2>
+							<Button className={`is-text ${styles.editButton}`} onClick={() => setIsEditUserModalOpen(true)}>
+								編集する
+							</Button>
+							<EditUserInfoModal
+								isOpen={isEditUserModalOpen}
+								onClose={() => setIsEditUserModalOpen(false)}
+								setCurrentUser={setCurrentUser}
+								prevDisplayName={currentUser?.displayName}
+								prevLink={currentUser?.link}
+							/>
 							<div className="content">
 								<p>
 									<a href="https://www.twinte.net/sponsor">寄附者一覧</a>
@@ -58,7 +73,7 @@ const MyPage: NextPage = () => {
 										<p className="has-text-primary has-text-weight-bold is-marginless">ID</p>
 										<p>{currentUser.twinteUserId}</p>
 
-										<p className="has-text-primary has-text-weight-bold is-marginless">現在の表示名</p>
+										<p className="has-text-primary has-text-weight-bold is-marginless">表示名</p>
 										<p>{currentUser.displayName || '未設定'}</p>
 
 										<p className="has-text-primary has-text-weight-bold is-marginless">リンク</p>
