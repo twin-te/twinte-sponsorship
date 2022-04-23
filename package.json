@@ -21,6 +21,7 @@
     "react-bulma-components": "4.1.0",
     "react-dom": "18.0.0",
     "react-input-slider": "^6.0.1",
+    "react-modal": "^3.14.4",
     "react-modern-drawer": "^1.1.1",
     "sweetalert2": "^11.4.8",
     "sweetalert2-react-content": "^5.0.0"
@@ -29,6 +30,7 @@
     "@types/node": "17.0.23",
     "@types/react": "17.0.43",
     "@types/react-dom": "17.0.14",
+    "@types/react-modal": "^3.13.1",
     "@typescript-eslint/eslint-plugin": "^5.18.0",
     "@typescript-eslint/parser": "^5.18.0",
     "eslint": "8.12.0",
