@@ -1,5 +1,5 @@
 import { toast } from 'bulma-toast';
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import { updateUserInfo } from '../api/updateUserInfo';
 import styles from '../styles/components/EditUserInfoModal.module.scss';
@@ -7,23 +7,40 @@ import { User } from '../types';
 
 type Props = {
 	isOpen: boolean;
-	onRequestClose: () => void;
 	onClose: () => void;
 	setCurrentUser: Dispatch<SetStateAction<User | null | undefined>>;
 	prevDisplayName: undefined | string;
 	prevLink: undefined | string;
 };
 
-const EditUserInfoModal: React.FC<Props> = ({
-	isOpen,
-	onRequestClose,
-	onClose,
-	setCurrentUser,
-	prevDisplayName,
-	prevLink
-}) => {
+const EditUserInfoModal: React.FC<Props> = ({ isOpen, onClose, setCurrentUser, prevDisplayName, prevLink }) => {
 	const [displayName, setDisplayName] = useState<string>(prevDisplayName || '');
 	const [link, setLink] = useState<string>(prevLink || '');
+	const [error, setError] = useState({ displayName: '', link: '' });
+
+	useEffect(() => {
+		if (!isValidDisplayName(displayName)) {
+			setError({ ...error, displayName: '20文字以下で入力してください' });
+		} else {
+			setError({ ...error, displayName: '' });
+		}
+	}, [displayName, error]);
+
+	useEffect(() => {
+		if (!isValidLink(link)) {
+			setError({ ...error, link: 'URLの形式が間違っています' });
+		} else {
+			setError({ ...error, link: '' });
+		}
+	}, [link, error]);
+
+	const isValidDisplayName = (name: string) => {
+		return name.length < 20;
+	};
+
+	const isValidLink = (link: string) => {
+		return /^https?:\/\/.+/.test(link) || link === '';
+	};
 
 	const handleUpdateClick = async () => {
 		try {
@@ -42,48 +59,55 @@ const EditUserInfoModal: React.FC<Props> = ({
 		}
 	};
 
-	const handleCloseClick = () => {
+	const handleModalClose = () => {
 		setDisplayName(prevDisplayName || '');
 		setLink(prevLink || '');
 		onClose();
 	};
 
 	return (
-		<Modal isOpen={isOpen} onRequestClose={onRequestClose} className={styles.modal} overlayClassName={styles.overlay}>
+		<Modal isOpen={isOpen} onRequestClose={handleModalClose} className={styles.modal} overlayClassName={styles.overlay}>
 			<h1 className="title">ユーザー情報の編集</h1>
 			<div className="field">
 				<label className="label">表示名</label>
 				<div className="control">
 					<input
-						className="input is-success"
+						className={`input ${isValidDisplayName(displayName) ? 'is-success' : 'is-danger'}`}
 						type="text"
 						placeholder="お名前・ユーザーネーム"
 						value={displayName}
 						onChange={(e) => setDisplayName(e.target.value)}
 					/>
 				</div>
+				<div className="help is-danger">{error.displayName}</div>
 			</div>
 
 			<div className="field">
 				<label className="label">リンク</label>
 				<div className="control">
 					<input
-						className="input"
+						className={`input ${isValidLink(link) ? 'is-success' : 'is-danger'}`}
 						type="text"
 						placeholder="サイトのURL"
 						value={link}
 						onChange={(e) => setLink(e.target.value)}
 					/>
 				</div>
+				<div className="help is-danger">{error.link}</div>
 			</div>
+
 			<div className="field is-grouped">
 				<div className="control">
-					<button className="button is-link" onClick={handleUpdateClick}>
+					<button
+						className="button is-info"
+						onClick={handleUpdateClick}
+						disabled={!(isValidDisplayName(displayName) && isValidLink(link))}
+					>
 						更新する
 					</button>
 				</div>
 				<div className="control">
-					<button className="button is-link is-light" onClick={handleCloseClick}>
+					<button className="button is-info is-light" onClick={handleModalClose}>
 						閉じる
 					</button>
 				</div>

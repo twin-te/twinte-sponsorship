@@ -58,7 +58,6 @@ const MyPage: NextPage = () => {
 							</Button>
 							<EditUserInfoModal
 								isOpen={isEditUserModalOpen}
-								onRequestClose={() => setIsEditUserModalOpen(false)}
 								onClose={() => setIsEditUserModalOpen(false)}
 								setCurrentUser={setCurrentUser}
 								prevDisplayName={currentUser?.displayName}
