@@ -73,7 +73,7 @@ const MyPage: NextPage = () => {
 										<p className="has-text-primary has-text-weight-bold is-marginless">ID</p>
 										<p>{currentUser.twinteUserId}</p>
 
-										<p className="has-text-primary has-text-weight-bold is-marginless">現在の表示名</p>
+										<p className="has-text-primary has-text-weight-bold is-marginless">表示名</p>
 										<p>{currentUser.displayName || '未設定'}</p>
 
 										<p className="has-text-primary has-text-weight-bold is-marginless">リンク</p>
