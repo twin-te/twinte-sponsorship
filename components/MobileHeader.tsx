@@ -64,7 +64,7 @@ const MobileHeader: React.FC<Props> = ({ isLogin, handleLogin, handleLogout }) =
 				</div>
 			</div>
 
-			<Drawer open={isDrawerOpen} onClose={() => toggleDrawer(false)} direction="left">
+			<Drawer open={isDrawerOpen} onClose={() => toggleDrawer(false)} direction="left" size={200}>
 				<Sidebar />
 			</Drawer>
 		</header>
