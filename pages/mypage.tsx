@@ -16,7 +16,7 @@ import { toast } from 'bulma-toast';
 
 const MyPage: NextPage = () => {
 	const isLogin = useLoginStatus();
-	const currentUser = useCurrentUser();
+	const [currentUser, setCurrentUser] = useCurrentUser();
 	const subscriptions = useSubscriptions();
 	const paymentHistory = usePaymentHistory();
 	const router = useRouter();
@@ -60,6 +60,7 @@ const MyPage: NextPage = () => {
 								isOpen={isEditUserModalOpen}
 								onRequestClose={() => setIsEditUserModalOpen(false)}
 								onClose={() => setIsEditUserModalOpen(false)}
+								setCurrentUser={setCurrentUser}
 								prevDisplayName={currentUser?.displayName}
 								prevLink={currentUser?.link}
 							/>
