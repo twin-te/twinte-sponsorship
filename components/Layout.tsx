@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import Sidebar from './Sidebar';
 import MobileHeader from './MobileHeader';
 import { useLoginStatus } from '../hooks/useLoginStatus';
@@ -37,10 +36,6 @@ export const Layout: React.FC = ({ children }) => {
 
 	return (
 		<>
-			<Head>
-				<link rel="icon" href="/favicon.ico" />
-				<meta name="description" content="Learn how to build a personal website using Next.js" />
-			</Head>
 			<div className="columns is-gapless">
 				<div className="column is-hidden-tablet">
 					<MobileHeader isLogin={isLogin} handleLogin={handleLogin} handleLogout={handleLogout} />
