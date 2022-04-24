@@ -47,9 +47,9 @@ const MyPage: NextPage = () => {
 		<>
 			<NextSeo title="マイページ" />
 			<div className={styles.content}>
+				<h1 className="title pagetitle">マイページ</h1>
 				{isLogin ? (
 					<>
-						<h1 className="title pagetitle">マイページ</h1>
 						<div className="card">
 							<h2 className={`title ${styles.title}`}>ユーザー情報</h2>
 							<button className={`button is-text ${styles.editButton}`} onClick={() => setIsEditUserModalOpen(true)}>
@@ -165,7 +165,9 @@ const MyPage: NextPage = () => {
 						</div>
 					</>
 				) : (
-					<p>右上のログインボタンからログインしてください。</p>
+					<p>
+						右上の「<span className="has-text-weight-bold">ログイン</span>」ボタンからログインしてください。
+					</p>
 				)}
 			</div>
 		</>
