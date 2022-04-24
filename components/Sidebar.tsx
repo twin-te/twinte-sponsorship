@@ -1,5 +1,5 @@
 import styles from '../styles/components/Sidebar.module.scss';
-import Link from 'next/link';
+import NavLink from './NavLink';
 import Image from 'next/image';
 import TwinteLogo from '../public/images/twinte-sponsor-title.png';
 
@@ -14,16 +14,24 @@ const Sidebar: React.FC = () => {
 				</div>
 				<ul className="menu-list">
 					<li>
-						<Link href="/">寄付のお願い</Link>
+						<NavLink href="/" activeClassName={styles.activeLink}>
+							寄付のお願い
+						</NavLink>
 					</li>
 					<li>
-						<Link href="register">寄付・サブスク登録</Link>
+						<NavLink href="/register" activeClassName={styles.activeLink}>
+							寄付・サブスク登録
+						</NavLink>
 					</li>
 					<li>
-						<Link href="mypage">マイページ</Link>
+						<NavLink href="/mypage" activeClassName={styles.activeLink}>
+							マイページ
+						</NavLink>
 					</li>
 					<li>
-						<Link href="gift">返礼品一覧</Link>
+						<NavLink href="/gift" activeClassName={styles.activeLink}>
+							返礼品一覧
+						</NavLink>
 					</li>
 				</ul>
 			</div>
