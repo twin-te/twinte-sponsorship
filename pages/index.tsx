@@ -3,6 +3,7 @@ import styles from '../styles/pages/Home.module.scss';
 import TwinteCost from '../public/images/twinte-cost.png';
 import Image from 'next/image';
 import { NextSeo } from 'next-seo';
+import Link from 'next/link';
 
 const Home: NextPage = () => {
 	return (
@@ -75,11 +76,11 @@ const Home: NextPage = () => {
 					メールアドレス等の個人情報の取り扱いについては
 					<a href="https://www.twinte.net/policy/">プライバシーポリシー</a>をご覧ください。
 				</p>
-				{/* <div className="has-text-centered" style="margin-top:3rem;">
-				<b-button to="/register" type="is-primary" tag="nuxt-link" style="width:50%;">
-					寄付ページへ
-				</b-button>
-			</div> */}
+				<div className="has-text-centered">
+					<button className={`button is-primary ${styles.button}`}>
+						<Link href="/register">寄付ページへ</Link>
+					</button>
+				</div>
 			</div>
 		</>
 	);

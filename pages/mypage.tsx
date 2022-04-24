@@ -47,11 +47,11 @@ const MyPage: NextPage = () => {
 		<>
 			<NextSeo title="マイページ" />
 			<div className={styles.content}>
+				<h1 className="title pagetitle">マイページ</h1>
 				{isLogin ? (
 					<>
-						<h1 className="title pagetitle">マイページ</h1>
 						<div className="card">
-							<h2 className="title">ユーザー情報</h2>
+							<h2 className={`title ${styles.title}`}>ユーザー情報</h2>
 							<button className={`button is-text ${styles.editButton}`} onClick={() => setIsEditUserModalOpen(true)}>
 								編集する
 							</button>
@@ -64,7 +64,7 @@ const MyPage: NextPage = () => {
 							/>
 							<div className="content">
 								<p>
-									<a href="https://www.twinte.net/sponsor">寄附者一覧</a>
+									<a href="https://www.twinte.net/sponsor">寄付者一覧</a>
 									に表示するお名前とリンクです。
 								</p>
 								{currentUser ? (
@@ -85,7 +85,7 @@ const MyPage: NextPage = () => {
 						</div>
 
 						<div className="card">
-							<h2 className="title">サブスクリプションの登録状況</h2>
+							<h2 className={`title ${styles.title}`}>サブスクリプションの登録状況</h2>
 							<div className="content">
 								<p className="has-text-primary has-text-weight-bold">ご利用中のプラン</p>
 								{subscriptions != null ? (
@@ -127,7 +127,7 @@ const MyPage: NextPage = () => {
 						</div>
 
 						<div className="card">
-							<h2 className="title">寄付の履歴</h2>
+							<h2 className={`title ${styles.title}`}>寄付の履歴</h2>
 							<div className="content">
 								{paymentHistory != null ? (
 									paymentHistory.length ? (
@@ -165,7 +165,9 @@ const MyPage: NextPage = () => {
 						</div>
 					</>
 				) : (
-					<p>右上のログインボタンからログインしてください。</p>
+					<p>
+						右上の「<span className="has-text-weight-bold">ログイン</span>」ボタンからログインしてください。
+					</p>
 				)}
 			</div>
 		</>

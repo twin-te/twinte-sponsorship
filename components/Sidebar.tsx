@@ -14,7 +14,7 @@ const Sidebar: React.FC = () => {
 				</div>
 				<ul className="menu-list">
 					<li>
-						<Link href="/">寄附のお願い</Link>
+						<Link href="/">寄付のお願い</Link>
 					</li>
 					<li>
 						<Link href="register">寄付・サブスク登録</Link>
