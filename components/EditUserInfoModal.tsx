@@ -68,11 +68,12 @@ const EditUserInfoModal: React.FC<Props> = ({ isOpen, onClose, setCurrentUser, p
 	return (
 		<Modal isOpen={isOpen} onRequestClose={handleModalClose} className={styles.modal} overlayClassName={styles.overlay}>
 			<h1 className="title">ユーザー情報の編集</h1>
+			<button className={`delete ${styles.closeButton}`} onClick={handleModalClose}></button>
 			<div className="field">
-				<label className="label">表示名</label>
+				<label className="label has-text-primary">表示名</label>
 				<div className="control">
 					<input
-						className={`input ${isValidDisplayName(displayName) ? 'is-success' : 'is-danger'}`}
+						className={`input is-rounded ${isValidDisplayName(displayName) ? 'is-success' : 'is-danger'}`}
 						type="text"
 						placeholder="お名前・ユーザーネーム"
 						value={displayName}
@@ -83,10 +84,10 @@ const EditUserInfoModal: React.FC<Props> = ({ isOpen, onClose, setCurrentUser, p
 			</div>
 
 			<div className="field">
-				<label className="label">リンク</label>
+				<label className="label has-text-primary">リンク</label>
 				<div className="control">
 					<input
-						className={`input ${isValidLink(link) ? 'is-success' : 'is-danger'}`}
+						className={`input is-rounded ${isValidLink(link) ? 'is-success' : 'is-danger'}`}
 						type="text"
 						placeholder="サイトのURL"
 						value={link}
@@ -96,21 +97,14 @@ const EditUserInfoModal: React.FC<Props> = ({ isOpen, onClose, setCurrentUser, p
 				<div className="help is-danger">{error.link}</div>
 			</div>
 
-			<div className="field is-grouped">
-				<div className="control">
-					<button
-						className="button is-info"
-						onClick={handleUpdateClick}
-						disabled={!(isValidDisplayName(displayName) && isValidLink(link))}
-					>
-						更新する
-					</button>
-				</div>
-				<div className="control">
-					<button className="button is-info is-light" onClick={handleModalClose}>
-						閉じる
-					</button>
-				</div>
+			<div className="has-text-centered">
+				<button
+					className={`button is-primary ${styles.updateButton}`}
+					onClick={handleUpdateClick}
+					disabled={!(isValidDisplayName(displayName) && isValidLink(link))}
+				>
+					更新する
+				</button>
 			</div>
 		</Modal>
 	);
