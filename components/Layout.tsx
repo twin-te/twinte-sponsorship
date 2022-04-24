@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import Sidebar from './Sidebar';
 import MobileHeader from './MobileHeader';
-import styles from '../styles/components/Layout.module.scss';
 import { useLoginStatus } from '../hooks/useLoginStatus';
 import LoginModalContent from './LoginModalContent';
 import { SweetModal } from './SweetAlert';
@@ -51,7 +50,7 @@ export const Layout: React.FC = ({ children }) => {
 				</div>
 				<div className="column">
 					<section className="section">
-						<header className={`is-hidden-mobile ${styles.header}`}>
+						<header className="is-hidden-mobile">
 							<div className="has-text-right">
 								{isLogin == undefined ? (
 									<button className="button is-primary is-outlined is-loading" />
@@ -66,7 +65,7 @@ export const Layout: React.FC = ({ children }) => {
 							</div>
 						</header>
 						<main>{children}</main>
-						<footer className={styles.footer}>
+						<footer className="has-text-centered-mobile has-text-right-tablet mt-6">
 							<a href="https://vercel.com?utm_source=twin-te&utm_campaign=oss">
 								<Image
 									src="https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg"
