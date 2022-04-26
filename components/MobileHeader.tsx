@@ -50,12 +50,12 @@ const MobileHeader: React.FC<Props> = ({ isLogin, handleLogin, handleLogout }) =
 						objectFit="contain"
 					/>
 				</Link>
-				<div className={styles.button}>
+				<div className={styles.buttonWrapper}>
 					{isLogin == undefined ? (
-						<button className="button is-ghost is-loading" />
+						<button className={`button is-text is-loading ${styles.button}`} />
 					) : (
 						<button
-							className="button is-ghost has-text-weight-bold"
+							className={`button is-text has-text-weight-bold ${styles.button}`}
 							onClick={() => (isLogin ? handleLogout() : handleLogin())}
 						>
 							{isLogin ? 'ログアウト' : 'ログイン'}

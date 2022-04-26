@@ -140,7 +140,7 @@ const Register: NextPage = () => {
 						isLogin ? registSubscription(subscriptionID) : confirmRegistSubscription();
 					}}
 				>
-					寄付する
+					登録する
 				</button>
 			</div>
 		</>

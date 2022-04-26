@@ -107,7 +107,7 @@ const MyPage: NextPage = () => {
 															<td>{dayjs(subscription.created).format('YYYY.MM.DD')}</td>
 															<td>
 																<button
-																	className="button is-danger is-outlined is-small"
+																	className="button is-danger is-small is-inverted"
 																	onClick={() => handleClick(subscription.id)}
 																>
 																	解約

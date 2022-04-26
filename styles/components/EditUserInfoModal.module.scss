@@ -4,13 +4,24 @@
     left: 50%;
     display: block;
     padding: 2em;
-    min-width: 20em;
-    max-width: 70%;
+    width: 80%;
     background-color: #fff;
     border-radius: 15px;
     padding: 2rem;
     transform: translate(-50%, -50%);
     outline: transparent;
+
+    .closeButton {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        text-decoration: none
+    }
+
+    .updateButton {
+        width: 50%;
+        text-align: center;
+    }
 }
 
 .overlay {

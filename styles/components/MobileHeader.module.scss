@@ -20,8 +20,16 @@
         margin: auto 0;
     }
 
-    .button {
+    .buttonWrapper {
         margin: auto 0;
         margin-left: auto;
+
+        .button {
+            border: 2px solid #E5E5E5;
+            box-sizing: border-box;
+            border-radius: 4px;
+            color: #ffffff;
+            text-decoration: none;
+        }
     }
 }
