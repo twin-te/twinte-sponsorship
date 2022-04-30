@@ -36,9 +36,9 @@ const MobileHeader: React.FC<Props> = ({ isLogin, handleLogin, handleLogout }) =
 		<header>
 			<div className={styles.navbar}>
 				<button onClick={() => toggleDrawer(true)} className={`navbar-burger ${styles.navbarBurger}`}>
-					<span aria-hidden="true"></span>
-					<span aria-hidden="true"></span>
-					<span aria-hidden="true"></span>
+					<div aria-hidden="true" />
+					<div aria-hidden="true" />
+					<div aria-hidden="true" />
 				</button>
 				<Link href="/" passHref>
 					<Image
