@@ -54,7 +54,9 @@ const MyPage: NextPage = () => {
 						<div className="card">
 							<h2 className={`title ${styles.title}`}>ユーザー情報</h2>
 							<button className={`button is-text ${styles.editButton}`} onClick={() => setIsEditUserModalOpen(true)}>
-								<MdEdit size="24px" color="#929292" />
+								<span className={styles.editIcon}>
+									<MdEdit size="1.5rem" color="#929292" />
+								</span>
 								編集
 							</button>
 							<EditUserInfoModal
