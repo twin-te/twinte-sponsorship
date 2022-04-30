@@ -1,6 +1,6 @@
 import { apiClient } from './apiClient';
 import { loadStripe } from '@stripe/stripe-js/pure';
-import { stripePublicKey } from '../usecases/stripe';
+import { stripePublicKey } from '../utils/stripe';
 
 interface stripeResponse {
 	sessionId: string;

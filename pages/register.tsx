@@ -4,11 +4,7 @@ import { useLoginStatus } from '../hooks/useLoginStatus';
 import Slider from 'react-input-slider';
 import styles from '../styles/pages/Register.module.scss';
 import { registOneTime, registSubscription } from '../api/stripeApi';
-import {
-	stripeSubscription200yenID,
-	stripeSubscription500yenID,
-	stripeSubscription1000yenID
-} from '../usecases/stripe';
+import { stripeSubscription200yenID, stripeSubscription500yenID, stripeSubscription1000yenID } from '../utils/stripe';
 import { NextSeo } from 'next-seo';
 import { SweetModal } from '../components/SweetAlert';
 

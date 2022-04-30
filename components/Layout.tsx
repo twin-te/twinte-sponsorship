@@ -4,7 +4,7 @@ import { useLoginStatus } from '../hooks/useLoginStatus';
 import LoginModalContent from './LoginModalContent';
 import { SweetModal } from './SweetAlert';
 import { useRouter } from 'next/router';
-import { getLogoutUrl } from '../usecases/getAuthUrl';
+import { getLogoutUrl } from '../utils/getAuthUrl';
 import Image from 'next/image';
 
 export const Layout: React.FC = ({ children }) => {
