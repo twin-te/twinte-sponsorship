@@ -105,7 +105,7 @@ const Register: NextPage = () => {
 					</span>
 					運営することができます。
 				</p>
-				<p style={{ color: '#9A9A9A' }}>
+				<p className={styles.priceNotification}>
 					※手数料を差し引くとTwin:teには{donationPrices[donationPriceIndex] * 0.964}円寄付されます。
 				</p>
 				<button
@@ -125,9 +125,7 @@ const Register: NextPage = () => {
 					<br />
 					月ごとにお支払いいただく金額を下記から選択し、「登録する」ボタンを押すと、決済ページへ移動します。
 				</p>
-				<div style={{ margin: '2rem 0 2rem 0' }} className="field">
-					{radioButtons()}
-				</div>
+				<div className={`field ${styles.radioButtonField}`}>{radioButtons()}</div>
 				<button
 					className={`button is-fullwidth is-primary ${styles.buttons}`}
 					onClick={() => {
