@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import styles from '../styles/components/RadioButton.module.scss';
 
 type Props = {
@@ -6,6 +7,7 @@ type Props = {
 	id: string;
 	value: string;
 	onChange: (inputValue: string) => void;
+	children: ReactNode;
 };
 
 export const RadioButton: React.FC<Props> = ({ defaultChecked, name, id, value, onChange, children }) => {
