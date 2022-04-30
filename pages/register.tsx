@@ -11,6 +11,7 @@ import {
 } from '../usecases/stripe';
 import { NextSeo } from 'next-seo';
 import { SweetModal } from '../components/SweetAlert';
+import { RadioButton } from '../components/RadioButton';
 
 const Register: NextPage = () => {
 	const isLogin = useLoginStatus();
@@ -46,32 +47,19 @@ const Register: NextPage = () => {
 			{ planId: stripeSubscription1000yenID, label: '1000円/月' }
 		];
 		return subscriptions.map((plan, index) => {
-			return index === 0 ? (
+			return (
 				<div key={index} className="field has-text-weight-bold">
-					<input
-						defaultChecked={true}
-						type="radio"
+					<RadioButton
+						defaultChecked={index === 0}
 						name="priceChoice"
 						id={`plan_${index}`}
 						value={plan.planId}
-						onChange={(event) => {
-							setSubscriptionID(event.target.value);
+						onChange={(inputValue) => {
+							setSubscriptionID(inputValue);
 						}}
-					/>
-					<label htmlFor={`plan_${index}`}>{plan.label}</label>
-				</div>
-			) : (
-				<div key={index} className="field has-text-weight-bold">
-					<input
-						type="radio"
-						name="priceChoice"
-						id={`plan_${index}`}
-						value={plan.planId}
-						onChange={(event) => {
-							setSubscriptionID(event.target.value);
-						}}
-					/>
-					<label htmlFor={`plan_${index}`}>{plan.label}</label>
+					>
+						{plan.label}
+					</RadioButton>
 				</div>
 			);
 		});
