@@ -11,6 +11,7 @@ import {
 } from '../usecases/stripe';
 import { NextSeo } from 'next-seo';
 import { SweetModal } from '../components/SweetAlert';
+import { RadioButton } from '../components/RadioButton';
 
 const Register: NextPage = () => {
 	const isLogin = useLoginStatus();
@@ -31,11 +32,36 @@ const Register: NextPage = () => {
 		}
 	};
 	const confirmRegistSubscription = async () => {
-		const result = await SweetModal.fire({
+		await SweetModal.fire({
 			title: 'ログインをしてください。',
 			text: '継続的な寄付をするには、右上のログインボタンよりログインをしてください。',
 			showCancelButton: false,
 			confirmButtonText: 'はい'
+		});
+	};
+
+	const radioButtons = () => {
+		const subscriptions = [
+			{ planId: stripeSubscription200yenID, label: '200円/月' },
+			{ planId: stripeSubscription500yenID, label: '500円/月' },
+			{ planId: stripeSubscription1000yenID, label: '1000円/月' }
+		];
+		return subscriptions.map((plan, index) => {
+			return (
+				<div key={index} className="field has-text-weight-bold">
+					<RadioButton
+						defaultChecked={index === 0}
+						name="priceChoice"
+						id={`plan_${index}`}
+						value={plan.planId}
+						onChange={(inputValue) => {
+							setSubscriptionID(inputValue);
+						}}
+					>
+						{plan.label}
+					</RadioButton>
+				</div>
+			);
 		});
 	};
 
@@ -79,6 +105,9 @@ const Register: NextPage = () => {
 					</span>
 					運営することができます。
 				</p>
+				<p className={styles.priceNotification}>
+					※手数料を差し引くとTwin:teには{donationPrices[donationPriceIndex] * 0.964}円寄付されます。
+				</p>
 				<button
 					className={`button is-fullwidth is-primary ${styles.buttons}`}
 					onClick={() => {
@@ -96,44 +125,7 @@ const Register: NextPage = () => {
 					<br />
 					月ごとにお支払いいただく金額を下記から選択し、「登録する」ボタンを押すと、決済ページへ移動します。
 				</p>
-				<div style={{ margin: '2rem 0 2rem 0' }} className="field">
-					<div className="field has-text-weight-bold">
-						<input
-							className="is-checkradio"
-							type="radio"
-							name="priceChoice"
-							id="radio1"
-							onChange={() => {
-								setSubscriptionID(stripeSubscription200yenID);
-							}}
-						/>
-						<label htmlFor="radio1">200円/月</label>
-					</div>
-					<div className="field has-text-weight-bold">
-						<input
-							className="is-checkradio"
-							type="radio"
-							name="priceChoice"
-							id="radio2"
-							onChange={() => {
-								setSubscriptionID(stripeSubscription500yenID);
-							}}
-						/>
-						<label htmlFor="radio2">500円/月</label>
-					</div>
-					<div className="field has-text-weight-bold">
-						<input
-							className="is-checkradio"
-							type="radio"
-							name="priceChoice"
-							id="radio3"
-							onChange={() => {
-								setSubscriptionID(stripeSubscription1000yenID);
-							}}
-						/>
-						<label htmlFor="radio3">1000円/月</label>
-					</div>
-				</div>
+				<div className={`field ${styles.radioButtonField}`}>{radioButtons()}</div>
 				<button
 					className={`button is-fullwidth is-primary ${styles.buttons}`}
 					onClick={() => {

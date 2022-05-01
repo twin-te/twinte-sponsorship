@@ -12,6 +12,7 @@ import { useState } from 'react';
 import styles from '../styles/pages/MyPage.module.scss';
 import EditUserInfoModal from '../components/EditUserInfoModal';
 import { toast } from 'bulma-toast';
+import { MdEdit } from 'react-icons/md';
 
 const MyPage: NextPage = () => {
 	const isLogin = useLoginStatus();
@@ -53,7 +54,10 @@ const MyPage: NextPage = () => {
 						<div className="card">
 							<h2 className={`title ${styles.title}`}>ユーザー情報</h2>
 							<button className={`button is-text ${styles.editButton}`} onClick={() => setIsEditUserModalOpen(true)}>
-								編集する
+								<span className={styles.editIcon}>
+									<MdEdit size="1.5rem" color="#929292" />
+								</span>
+								編集
 							</button>
 							<EditUserInfoModal
 								isOpen={isEditUserModalOpen}
