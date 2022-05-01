@@ -7,6 +7,8 @@ import 'dayjs/locale/ja';
 import { DefaultSeo } from 'next-seo';
 import SEO from '../next-seo.config';
 import * as bulmaToast from 'bulma-toast';
+import GoogleTagManager, { GoogleTagManagerId } from '../components/GoogleTagManager';
+import { googleTagManagerId } from '../utils/gtm';
 
 dayjs.locale('ja');
 
@@ -17,6 +19,7 @@ bulmaToast.setDefaults({
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
 		<Layout>
+			<GoogleTagManager googleTagManagerId={googleTagManagerId as GoogleTagManagerId} />
 			<DefaultSeo {...SEO} />
 			<Component {...pageProps} />
 		</Layout>
