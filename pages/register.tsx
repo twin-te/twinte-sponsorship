@@ -8,6 +8,7 @@ import { stripeSubscription200yenID, stripeSubscription500yenID, stripeSubscript
 import { NextSeo } from 'next-seo';
 import { SweetModal } from '../components/SweetAlert';
 import { RadioButton } from '../components/RadioButton';
+import Link from 'next/link';
 
 const Register: NextPage = () => {
 	const isLogin = useLoginStatus();
@@ -120,6 +121,13 @@ const Register: NextPage = () => {
 					毎月決済が行われるサブスクリプションです。
 					<br />
 					月ごとにお支払いいただく金額を下記から選択し、「登録する」ボタンを押すと、決済ページへ移動します。
+				</p>
+				<p className="has-text-weight-bold">
+					このサブスクリプションは
+					<Link href="/mypage" passHref>
+						マイページ
+					</Link>
+					よりいつでもご解約いただけます。
 				</p>
 				<div className={`field ${styles.radioButtonField}`}>{radioButtons()}</div>
 				<button
