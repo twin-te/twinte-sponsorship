@@ -3,10 +3,11 @@ import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import Script from 'next/script';
+import { subscriptions } from '../utils/stripe';
 
 const Success: NextPage = () => {
 	const router = useRouter();
-	const { type, amount } = router.query;
+	const { type, amount, plan_id } = router.query;
 
 	const getTypeText = () => {
 		if (typeof type !== 'string') return '';
@@ -15,13 +16,24 @@ const Success: NextPage = () => {
 		else if (type === 'subscription') return 'サブスクリプション寄付（継続寄付）';
 		else return '';
 	};
-	const amountText = typeof amount === 'string' && /^[0-9]+(\.[0-9]+)?$/.test(amount) ? amount : '0';
+
+	const amountText = () => {
+		if (type === 'subscription' && plan_id) {
+			const subscription = subscriptions.filter((plan) => plan.planId === plan_id);
+			return subscription.length > 0 ? subscription[0].amount : '';
+		} else if (typeof amount === 'string' && /^[0-9]+(\.[0-9]+)?$/.test(amount)) {
+			return amount;
+		} else {
+			return '';
+		}
+	};
 
 	const getTwitterText = () => {
 		if (typeof type !== 'string') return 'Twin:teに寄付しました！';
 
-		if (type === 'onetime') return `Twin:teに${amount}円を寄付しました！`;
-		else if (type === 'subscription') return `Twin:teに月課金として${amount}円/月の寄付登録をしました！`;
+		if (type === 'onetime' && amountText()) return `Twin:teに${amountText()}円を寄付しました！`;
+		else if (type === 'subscription' && amountText())
+			return `Twin:teに月課金として${amountText()}円/月の寄付登録をしました！`;
 		else return 'Twin:teに寄付しました！';
 	};
 
@@ -30,10 +42,13 @@ const Success: NextPage = () => {
 			<NextSeo title="寄付完了" />
 			<h1 className="title">ありがとうございました！</h1>
 			<h2 className="has-text-weight-bold">{getTypeText()}</h2>
-			<p className="has-text-centered has-text-primary has-text-weight-bold is-size-2">¥{amountText}</p>
+			{amountText() ? (
+				<>
+					<p className="has-text-centered has-text-primary has-text-weight-bold is-size-2">¥{amountText()}</p>
+					<p>以上の金額が寄付されました。</p>
+				</>
+			) : null}
 			<p>
-				以上の金額が寄付されました。
-				<br />
 				<Link href="/mypage">マイページ</Link>
 				からユーザー情報の編集や寄付の履歴が確認できます。
 			</p>

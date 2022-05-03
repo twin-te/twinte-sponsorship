@@ -4,7 +4,7 @@ import { useLoginStatus } from '../hooks/useLoginStatus';
 import Slider from 'react-input-slider';
 import styles from '../styles/pages/Register.module.scss';
 import { registOneTime, registSubscription } from '../api/stripeApi';
-import { stripeSubscription200yenID, stripeSubscription500yenID, stripeSubscription1000yenID } from '../utils/stripe';
+import { subscriptions } from '../utils/stripe';
 import { NextSeo } from 'next-seo';
 import { SweetModal } from '../components/SweetAlert';
 import { RadioButton } from '../components/RadioButton';
@@ -14,7 +14,7 @@ const Register: NextPage = () => {
 	const isLogin = useLoginStatus();
 	const [donationPriceIndex, setDonationPriceIndex] = useState(0);
 	const donationPrices = [500, 1000, 1500, 2000, 3000, 5000, 7000, 10000];
-	const [subscriptionID, setSubscriptionID] = useState(stripeSubscription200yenID);
+	const [subscriptionID, setSubscriptionID] = useState(subscriptions[0].planId);
 
 	const confirmRegistOneTime = async () => {
 		const result = await SweetModal.fire({
@@ -38,11 +38,6 @@ const Register: NextPage = () => {
 	};
 
 	const radioButtons = () => {
-		const subscriptions = [
-			{ planId: stripeSubscription200yenID, label: '200円/月' },
-			{ planId: stripeSubscription500yenID, label: '500円/月' },
-			{ planId: stripeSubscription1000yenID, label: '1000円/月' }
-		];
 		return subscriptions.map((plan, index) => {
 			return (
 				<div key={index} className="field has-text-weight-bold">
@@ -55,7 +50,7 @@ const Register: NextPage = () => {
 							setSubscriptionID(inputValue);
 						}}
 					>
-						{plan.label}
+						{plan.amount}円/月
 					</RadioButton>
 				</div>
 			);
