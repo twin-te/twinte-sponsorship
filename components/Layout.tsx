@@ -6,6 +6,7 @@ import { SweetModal } from './SweetAlert';
 import { useRouter } from 'next/router';
 import { getLogoutUrl } from '../utils/getAuthUrl';
 import Image from 'next/image';
+import styles from '../styles/components/Layout.module.scss';
 
 export const Layout: React.FC = ({ children }) => {
 	const isLogin = useLoginStatus();
@@ -44,7 +45,7 @@ export const Layout: React.FC = ({ children }) => {
 					<Sidebar />
 				</div>
 				<div className="column">
-					<section className="section">
+					<section className={`section ${styles.section}`}>
 						<header className="is-hidden-mobile">
 							<div className="has-text-right">
 								{isLogin == undefined ? (
