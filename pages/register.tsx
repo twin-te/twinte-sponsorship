@@ -17,16 +17,12 @@ const Register: NextPage = () => {
 	const [subscriptionID, setSubscriptionID] = useState(subscriptions[0].planId);
 
 	const confirmRegistOneTime = async () => {
-		const result = await SweetModal.fire({
-			title: 'ログインをせずに続けますか？',
-			text: 'ログインをしなくても単発の寄付はできますが、履歴に残らず返礼品等の申請ができません。ログインしないまま寄付しますか？',
-			showCancelButton: true,
-			confirmButtonText: 'はい',
-			cancelButtonText: 'いいえ'
+		await SweetModal.fire({
+			title: 'ログインをしてください。',
+			text: '寄付をするには、右上のログインボタンよりログインをしてください。',
+			showCancelButton: false,
+			confirmButtonText: 'はい'
 		});
-		if (result.isConfirmed) {
-			registOneTime(donationPrices[donationPriceIndex]);
-		}
 	};
 	const confirmRegistSubscription = async () => {
 		await SweetModal.fire({
