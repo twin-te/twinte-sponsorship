@@ -10,6 +10,9 @@ import { SweetModal } from '../components/SweetAlert';
 import { RadioButton } from '../components/RadioButton';
 import Link from 'next/link';
 
+const ACTUAL_RECEIVED_PERCENTAGE = 0.964;
+const MONTHLY_COST = 7052; // ref: /public/images/twinte-cost.png
+
 const Register: NextPage = () => {
 	const isLogin = useLoginStatus();
 	const [donationPriceIndex, setDonationPriceIndex] = useState(0);
@@ -89,12 +92,16 @@ const Register: NextPage = () => {
 				<p className="has-text-primary">
 					ご協力いただく金額で、Twin:teを
 					<span style={{ fontWeight: 'bold' }}>
-						{Math.round((Math.floor(donationPrices[donationPriceIndex] * 0.964) / 5000) * 100) / 100}ヶ月
+						{Math.round(
+							(Math.floor(donationPrices[donationPriceIndex] * ACTUAL_RECEIVED_PERCENTAGE) / MONTHLY_COST) * 100
+						) / 100}
+						ヶ月
 					</span>
 					運営することができます。
 				</p>
 				<p className={styles.priceNotification}>
-					※手数料を差し引くとTwin:teには{donationPrices[donationPriceIndex] * 0.964}円寄付されます。
+					※手数料を差し引くとTwin:teには{donationPrices[donationPriceIndex] * ACTUAL_RECEIVED_PERCENTAGE}
+					円寄付されます。
 				</p>
 				<button
 					className={`button is-fullwidth is-primary ${styles.buttons}`}
