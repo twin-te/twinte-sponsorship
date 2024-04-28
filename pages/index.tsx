@@ -5,6 +5,10 @@ import Image from 'next/image';
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 
+const BALANCE = 110735;
+const MONTHLY_COST = 10000;
+const LAST_UPDATE = '2024年4月21日';
+
 const Home: NextPage = () => {
 	return (
 		<>
@@ -15,13 +19,19 @@ const Home: NextPage = () => {
 
 				<p>
 					いつもTwin:teをご利用いただきありがとうございます。
-					Twin:teはおかげさまで2022年2月で3周年を迎え、筑波大学生の過半数に利用していただいている状況となりました。
+					Twin:teはおかげさまで2024年2月で5周年を迎え、筑波大学生の大半の方々に利用していただいている状況となりました。
 				</p>
 				<p>
 					当初よりTwin:teは「<span className="has-text-weight-bold">広告なしで無料の筑波大学生専用時間割アプリ</span>
 					」という構想で開発していますが、 Twin:teの運用にはどうしても資金が必要です。
 				</p>
 				<p>当初と比較してユーザー数が増え、それに伴って運営に必要な資金も増えています。</p>
+				<div className={styles.finance}>
+					現在の残高は<span className={styles.balance}>{BALANCE}</span>円です。これはTwin:teの運営費
+					<span className={styles.lifetime}>{(BALANCE / MONTHLY_COST).toFixed(1)}</span>ヶ月分に相当します。
+					<br />
+					<span className={styles.lastUpdate}>（{LAST_UPDATE}現在）</span>
+				</div>
 				<div className="has-text-centered">
 					<Image src={TwinteCost} alt="Twin:te_Cost" />
 				</div>
